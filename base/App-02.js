@@ -16,7 +16,7 @@ class Header extends Component {
     return (
       <div>
         <header className="App-header">
-          <h1 className="App-title">Notes App</h1>
+          <h1 className="App-title">WebCS</h1>
         </header> 
         <AmplifySignOut />
       </div>
