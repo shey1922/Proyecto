@@ -64,7 +64,7 @@ export default function Home() {
         </div>
 
         <div class="content">
-          <h3>Líderes en las capacitaciones al personal de salud</h3>
+          <h3>Lideres en capacitaciones de personal en sector salud</h3>
           <p>.</p>
           <a href="#" class="btn">
             Empezar
@@ -75,27 +75,27 @@ export default function Home() {
       <section class="category">
         <a href="#" class="box">
           <img src="assets/images/category-1.png" alt="" />
-          <h3>Violencia contra las mujeres basada en género</h3>
+          <h3>Multiplataforma</h3>
         </a>
 
         <a href="#" class="box">
           <img src="assets/images/category-2.png" alt="" />
-          <h3>Violencia contra las mujeres en relación de pareja</h3>
+          <h3>Conocimiento</h3>
         </a>
 
         <a href="#" class="box">
           <img src="assets/images/category-3.png" alt="" />
-          <h3>Protección y apoyo social a las mujeres víctimas de violencia</h3>
+          <h3>Rendimiento</h3>
         </a>
 
         <a href="#" class="box">
           <img src="assets/images/category-4.png" alt="" />
-          <h3>Violencia contra las mujeres desde la perspectia del género</h3>
+          <h3>Chat Grupal</h3>
         </a>
 
         <a href="#" class="box">
           <img src="assets/images/category-5.png" alt="" />
-          <h3>Diagnostico en casos de violencia contra la mujer</h3>
+          <h3>Videoconferencia</h3>
         </a>
       </section>
 

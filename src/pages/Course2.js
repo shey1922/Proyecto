@@ -73,7 +73,7 @@ export default function Home() {
           </div>
           <div class="content">
             <span>business</span>
-            <h3>learning is what makes you perfect</h3>
+            <h3>Violencia contra las mujeres basada en género</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
               quam.
@@ -100,7 +100,7 @@ export default function Home() {
           </div>
           <div class="content">
             <span>language</span>
-            <h3>learning is what makes you perfect</h3>
+            <h3>Violencia contra las mujeres en relación de pareja</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
               quam.
@@ -127,7 +127,9 @@ export default function Home() {
           </div>
           <div class="content">
             <span>development</span>
-            <h3>learning is what makes you perfect</h3>
+            <h3>
+              Protección y apoyo social a las mujeres víctimas de violencia
+            </h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
               quam.
@@ -154,7 +156,7 @@ export default function Home() {
           </div>
           <div class="content">
             <span>teaching</span>
-            <h3>learning is what makes you perfect</h3>
+            <h3>Violencia contra las mujeres desde la perspectia del género</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
               quam.
@@ -181,34 +183,7 @@ export default function Home() {
           </div>
           <div class="content">
             <span>designing</span>
-            <h3>learning is what makes you perfect</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
-              quam.
-            </p>
-            <a href="#" class="btn">
-              Leer más
-            </a>
-            <div class="icons">
-              <a href="#">
-                {" "}
-                <i class="fas fa-book"></i> 12 modules{" "}
-              </a>
-              <a href="#">
-                {" "}
-                <i class="fas fa-clock"></i> 6 hours{" "}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="assets/images/main-course-6.png" alt="" />
-          </div>
-          <div class="content">
-            <span>speaking</span>
-            <h3>learning is what makes you perfect</h3>
+            <h3>Diagnostico en casos de violencia contra la mujer</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
               quam.
