@@ -1,39 +1,58 @@
 import React, { Component } from "react";
 
 import Amplify from "aws-amplify";
-import { AmplifyAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { AmplifyAuthenticator } from "@aws-amplify/ui-react";
 import awsExports from "./aws-exports";
 import RouterPage from "./pages/RouterPage";
 
 import { AmplifySignUp } from "aws-amplify";
 import { AmplifySignIn } from "aws-amplify";
+import LoginPage from "./pages/LoginPage";
 Amplify.configure(awsExports);
 
-class Header extends Component {
-  render() {
-    return (
-      <div className="App">
-        <RouterPage />
-      </div>
-    );
-  }
+// class Header extends Component {
+//   render() {
+//     return (
+//     // return (
+//     //   <div className="App">
+//     //     <RouterPage />
+//     //   </div>
+//     // <LoginPage />
+//     );
+//   }
+// }
+
+// class App extends Component {
+//   render() {
+//     return (
+//       // <AmplifyAuthenticator>
+//       //   <div className="row">
+//       //     <div className="col m-3">
+//       //       <Header />
+            
+//       //     </div>
+//       //   </div>
+//       // </AmplifyAuthenticator>
+//       <LoginPage />
+//     );
+//   }
+// }
+
+function App() {
+  return (
+    // <AmplifyAuthenticator>
+    //   <div className="row">
+    //     <div className="col m-3">
+    //       <Header />
+          
+    //     </div>
+    //   </div>
+    // </AmplifyAuthenticator>
+    <LoginPage />
+  );
 }
 
-class App extends Component {
-  render() {
-    return (
-      <AmplifyAuthenticator>
-        <div className="row">
-          <div className="col m-3">
-            <Header />
-          </div>
-        </div>
-      </AmplifyAuthenticator>
-    );
-  }
-}
-
-<AmplifyAuthenticator usernameAlias="email">
+{/* <AmplifyAuthenticator usernameAlias="email">
   <AmplifySignUp
     slot="sign-up"
     usernameAlias="email"
@@ -53,11 +72,12 @@ class App extends Component {
       },
     ]}
   />
-  <AmplifySignIn
+  {/* <AmplifySignIn
     slot="sign-in"
     usernameAlias="email"
     headerText="My Custom Sign In Text"
-  />
-</AmplifyAuthenticator>;
+  /> */}
+  
+// </AmplifyAuthenticator>; */}
 
 export default App;
