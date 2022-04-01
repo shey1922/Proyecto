@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import App from "./App";
 import About from "./components/About";
-import Authentication from "./components/Authentication";
 import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import Course from "./components/Course";
@@ -20,7 +19,6 @@ ReactDOM.render(
         <Route index element={<Home />} />
         <Route path="login" element={<Login2 />} />
         <Route path="register" element={<Register2 />} />
-        <Route path="auth" element={ <Authentication /> } />
         <Route path="about" element={<About />} />
         <Route path="course" element={<Course />} />
         <Route path="teachers" element={<Teachers />} />

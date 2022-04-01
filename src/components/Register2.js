@@ -1,14 +1,20 @@
 import React from 'react'
 import styled from 'styled-components';
 
+const Center = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Container = styled.div`
-  margin: 0 auto;
   width: 52rem;
   border: 1px solid lightgray;
   box-shadow: 3px;
   border-radius: 10px;
   display: flex;
-  justify-content: around;
+  overflow: hidden;
 `;
 
 const Wrapper = styled.div`
@@ -36,42 +42,47 @@ const Input = styled.input`
 
 const Button = styled.button`
   width: 12rem;
-  background-color: #6463C8;
+  border: ${props => props.outline ? '2px solid white' : 'none'};
+  background-color: ${props => !props.outline ? '#6463C8' : 'transparent'};
   color: white;
   margin-top: 10px;
   padding: 5px 20px;
   border-radius: 15px;
   cursor: pointer;
   &:hover {
-      background-color: #2e2cd1;
+      background-color: ${props => props.outline ? 'white' : '#2e2cd1'} ;
+      color: ${props => props.outline && '#6463C8'};
   }
 `;
 
 const Greeting = styled.div`
   width: 100%;
-  border-radius: 10px 0 0 10px;
   background: linear-gradient(to right, #4e54c8, #8f94fb);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 export default function Register2() {
     return (
-        <Container>
-            <Greeting>
-                <Title>¡Bienvenido de vuelta!</Title>
-            </Greeting>
-            <Wrapper>
-                <Title color="gray">Sign Up</Title>
-                <Form>
-                    <Input type="text" placeholder="Name" />
-                    <Input type="email" placeholder="Email" />
-                    <Input type="password" placeholder="Password" />
-                    <Input type="password" placeholder="Repeat Password" />
-                    <Button type="submit">SIGN UP</Button>
-                </Form>
-            </Wrapper>
-        </Container>
+        <Center>
+            <Container>
+                <Greeting>
+                    <Title>¡Bienvenido de vuelta!</Title>
+                    <Button outline>Sign In</Button>
+                </Greeting>
+                <Wrapper>
+                    <Title color="gray">Sign Up</Title>
+                    <Form>
+                        <Input type="text" placeholder="Name" />
+                        <Input type="email" placeholder="Email" />
+                        <Input type="password" placeholder="Password" />
+                        <Input type="password" placeholder="Repeat Password" />
+                        <Button type="submit">SIGN UP</Button>
+                    </Form>
+                </Wrapper>
+            </Container>
+        </Center>
     )
 }
