@@ -1,24 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import Amplify from "aws-amplify";
+import Amplify, { Hub } from "aws-amplify";
 
 import awsExports from "./aws-exports";
 import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
+import { AuthContext } from "./context";
 
 Amplify.configure(awsExports);
 
 function App() {
 
-  const [isLogged, setIsLogged] = useState(false);
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    Hub.listen('auth', (event) => {
+      console.log('auth event', event);
+      //setCurrentUser(event.payload.data);
+    });
+  });
 
   return (
-    <>
-      {/* <Navbar /> */}
+    <AuthContext.Provider value={{currentUser, setCurrentUser}}>
+      {currentUser && <Navbar />}
       <Outlet />
-      {/* <Footer /> */}
-    </>
+      {currentUser && <Footer />}
+    </AuthContext.Provider>
   );
 }
 
