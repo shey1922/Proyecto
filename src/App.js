@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import Amplify, { Hub } from "aws-amplify";
+import Amplify, { Auth, Hub } from "aws-amplify";
 
 import awsExports from "./aws-exports";
 import Navbar from "./components/Navbar";
@@ -15,11 +15,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    Hub.listen('auth', (event) => {
-      console.log('auth event', event);
-      //setCurrentUser(event.payload.data);
-    });
-  });
+    
+  }, [currentUser]);
 
   return (
     <AuthContext.Provider value={{currentUser, setCurrentUser}}>

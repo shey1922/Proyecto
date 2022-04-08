@@ -29,5 +29,23 @@
         "ProyectoTP1": {}
       }
     }
+  },
+  "develop": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifyapp-develop-223322-authRole",
+      "UnauthRoleArn": "arn:aws:iam::776710310144:role/amplify-amplifyapp-develop-223322-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::776710310144:role/amplify-amplifyapp-develop-223322-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amplifyapp-develop-223322-deployment",
+      "UnauthRoleName": "amplify-amplifyapp-develop-223322-unauthRole",
+      "StackName": "amplify-amplifyapp-develop-223322",
+      "StackId": "arn:aws:cloudformation:us-east-1:776710310144:stack/amplify-amplifyapp-develop-223322/a7344340-b6ec-11ec-b1bc-12e46fbfc069",
+      "AmplifyAppId": "d1zduj75h6ke6t"
+    },
+    "categories": {
+      "auth": {
+        "amplifyappfaeea174": {}
+      }
+    }
   }
 }

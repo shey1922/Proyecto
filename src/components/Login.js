@@ -72,9 +72,10 @@ const Panel = styled.div`
 
 export default function Login() {
 
+  const { setCurrentUser } = useContext(AuthContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setCurrentUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -83,6 +84,7 @@ export default function Login() {
     try {
       const response = await Auth.signIn(email, password);
       console.log('Auth Response', response);
+      setCurrentUser(response.username);
       navigate('/', { replace: true });
     } catch (err) {
       console.error(err);
