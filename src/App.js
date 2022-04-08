@@ -1,63 +1,30 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
-import Amplify from "aws-amplify";
-import { AmplifyAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import Amplify, { Auth, Hub } from "aws-amplify";
+
 import awsExports from "./aws-exports";
-import RouterPage from "./pages/RouterPage";
+import Navbar from "./components/Navbar";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer";
+import { AuthContext } from "./context";
 
-import { AmplifySignUp } from "aws-amplify";
-import { AmplifySignIn } from "aws-amplify";
 Amplify.configure(awsExports);
 
-class Header extends Component {
-  render() {
-    return (
-      <div className="App">
-        <RouterPage />
-      </div>
-    );
-  }
-}
+function App() {
 
-class App extends Component {
-  render() {
-    return (
-      <AmplifyAuthenticator>
-        <div className="row">
-          <div className="col m-3">
-            <Header />
-          </div>
-        </div>
-      </AmplifyAuthenticator>
-    );
-  }
-}
+  const [currentUser, setCurrentUser] = useState();
 
-<AmplifyAuthenticator usernameAlias="email">
-  <AmplifySignUp
-    slot="sign-up"
-    usernameAlias="email"
-    headerText="My Custom Sign Up Text!"
-    formFields={[
-      {
-        type: "email",
-        label: "Custom Email Label",
-        placeholder: "Custom email placeholder",
-        inputProps: { required: true, autocomplete: "username" },
-      },
-      {
-        type: "password",
-        label: "Custom Password Label",
-        placeholder: "Custom password placeholder",
-        inputProps: { required: true, autocomplete: "new-password" },
-      },
-    ]}
-  />
-  <AmplifySignIn
-    slot="sign-in"
-    usernameAlias="email"
-    headerText="My Custom Sign In Text"
-  />
-</AmplifyAuthenticator>;
+  useEffect(() => {
+    
+  }, [currentUser]);
+
+  return (
+    <AuthContext.Provider value={{currentUser, setCurrentUser}}>
+      {currentUser && <Navbar />}
+      <Outlet />
+      {currentUser && <Footer />}
+    </AuthContext.Provider>
+  );
+}
 
 export default App;
