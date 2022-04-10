@@ -83,7 +83,6 @@ export default function Login() {
     event.preventDefault();
     try {
       const response = await Auth.signIn(email, password);
-      console.log('Auth Response', response);
       setCurrentUser(response.username);
       navigate('/', { replace: true });
     } catch (err) {

@@ -8,6 +8,7 @@ import Blog from "./components/Blog";
 import Course from "./components/Course";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import MyCourse from "./components/MyCourse";
 import PrivateRoute from "./components/PrivateRoute";
 import Register from "./components/Register";
 import Teachers from "./components/Teachers";
@@ -55,6 +56,14 @@ ReactDOM.render(
           element={
             <PrivateRoute>
               <Blog />
+            </PrivateRoute>
+          }
+        />
+        <Route 
+          path="my-course/:course"
+          element={
+            <PrivateRoute>
+              <MyCourse />
             </PrivateRoute>
           }
         />

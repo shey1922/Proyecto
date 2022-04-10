@@ -1,12 +1,16 @@
 import { Auth } from 'aws-amplify';
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../context';
 
 function Navbar() {
+
+    const { setCurrentUser } = useContext(AuthContext);
 
     const signOut = async () => {
         try {
           await Auth.signOut();
+          setCurrentUser('');
         } catch (err) {
           console.error(err);
         }

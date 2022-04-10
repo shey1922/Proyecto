@@ -18,6 +18,14 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
+const Verificaction = styled.div`
+  padding: 4rem 1rem;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+`;
+
 const Box = styled.div`
   width: 50%;
   padding: 8rem 2rem;
@@ -100,7 +108,7 @@ export default function Register() {
   return (
     <Container>
       {showConfirmation ? (
-        <Wrapper>
+        <Verificaction>
           <Box>
             <Title color="gray">Verificación</Title>
             <Form onSubmit={handleVerification}>
@@ -119,7 +127,7 @@ export default function Register() {
               <Button type="submit">Verificar</Button>
             </Form>
           </Box>
-        </Wrapper>
+        </Verificaction>
       ) : (
         <Wrapper>
           <Panel>
