@@ -1,22 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 function About() {
-    return (
-        <section className="about">
-
-            <div className="image">
-                <img src="assets/images/about-img.png" alt="about" />
-            </div>
-
-            <div className="content">
-                <h3>I will stay with you until you pass your exam.</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id ducimus at maiores repellat aut debitis aliquam esse, quisquam nobis laborum velit voluptate excepturi obcaecati dignissimos omnis. Fugiat hic quod nobis?</p>
-                <Link to="#" className="btn">learn more</Link>
-            </div>
-
-        </section>
-    )
+  return (
+    <section className="about">
+      <div className="image">
+        <img src="assets/images/about-img.png" alt="" />
+      </div>
+      <div className="content">
+        <h3>
+          Sistema para la capacitación del personal de salud en la atención de
+          casos de violencia
+        </h3>
+        <p> </p>
+        <a href="#" className="btn">
+          Aprende más
+        </a>
+      </div>
+    </section>
+  );
 }
 
 export default About;

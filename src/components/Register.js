@@ -52,7 +52,6 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  width: 12rem;
   border: ${(props) => (props.outline ? "2px solid white" : "none")};
   background-color: ${(props) => (!props.outline ? "#6463C8" : "transparent")};
   color: white;
@@ -112,7 +111,7 @@ export default function Register() {
           <Box>
             <Title color="gray">Verificación</Title>
             <Form onSubmit={handleVerification}>
-            <Input
+              <Input
                 type="email"
                 placeholder="Email"
                 value={email}
@@ -124,7 +123,7 @@ export default function Register() {
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
               />
-              <Button type="submit">Verificar</Button>
+              <Button type="submit">VERIFICAR</Button>
             </Form>
           </Box>
         </Verificaction>
@@ -133,13 +132,12 @@ export default function Register() {
           <Panel>
             <Title>¡Bienvenido de vuelta!</Title>
             <Button outline onClick={() => navigate("/login")}>
-              Sign In
+              INICIAR SESIÓN
             </Button>
           </Panel>
           <Box>
-            <Title color="gray">Sign Up</Title>
+            <Title color="gray">REGISTRO DE USUARIO</Title>
             <Form onSubmit={handleSubmit}>
-              
               <Input
                 type="email"
                 placeholder="Email"
@@ -158,7 +156,7 @@ export default function Register() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
-              <Button type="submit">SIGN UP</Button>
+              <Button type="submit">REGISTRAR</Button>
             </Form>
           </Box>
         </Wrapper>
