@@ -109,6 +109,7 @@ export default function Login() {
             <span>¿Olvidaste tu contraseña?</span>
             <Button type="submit">INICIAR SESIÓN</Button>
           </Form>
+          {/*<Button type="submit" onClick={() => navigate('/home-admin')}>Login Admin</Button>*/}
         </Box>
         <Panel>
           <Title>¡Saludos!</Title>

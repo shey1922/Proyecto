@@ -980,3 +980,280 @@ main {
     position: relative;
   }
 }
+
+.navbaradmin{
+  background-color: white;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid gray;
+}
+
+.sidebaradmin{
+  width: 25rem;
+  height: calc(100vh - 65px);
+  border-right: 1px solid #e6e4e4;
+  box-shadow: 3px 3px 3px #e6e4e4;
+}
+
+.listsidebar{
+  list-style: none;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+.elementsidebar{
+  margin-bottom: 2rem;
+  font-size: 15px;
+  text-decoration: none;
+  color: #666;
+}
+
+.flex{
+  display: flex;
+}
+
+.btn-text{
+  border: none;
+  background-color: inherit;
+  padding: 5px 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  color: gray;
+}
+
+.side-title{
+  padding-top: 10px;
+  padding-left: 15px;
+  font-size: 18px;
+  color: gray;
+}
+
+.i-space{
+  margin-right: 10px;
+}
+
+/*Manage Course Styles*/
+
+.content-manage-course{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #F6F7FB;
+}
+
+.head-section{
+  display: flex;
+  flex-direction: row;
+  width: 56%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-section-manage-course{
+  font-size: 30px;
+}
+
+.route-section-manage-course{
+ font-size: 15px;
+}
+
+.btn-add-course{ /* Green */
+  border: none;
+  color: #F6F7FB;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2px solid #505050;
+  border-radius: 0.7rem;
+}
+
+.btn-add-course:hover {
+  background-color: #9e9c9c;
+  color: white;
+}
+
+.show-courses-section{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.subtitle-section-list-course{
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 18px;
+}
+
+.list-items-courses{
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 15px;
+}
+
+.item-course{
+  width: 200px;
+  height: 200px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px #e6e4e4;
+}
+
+.img-reference-item-course{
+  background-color: #3675eb;
+  width: 100%;
+  height: 80%;
+}
+
+.course-name{
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  padding: 13px;
+}
+
+/*Manage Quiz Styles*/
+
+.show-quiz-section{
+  width: 70%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.list-items-quizes{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.item-quiz{
+  border: none;
+  height: 110px;
+  width: 40%;
+  background-color: #ffffff;
+  border: 1px solid rgb(109, 109, 109);
+  border-radius: 0.5rem;
+}
+
+.high-row{
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-bottom: 1px solid rgb(109, 109, 109);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.img-high-row{
+  width: 50px;
+  height: 50px;
+  background-color: #3675eb;
+  margin: 10px;
+}
+
+.info-card-quiz{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.title-quiz-card{
+  font-size: 18px;
+}
+
+.subtitle-quiz-card{
+  font-size: 15px;
+}
+
+.low-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.btn-review{
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  justify-content: space-around;
+  align-items: center;
+  
+  border: none;
+  color: #D7DDE2;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: #D7DDE2;
+  color: black;
+  border-radius: 0.5rem;
+}
+
+.number-review-card{
+  background-color: rgb(46, 46, 45);
+  height: 18px;
+  width: 18px;
+  border-radius: 1rem;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+}
+
+.prefix-btn{
+  background-color: white;
+}
+
+.list-quizes{
+  width: 60%;
+  background-color: rgb(255, 255, 255);
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e6e4e4;
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 3px #e6e4e4;
+}
+
+.img-ref-item-list-quiiz{
+  height: 50px;
+  width: 50px;
+  background-color: red;
+  margin: 10px;
+}
+
+.item-list-quiz-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid grey;
+}
+
+.column-1-elements-item{
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+  justify-content: space-around;
+  align-items: center;
+}
