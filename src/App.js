@@ -12,9 +12,7 @@ Amplify.configure(awsExports);
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState('');
-
-  console.log('App Render');
+  const [currentUser, setCurrentUser] = useState();
 
   return (
     <AuthContext.Provider value={{currentUser, setCurrentUser}}>
