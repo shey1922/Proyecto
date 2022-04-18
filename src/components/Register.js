@@ -90,6 +90,9 @@ export default function Register() {
       setshowConfirmation(true);
     } catch (err) {
       console.error("Error en registro de usuario");
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
     }
   };
 
@@ -101,6 +104,7 @@ export default function Register() {
       navigate("/login", { replace: true });
     } catch (err) {
       console.error("Error en verificación de usuario");
+      setCode('');
     }
   };
 

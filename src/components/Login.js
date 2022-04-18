@@ -87,6 +87,8 @@ export default function Login() {
       navigate('/', { replace: true });
     } catch (err) {
       console.error(err);
+      setEmail('');
+      setPassword('');
     }
   }
 
