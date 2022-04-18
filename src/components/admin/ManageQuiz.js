@@ -139,7 +139,7 @@ function ManageQuiz() {
                 <p>COMPLETED</p>
                 <div>15</div>
                 <button className="prefix-btn">
-                    <i class='fa fa-ellipsis-v'></i>
+                    <i class='fa fa-ellipsis-v '></i>
                   </button>
               </div>
             </div>

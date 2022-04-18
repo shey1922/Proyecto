@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from "./App";
 import About from "./components/About";
@@ -19,6 +20,8 @@ import ManageCourse from './components/admin/ManageCourse';
 import ManageQuiz from './components/admin/ManageQuiz';
 import EditCourse from './components/admin/EditCourse';
 import EditQuiz from "./components/admin/EditQuiz";
+import EditDetailQuiz from "./components/admin/EditDetailQuiz"
+import EditDetailCourse from "./components/admin/EditDetailCourse";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -81,6 +84,8 @@ ReactDOM.render(
         <Route path="manage-quiz"  exact={true} element={<ManageQuiz />} />
         <Route path="edit-course" exact={true} element={<EditCourse />}/>
         <Route path="edit-quiz" exact={true} element={<EditQuiz />}/>
+        <Route path="edit-detail-quiz" exact={true} element={<EditDetailQuiz/>}/>
+        <Route path="edit-detail-course" exact={true} element={<EditDetailCourse />}/>
       </Route>
     </Routes>
   </BrowserRouter>,
