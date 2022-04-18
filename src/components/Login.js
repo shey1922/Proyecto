@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Auth } from 'aws-amplify'
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context";
+import Swal from "sweetalert2";
 
 const Container = styled.div`
   height: 100vh;
@@ -47,7 +48,6 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  width: 12rem;
   border: ${(props) => (props.outline ? "2px solid white" : "none")};
   background-color: ${(props) => (!props.outline ? "#6463C8" : "transparent")};
   color: white;
@@ -83,7 +83,6 @@ export default function Login() {
     event.preventDefault();
     try {
       const response = await Auth.signIn(email, password);
-      console.log('Auth Response', response);
       setCurrentUser(response.username);
       navigate('/', { replace: true });
     } catch (err) {
@@ -103,17 +102,20 @@ export default function Login() {
     <Container>
       <Wrapper>
         <Box>
-          <Title color="gray">Sign In</Title>
+          <Title color="gray">Iniciar Sesión</Title>
           <Form onSubmit={handleSubmit}>
             <Input type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
             <Input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             <span>¿Olvidaste tu contraseña?</span>
-            <Button type="submit">SIGN IN</Button>
+            <Button type="submit">INICIAR SESIÓN</Button>
           </Form>
+          {/*
+          <Button type="submit" onClick={() => navigate('/home-admin')}>Login Admin</Button>
+          */}
         </Box>
         <Panel>
           <Title>¡Saludos!</Title>
-          <Button outline onClick={() => navigate('/register')}>Sign Up</Button>
+          <Button outline onClick={() => navigate('/register')}>REGISTRATE</Button>
         </Panel>
       </Wrapper>
     </Container>

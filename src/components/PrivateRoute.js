@@ -6,5 +6,5 @@ export default function PrivateRoute({ children }) {
 
   const { currentUser } = useContext(AuthContext);
 
-  return currentUser ? children : <Navigate replace to="login" />
+  return currentUser ? children : <Navigate replace to="/login" />
 }
