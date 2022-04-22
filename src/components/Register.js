@@ -1,3 +1,4 @@
+import { signUpFieldsWithDefault } from "@aws-amplify/ui-react/node_modules/@aws-amplify/ui";
 import { Auth } from "aws-amplify";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -86,10 +87,10 @@ export default function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await Auth.signUp(email, password);
+      await Auth.signUp(email, password, email);
       setshowConfirmation(true);
     } catch (err) {
-      console.error("Error en registro de usuario");
+      console.error(err);
       setEmail('');
       setPassword('');
       setConfirmPassword('');
@@ -103,8 +104,7 @@ export default function Register() {
       setshowConfirmation(false);
       navigate("/login", { replace: true });
     } catch (err) {
-      console.error("Error en verificación de usuario");
-      setCode('');
+      console.error(err);
     }
   };
 

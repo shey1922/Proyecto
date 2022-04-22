@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context";
 
 function Navbar() {
-  const { setCurrentUser } = useContext(AuthContext);
+  const { setLoggedIn } = useContext(AuthContext);
 
   const signOut = async () => {
     try {
       await Auth.signOut();
-      setCurrentUser('');
+      setLoggedIn(false);
     } catch (err) {
       console.error(err);
     }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import courses from '../data/courses';
+import data from '../../data/courses';
 import Course from './Course';
 
 const Container = styled.div`
@@ -19,7 +19,7 @@ export default function Courses() {
     <Container>
         <Box>
             {
-              courses.map(c => <Course key={c.id} topic={c.topic} />)
+              data.map(c => <Course key={c.id} {...c} />)
             }
         </Box>
     </Container>

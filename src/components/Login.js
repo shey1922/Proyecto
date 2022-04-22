@@ -72,7 +72,7 @@ const Panel = styled.div`
 
 export default function Login() {
 
-  const { setCurrentUser } = useContext(AuthContext);
+  const { setLoggedIn } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -83,9 +83,10 @@ export default function Login() {
     event.preventDefault();
     try {
       const response = await Auth.signIn(email, password);
-      setCurrentUser(response.username);
+      setLoggedIn(true);
       navigate('/', { replace: true });
     } catch (err) {
+      setLoggedIn(false);
       console.error(err);
       setEmail('');
       setPassword('');

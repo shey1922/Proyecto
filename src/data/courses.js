@@ -1,15 +1,15 @@
 export default [
     {
         id: 1,
-        topic: 'Violencia Física'
+        topic: 'Curso 1'
     },
     {
         id: 2,
-        topic: 'Violencia Psicológica'
+        topic: 'Curso 2'
     },
     {
         id: 3,
-        topic: 'Violencia Sexual'
+        topic: 'Curso 3'
     },
     {
         id: 4,
@@ -21,6 +21,18 @@ export default [
     },
     {
         id: 6,
+        topic: 'Curso Adicional'
+    },
+    {
+        id: 7,
+        topic: 'Curso Adicional'
+    },
+    {
+        id: 8,
+        topic: 'Curso Adicional'
+    },
+    {
+        id: 9,
         topic: 'Curso Adicional'
     }
 ];

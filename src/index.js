@@ -6,12 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from "./App";
 import About from "./components/About";
 import Blog from "./components/Blog";
-import Course from "./components/Course";
-import Courses from "./components/Courses";
 import Home from "./components/Home";
 import HomeAdmin from "./components/HomeAdmin";
 import Login from "./components/Login";
-import MyCourse from "./components/MyCourse";
 import PrivateRoute from "./components/PrivateRoute";
 import Register from "./components/Register";
 import Teachers from "./components/Teachers";
@@ -22,6 +19,8 @@ import EditCourse from './components/admin/EditCourse';
 import EditQuiz from "./components/admin/EditQuiz";
 import EditDetailQuiz from "./components/admin/EditDetailQuiz"
 import EditDetailCourse from "./components/admin/EditDetailCourse";
+import CourseDetail from "./components/Course/CourseDetail";
+import Courses from "./components/Course/Courses";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -46,10 +45,10 @@ ReactDOM.render(
           }
         />
         <Route
-          path="course"
+          path="courses"
           element={
             <PrivateRoute>
-              <Course />
+              <Courses />
             </PrivateRoute>
           }
         />
@@ -70,15 +69,14 @@ ReactDOM.render(
           }
         />
         <Route 
-          path="my-course/:course"
+          path="courses/:courseId"
           element={
             <PrivateRoute>
-              <MyCourse />
+              <CourseDetail />
             </PrivateRoute>
           }
         />
         <Route path="home-admin" exact={true} element={<HomeAdmin />} />
-        <Route path="courses"  element={<Courses />} />
         <Route path="default-home" exact={true} element={<DefaultHome />} />
         <Route path="manage-course"  exact={true} element={<ManageCourse />} />
         <Route path="manage-quiz"  exact={true} element={<ManageQuiz />} />
