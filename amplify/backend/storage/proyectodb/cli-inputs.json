@@ -1,0 +1,10 @@
+{
+  "resourceName": "proyectodb",
+  "tableName": "courses",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

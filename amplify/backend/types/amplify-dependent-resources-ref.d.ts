@@ -1,14 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
-    "function": {
-        "reactamplifyappd19dd2d6": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        }
-    },
     "auth": {
-        "reactamplifyapp": {
+        "proyecto933e31d1": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",
@@ -18,8 +10,32 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientID": "string"
         }
     },
+    "storage": {
+        "proyectodb": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        }
+    },
+    "function": {
+        "usersLambda": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "coursesLambda": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        }
+    },
     "api": {
-        "ReactAmplifyApi": {
+        "proyectoAPI": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"
