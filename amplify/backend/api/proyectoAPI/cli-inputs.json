@@ -14,6 +14,20 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/posts": {
+      "name": "/posts",
+      "lambdaFunction": "postFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/comments": {
+      "name": "/comments",
+      "lambdaFunction": "commentFunction",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

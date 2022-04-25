@@ -26,6 +26,22 @@ export type AmplifyDependentResourcesAttributes = {
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
             "Region": "string"
+        },
+        "posts": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        },
+        "comments": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
         }
     },
     "function": {
@@ -42,6 +58,18 @@ export type AmplifyDependentResourcesAttributes = {
             "LambdaExecutionRole": "string"
         },
         "AdminQueries80113a96": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "postFunction": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "commentFunction": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
