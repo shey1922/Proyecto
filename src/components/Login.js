@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
-import { Auth } from 'aws-amplify'
+import { API, Auth } from 'aws-amplify'
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context";
 import Swal from "sweetalert2";
@@ -72,7 +72,7 @@ const Panel = styled.div`
 
 export default function Login() {
 
-  const { setCurrentUser } = useContext(AuthContext);
+  const { setLoggedIn } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -82,11 +82,25 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await Auth.signIn(email, password);
-      setCurrentUser(response.username);
+      await Auth.signIn(email, password);
+      await API.post('AdminQueries', '/addUserToGroup', {
+        body: {
+          username: 'f7774779-25a9-434a-9543-50c1e742507d',
+          groupname: 'Students'
+        },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+        }
+      }).then(response => console.log(response))
+        .catch(err => console.log(err));
+      setLoggedIn(true);
       navigate('/', { replace: true });
     } catch (err) {
+      setLoggedIn(false);
       console.error(err);
+      setEmail('');
+      setPassword('');
     }
   }
 
@@ -97,7 +111,7 @@ export default function Login() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   }
-  
+
   return (
     <Container>
       <Wrapper>

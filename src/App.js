@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import Amplify from "aws-amplify";
+import Amplify, { Auth, API } from "aws-amplify";
 
 import awsExports from "./aws-exports";
 import Navbar from "./components/Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer";
 import { AuthContext } from "./context";
 
@@ -12,15 +12,28 @@ Amplify.configure(awsExports);
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [isAdmin, setSetAdmin] = useState(false);
+  const navigate = useNavigate();
 
-  console.log('App Render');
+  useEffect(() => {
+    Auth.currentAuthenticatedUser()
+      .then(session => {
+        setLoggedIn(true);
+        navigate('/', { replace: true });
+      })
+      .catch(err => setLoggedIn(false))
+
+    // API.get('proyectoApi', '/users', {})
+    //   .then(res => console.log(res))
+    //   .catch(err => console.error(err))
+  }, []);
 
   return (
-    <AuthContext.Provider value={{currentUser, setCurrentUser}}>
-      {currentUser && <Navbar />}
+    <AuthContext.Provider value={{ loggedIn, setLoggedIn }}>
+      {loggedIn && <Navbar />}
       <Outlet />
-      {currentUser && <Footer />}
+      {loggedIn && <Footer />}
     </AuthContext.Provider>
   );
 }

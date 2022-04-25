@@ -1,6 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import theme from '../theme';
+import theme from '../../theme';
 
 const Card = styled.div`
   background-color: #f5f5f5;
@@ -27,10 +28,13 @@ const CardButton = styled.button`
 `;
 
 function Course(props) {
+
+  const navigate = useNavigate();
+
   return (
     <Card>
       <img src="assets/images/placeholder-image.png" alt="placeholder" />
-      <CardButton>{ props.topic }</CardButton>
+      <CardButton onClick={() => navigate(`/courses/${props.id}`)}>{ props.topic }</CardButton>
     </Card>
   )
 }

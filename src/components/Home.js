@@ -10,7 +10,6 @@ function Home() {
         </div>
         <div className="content">
           <h3>Lideres en capacitaciones de personal en sector salud</h3>
-          <p>.</p>
           <a href="#" className="btn">
             Empezar
           </a>
