@@ -1,6 +1,6 @@
 {
-  "resourceName": "proyectodb",
-  "tableName": "courses",
+  "resourceName": "dynamodb",
+  "tableName": "users",
   "partitionKey": {
     "fieldName": "id",
     "fieldType": "string"

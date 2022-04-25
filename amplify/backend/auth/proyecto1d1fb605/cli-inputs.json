@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "proyecto933e31d1_identitypool_933e31d1",
+    "identityPoolName": "proyecto1d1fb605_identitypool_1d1fb605",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "proyec933e31d1",
-    "userPoolName": "proyecto933e31d1_userpool_933e31d1",
+    "resourceNameTruncated": "proyec1d1fb605",
+    "userPoolName": "proyecto1d1fb605_userpool_1d1fb605",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "proyec933e31d1_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "proyec1d1fb605_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "933e31d1",
-    "resourceName": "proyecto933e31d1",
+    "sharedId": "1d1fb605",
+    "resourceName": "proyecto1d1fb605",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "usernameAttributes": [
@@ -43,6 +43,21 @@
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": [],
+    "adminQueryGroup": "Admins"
   }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Amplify, { Auth } from "aws-amplify";
+import Amplify, { Auth, API } from "aws-amplify";
 
 import awsExports from "./aws-exports";
 import Navbar from "./components/Navbar";
@@ -13,6 +13,7 @@ Amplify.configure(awsExports);
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isAdmin, setSetAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,10 +23,14 @@ function App() {
         navigate('/', { replace: true });
       })
       .catch(err => setLoggedIn(false))
+
+    // API.get('proyectoApi', '/users', {})
+    //   .then(res => console.log(res))
+    //   .catch(err => console.error(err))
   }, []);
 
   return (
-    <AuthContext.Provider value={{loggedIn, setLoggedIn}}>
+    <AuthContext.Provider value={{ loggedIn, setLoggedIn }}>
       {loggedIn && <Navbar />}
       <Outlet />
       {loggedIn && <Footer />}

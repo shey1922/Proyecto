@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
-        "proyecto933e31d1": {
+        "proyecto1d1fb605": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",
@@ -11,7 +11,15 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "storage": {
-        "proyectodb": {
+        "dynamodb": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        },
+        "dynamoCourse": {
             "Name": "string",
             "Arn": "string",
             "StreamArn": "string",
@@ -21,13 +29,19 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "function": {
-        "usersLambda": {
+        "usersFunction": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "coursesLambda": {
+        "coursesFunction": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "AdminQueries80113a96": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -35,7 +49,12 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "api": {
-        "proyectoAPI": {
+        "proyectoApi": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        },
+        "AdminQueries": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

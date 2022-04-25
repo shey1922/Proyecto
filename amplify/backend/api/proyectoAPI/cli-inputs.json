@@ -3,7 +3,14 @@
   "paths": {
     "/users": {
       "name": "/users",
-      "lambdaFunction": "usersLambda",
+      "lambdaFunction": "usersFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/courses": {
+      "name": "/courses",
+      "lambdaFunction": "coursesFunction",
       "permissions": {
         "setting": "open"
       }

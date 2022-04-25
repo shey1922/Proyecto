@@ -1,6 +1,6 @@
 {
   "auth": {
-    "proyecto933e31d1": {
+    "proyecto1d1fb605": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -28,20 +28,24 @@
     }
   },
   "storage": {
-    "proyectodb": {
+    "dynamodb": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "dynamoCourse": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     }
   },
   "function": {
-    "usersLambda": {
+    "usersFunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "proyectodb",
+          "resourceName": "dynamodb",
           "attributes": [
             "Name",
             "Arn"
@@ -53,14 +57,14 @@
         }
       ]
     },
-    "coursesLambda": {
+    "coursesFunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "proyectodb",
+          "resourceName": "dynamoCourse",
           "attributes": [
             "Name",
             "Arn"
@@ -71,19 +75,63 @@
           }
         }
       ]
+    },
+    "AdminQueries80113a96": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true,
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "proyecto1d1fb605",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ]
     }
   },
   "api": {
-    "proyectoAPI": {
+    "proyectoApi": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "usersLambda",
+          "resourceName": "usersFunction",
           "attributes": [
             "Name",
             "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "coursesFunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "AdminQueries": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "proyecto1d1fb605",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "AdminQueries80113a96",
+          "attributes": [
+            "Arn",
+            "Name"
           ]
         }
       ]

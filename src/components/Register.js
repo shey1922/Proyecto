@@ -1,5 +1,5 @@
 import { signUpFieldsWithDefault } from "@aws-amplify/ui-react/node_modules/@aws-amplify/ui";
-import { Auth } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -78,6 +78,9 @@ const Panel = styled.div`
 export default function Register() {
   const navigate = useNavigate();
 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -87,13 +90,40 @@ export default function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await Auth.signUp(email, password, email);
+      await Auth.signUp({
+        username: email,
+        password,
+        attributes: {
+          email
+        }
+      });
       setshowConfirmation(true);
     } catch (err) {
       console.error(err);
       setEmail('');
       setPassword('');
+      setFirstName('');
+      setLastName('');
+      setUsername('');
       setConfirmPassword('');
+    }
+
+    try {
+      await API.post('proyectoApi', '/users', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: {
+          firstName,
+          lastName,
+          username,
+          email,
+          password,
+          isAdmin: false
+        }
+      })
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -142,6 +172,24 @@ export default function Register() {
           <Box>
             <Title color="gray">REGISTRO DE USUARIO</Title>
             <Form onSubmit={handleSubmit}>
+              <Input
+                type="text"
+                placeholder="Nombres"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              <Input
+                type="text"
+                placeholder="Apellidos"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+              <Input
+                type="text"
+                placeholder="Nombre de usuario"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
               <Input
                 type="email"
                 placeholder="Email"
