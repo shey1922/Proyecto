@@ -30,6 +30,12 @@ function SideBarAdmin() {
                     Edit Quizes
                 </Link>
             </li>
+            <li className="elementsidebar">
+                <Link to="/participants" class="btn-text">
+                    <i class="fas fa-users i-space"></i>
+                    Participants
+                </Link>
+            </li>
         </ul>
     </div>
   );

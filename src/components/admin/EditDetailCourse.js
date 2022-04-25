@@ -1,8 +1,28 @@
 import React from "react";
 import NavBarAdmin from './NavBarAdmin'
 import SideBarAdmin from "./SideBar";
+import swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 function EditDetailCourse() {
+  
+  const navigate = useNavigate();
+
+  const deleteQuiz = () => {
+    swal.fire({
+      title: 'Do you want to delete the Quiz: "Quiz 1"?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        swal.fire('Quiz Deleted!', '', 'success').then((result) => {
+          window.location.reload(false);
+        });
+      }
+    });
+  }
+
   return (
     <div className="editdetailcourse">
         <NavBarAdmin></NavBarAdmin>
@@ -13,7 +33,7 @@ function EditDetailCourse() {
                 <div className="head-section">
                   <div className="column-1-head-section">
                     <h2 className="title-section-manage-course">Courses</h2>
-                    <p className="route-section-manage-course">Home &gt; List Courses &gt; Add Course</p>
+                    <p className="route-section-manage-course"> <a>Home</a> &gt; <a onClick={() => navigate('/edit-course')}>List Courses</a> &gt; <a>Add Course</a></p>
                   </div>
                 </div>
               </div>
@@ -61,7 +81,7 @@ function EditDetailCourse() {
                       <a className="a-save">
                         <h4>Save Draft</h4>
                       </a>
-                      <a className="a-delete">
+                      <a className="a-delete" onClick={()=>deleteQuiz()}>
                         <h4>Delete Course</h4>
                       </a>
                     </div>

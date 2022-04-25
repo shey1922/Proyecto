@@ -22,6 +22,7 @@ import EditCourse from './components/admin/EditCourse';
 import EditQuiz from "./components/admin/EditQuiz";
 import EditDetailQuiz from "./components/admin/EditDetailQuiz"
 import EditDetailCourse from "./components/admin/EditDetailCourse";
+import Participants from "./components/admin/Participants";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -86,6 +87,7 @@ ReactDOM.render(
         <Route path="edit-quiz" exact={true} element={<EditQuiz />}/>
         <Route path="edit-detail-quiz" exact={true} element={<EditDetailQuiz/>}/>
         <Route path="edit-detail-course" exact={true} element={<EditDetailCourse />}/>
+        <Route path="participants" exact={true} element={<Participants/>}/>
       </Route>
     </Routes>
   </BrowserRouter>,

@@ -1,8 +1,12 @@
 import React from "react";
 import NavBarAdmin from './NavBarAdmin'
 import SideBarAdmin from "./SideBar";
+import { useNavigate } from "react-router-dom";
 
 function EditDetailQuiz() {
+
+  const navigate = useNavigate();
+
   return (
     <div className="editdetailquiz">
         <NavBarAdmin></NavBarAdmin>
@@ -12,7 +16,7 @@ function EditDetailQuiz() {
               <div className="head-section-quiz">
                 <div className="column-1-head-section">
                   <h2 className="title-section-manage-course">Edit Quiz</h2>
-                  <p className="route-section-manage-course">Home &gt; List Quizes &gt; Edit Quiz</p>
+                  <p className="route-section-manage-course"> <a onClick={() => navigate('/default-home')}>Home</a> &gt; <a onClick={() => navigate('/edit-quiz')}>List Quizes</a> &gt; <a>Add Quiz</a></p>
                 </div>
               </div>
               <div className="body-section-edit-course">

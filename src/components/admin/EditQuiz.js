@@ -1,12 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import NavBarAdmin from './NavBarAdmin'
 import SideBarAdmin from "./SideBar";
 import * as ReactBoostrap from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert2';
 
 function EditQuiz() {
 
   const navigate = useNavigate();
+
+  const deleteQuiz = () => {
+    swal.fire({
+      title: 'Do you want to delete the Quiz: "Quiz 1"?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        swal.fire('Quiz Deleted!', '', 'success').then((result) => {
+          window.location.reload(false);
+        });
+      }
+    });
+  }
 
   return (
     <div>
@@ -43,7 +59,7 @@ function EditQuiz() {
                     <i className="fas fa-pen"></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteQuiz()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -58,7 +74,7 @@ function EditQuiz() {
                     <i className="fas fa-pen"></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteQuiz()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -73,7 +89,7 @@ function EditQuiz() {
                     <i className="fas fa-pen"></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteQuiz()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -88,7 +104,7 @@ function EditQuiz() {
                     <i className="fas fa-pen"></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteQuiz()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -103,7 +119,7 @@ function EditQuiz() {
                     <i className="fas fa-pen"></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteQuiz()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -118,7 +134,7 @@ function EditQuiz() {
                     <i className="fas fa-pen"></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteQuiz()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -133,7 +149,7 @@ function EditQuiz() {
                     <i className="fas fa-pen"></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteQuiz()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>

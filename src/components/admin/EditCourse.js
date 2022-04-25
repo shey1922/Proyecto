@@ -3,10 +3,26 @@ import NavBarAdmin from './NavBarAdmin'
 import SideBarAdmin from "./SideBar";
 import * as ReactBoostrap from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert2';
 
 function EditCourse() {
 
   const navigate = useNavigate();
+
+  const deleteCourse = () => {
+    swal.fire({
+      title: 'Do you want to delete the Course: "Course 1"?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        swal.fire('Course Deleted!', '', 'success').then((result) => {
+          window.location.reload(false);
+        });
+      }
+    });
+  }
 
   return (
     <div>
@@ -43,7 +59,7 @@ function EditCourse() {
                     <i className="fas fa-pen" ></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteCourse()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -58,7 +74,7 @@ function EditCourse() {
                     <i className="fas fa-pen" ></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteCourse()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -73,7 +89,7 @@ function EditCourse() {
                     <i className="fas fa-pen" ></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteCourse()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -88,7 +104,7 @@ function EditCourse() {
                     <i className="fas fa-pen" ></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteCourse()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -103,7 +119,7 @@ function EditCourse() {
                     <i className="fas fa-pen" ></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteCourse()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -118,7 +134,7 @@ function EditCourse() {
                     <i className="fas fa-pen" ></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteCourse()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
@@ -133,7 +149,7 @@ function EditCourse() {
                     <i className="fas fa-pen" ></i>
                     Edit
                   </button>
-                  <button className="delete-button-edit-quiz">
+                  <button className="delete-button-edit-quiz" onClick={()=>deleteCourse()}>
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>
