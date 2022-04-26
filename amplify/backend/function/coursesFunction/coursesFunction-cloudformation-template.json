@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"8.0.2\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"7.6.26\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -16,13 +16,13 @@
     "s3Key": {
       "Type": "String"
     },
-    "storagedynamoCourseName": {
+    "storagecoursesName": {
       "Type": "String",
-      "Default": "storagedynamoCourseName"
+      "Default": "storagecoursesName"
     },
-    "storagedynamoCourseArn": {
+    "storagecoursesArn": {
       "Type": "String",
-      "Default": "storagedynamoCourseArn"
+      "Default": "storagecoursesArn"
     }
   },
   "Conditions": {
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "proyectoLambdaRole41a411e3",
+            "proyectoLambdaRole2677c1c3",
             {
               "Fn::Join": [
                 "",
                 [
-                  "proyectoLambdaRole41a411e3",
+                  "proyectoLambdaRole2677c1c3",
                   "-",
                   {
                     "Ref": "env"
@@ -182,14 +182,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storagedynamoCourseArn"
+                  "Ref": "storagecoursesArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storagedynamoCourseArn"
+                        "Ref": "storagecoursesArn"
                       },
                       "index/*"
                     ]

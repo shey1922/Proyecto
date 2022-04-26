@@ -1,6 +1,6 @@
 {
-  "resourceName": "dynamodb",
-  "tableName": "users",
+  "resourceName": "courses",
+  "tableName": "courses",
   "partitionKey": {
     "fieldName": "id",
     "fieldType": "string"

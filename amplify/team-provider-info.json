@@ -14,28 +14,32 @@
     "categories": {
       "auth": {
         "true": {},
-        "proyecto1d1fb605": {}
+        "proyectod5f19ae8": {}
       },
       "function": {
-        "coursesFunction": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/coursesFunction-46695a42754253697443-build.zip"
-        },
-        "usersFunction": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/usersFunction-636a7a7877786749696f-build.zip"
-        },
-        "AdminQueries80113a96": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/AdminQueries80113a96-526c6632785174303656-build.zip"
-        },
         "postFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/postFunction-734b77644a584b66732f-build.zip"
+          "s3Key": "amplify-builds/postFunction-32755939424577386b6e-build.zip"
         },
         "commentFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/commentFunction-67335a64705545717a6f-build.zip"
+          "s3Key": "amplify-builds/commentFunction-3957456e434b6477515a-build.zip"
+        },
+        "quizzesFunction": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/quizzesFunction-516b376f544e73672b4b-build.zip"
+        },
+        "usersFunction": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/usersFunction-4a515478392b3373322b-build.zip"
+        },
+        "coursesFunction": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/coursesFunction-34425939455a47744b46-build.zip"
+        },
+        "employeesFunction": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/employeesFunction-6251556e6159377a686d-build.zip"
         }
       }
     }

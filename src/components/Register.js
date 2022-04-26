@@ -1,8 +1,8 @@
-import { signUpFieldsWithDefault } from "@aws-amplify/ui-react/node_modules/@aws-amplify/ui";
 import { API, Auth } from "aws-amplify";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Verification from "./Verification";
 
 const Container = styled.div`
   height: 100vh;
@@ -17,14 +17,6 @@ const Wrapper = styled.div`
   border-radius: 10px;
   display: flex;
   overflow: hidden;
-`;
-
-const Verificaction = styled.div`
-  padding: 4rem 1rem;
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
 `;
 
 const Box = styled.div`
@@ -84,83 +76,57 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [code, setCode] = useState("");
-  const [showConfirmation, setshowConfirmation] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      await Auth.signUp({
-        username: email,
-        password,
-        attributes: {
-          email
-        }
-      });
-      setshowConfirmation(true);
-    } catch (err) {
-      console.error(err);
-      setEmail('');
-      setPassword('');
-      setFirstName('');
-      setLastName('');
-      setUsername('');
-      setConfirmPassword('');
-    }
 
-    try {
-      await API.post('proyectoApi', '/users', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: {
-          firstName,
-          lastName,
-          username,
-          email,
-          password,
-          isAdmin: false
-        }
+    const apiPromise = API.post("proyectoApi", "/users", {
+      body: {
+        firstName,
+        lastName,
+        username,
+        email
+      },
+    });
+
+    const authPromise = Auth.signUp({
+      username: email,
+      password,
+      attributes: {
+        email
+      }
+    });
+
+    Promise.all([apiPromise, authPromise])
+      .then(responses => {
+        setShowConfirmation(true);
       })
-    } catch (error) {
-      console.log(error);
-    }
+      .catch(err => {
+        setEmail("");
+        setPassword("");
+        setFirstName("");
+        setLastName("");
+        setUsername("");
+        setConfirmPassword("");
+      });
   };
 
-  const handleVerification = async (event) => {
-    event.preventDefault();
-    try {
-      await Auth.confirmSignUp(email, code);
-      setshowConfirmation(false);
-      navigate("/login", { replace: true });
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // const handleVerification = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     await Auth.confirmSignUp(email, code);
+  //     setShowConfirmation(false);
+  //     navigate("/login", { replace: true });
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <Container>
       {showConfirmation ? (
-        <Verificaction>
-          <Box>
-            <Title color="gray">Verificación</Title>
-            <Form onSubmit={handleVerification}>
-              <Input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Input
-                type="text"
-                placeholder="Ingrese codigo de 6 dígitos..."
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-              />
-              <Button type="submit">VERIFICAR</Button>
-            </Form>
-          </Box>
-        </Verificaction>
+       <Verification email={email} /> 
       ) : (
         <Wrapper>
           <Panel>
@@ -184,12 +150,12 @@ export default function Register() {
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
-              <Input
+              {/* <Input
                 type="text"
                 placeholder="Nombre de usuario"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-              />
+              /> */}
               <Input
                 type="email"
                 placeholder="Email"

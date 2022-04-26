@@ -1,6 +1,6 @@
 {
-  "resourceName": "dynamoCourse",
-  "tableName": "courses",
+  "resourceName": "quizzes",
+  "tableName": "quizzes",
   "partitionKey": {
     "fieldName": "id",
     "fieldType": "string"

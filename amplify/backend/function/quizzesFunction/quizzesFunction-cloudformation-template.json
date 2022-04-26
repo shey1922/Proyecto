@@ -16,13 +16,13 @@
     "s3Key": {
       "Type": "String"
     },
-    "storageusersName": {
+    "storagequizzesName": {
       "Type": "String",
-      "Default": "storageusersName"
+      "Default": "storagequizzesName"
     },
-    "storageusersArn": {
+    "storagequizzesArn": {
       "Type": "String",
-      "Default": "storageusersArn"
+      "Default": "storagequizzesArn"
     }
   },
   "Conditions": {
@@ -55,12 +55,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "usersFunction",
+            "quizzesFunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "usersFunction",
+                  "quizzesFunction",
                   "-",
                   {
                     "Ref": "env"
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "proyectoLambdaRole15fcdb8b",
+            "proyectoLambdaRolee542ea26",
             {
               "Fn::Join": [
                 "",
                 [
-                  "proyectoLambdaRole15fcdb8b",
+                  "proyectoLambdaRolee542ea26",
                   "-",
                   {
                     "Ref": "env"
@@ -182,14 +182,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storageusersArn"
+                  "Ref": "storagequizzesArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storageusersArn"
+                        "Ref": "storagequizzesArn"
                       },
                       "index/*"
                     ]
