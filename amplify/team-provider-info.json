@@ -31,7 +31,7 @@
         },
         "usersFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/usersFunction-4a515478392b3373322b-build.zip"
+          "s3Key": "amplify-builds/usersFunction-4150333730636e32696b-build.zip"
         },
         "coursesFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",

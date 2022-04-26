@@ -33,6 +33,9 @@ function Navbar() {
             <Link to="/courses">Cursos</Link>
           </li>
           <li>
+            <Link to="/forum">Foro</Link>
+          </li>
+          <li>
             <Link to="/" onClick={signOut}>Salir</Link>  
           </li>
         </ul>

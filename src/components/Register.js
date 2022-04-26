@@ -112,17 +112,6 @@ export default function Register() {
       });
   };
 
-  // const handleVerification = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     await Auth.confirmSignUp(email, code);
-  //     setShowConfirmation(false);
-  //     navigate("/login", { replace: true });
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   return (
     <Container>
       {showConfirmation ? (

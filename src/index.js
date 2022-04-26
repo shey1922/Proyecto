@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from "./App";
 import About from "./components/About";
@@ -22,6 +22,7 @@ import EditDetailCourse from "./components/admin/EditDetailCourse";
 import Participants from "./components/admin/Participants";
 import CourseDetail from "./components/Course/CourseDetail";
 import Courses from "./components/Course/Courses";
+import Forum from "./components/Forum/Forum";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -74,6 +75,14 @@ ReactDOM.render(
           element={
             <PrivateRoute>
               <CourseDetail />
+            </PrivateRoute>
+          }
+        />
+        <Route 
+          path="forum"
+          element={
+            <PrivateRoute>
+              <Forum />
             </PrivateRoute>
           }
         />

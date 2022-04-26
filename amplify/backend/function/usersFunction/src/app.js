@@ -56,23 +56,6 @@ const convertUrlType = (param, type) => {
   }
 }
 
-app.get(path, function(req, res) {
-
-  let queryParams = {
-    TableName: tableName,
-    KeyConditions: {}
-  }
-
-  dynamodb.query(queryParams, (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.json({error: 'Could not load items: ' + err});
-    } else {
-      res.json(data.Items);
-    }
-  });
-});
-
 /********************************
  * HTTP Get method for list objects *
  ********************************/
@@ -98,7 +81,6 @@ app.get(path + hashKeyPath, function(req, res) {
     TableName: tableName,
     KeyConditions: condition
   }
-
   dynamodb.query(queryParams, (err, data) => {
     if (err) {
       res.statusCode = 500;

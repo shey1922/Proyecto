@@ -83,17 +83,6 @@ export default function Login() {
     event.preventDefault();
     try {
       await Auth.signIn(email, password);
-      await API.post('AdminQueries', '/addUserToGroup', {
-        body: {
-          username: 'f7774779-25a9-434a-9543-50c1e742507d',
-          groupname: 'Students'
-        },
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
-        }
-      }).then(response => console.log(response))
-        .catch(err => console.log(err));
       setLoggedIn(true);
       navigate('/', { replace: true });
     } catch (err) {
