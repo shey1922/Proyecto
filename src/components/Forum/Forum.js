@@ -44,7 +44,8 @@ const SearchButton = styled.button`
   background-color: transparent;
 `;
 
-const Button = styled.button`
+const Button = styled(Link)`
+  text-decoration: none;
   padding: 1rem;
   background-color: ${theme.primary};
   color: white;
@@ -52,6 +53,7 @@ const Button = styled.button`
 
   &:hover {
     background-color: ${theme.secondary};
+    color: white
   }
 `;
 
@@ -66,7 +68,7 @@ export default function Forum() {
             <i class="fas fa-search"></i>
           </SearchButton>
         </SearchForm>
-        <Button>Crear Publicación</Button>
+        <Button to="/">Crear Publicación</Button>
       </WrapperHeader>
         <Post />
         <Post />
