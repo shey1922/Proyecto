@@ -164,7 +164,6 @@
           }
         }
       ]
-<<<<<<< HEAD
     },
     "moduleFunction": {
       "build": true,
@@ -208,8 +207,6 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-=======
->>>>>>> c8aed9868a38b691d15a74ce61f9a18c59c0e934
     }
   },
   "api": {
@@ -256,7 +253,6 @@
             "Name",
             "Arn"
           ]
-<<<<<<< HEAD
         },
         {
           "category": "function",
@@ -273,8 +269,6 @@
             "Name",
             "Arn"
           ]
-=======
->>>>>>> c8aed9868a38b691d15a74ce61f9a18c59c0e934
         }
       ]
     }
