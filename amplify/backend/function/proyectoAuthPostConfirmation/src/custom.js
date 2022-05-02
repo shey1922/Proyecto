@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
                 'firstName': {S: event.request.userAttributes.given_name},
                 'lastName': {S: event.request.userAttributes.family_name},
                 'email': {S: event.request.userAttributes.email},
-                'isAdmin': {B: false},
+                'isAdmin': {BOOL: false},
                 'createdAt': {S: date.toISOString()},
                 'updatedAt': {S: date.toISOString()},
             },
