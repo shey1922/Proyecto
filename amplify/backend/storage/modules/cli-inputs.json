@@ -1,0 +1,10 @@
+{
+  "resourceName": "modules",
+  "tableName": "modules",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

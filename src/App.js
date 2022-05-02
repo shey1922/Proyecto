@@ -24,9 +24,9 @@ function App() {
       })
       .catch(err => setLoggedIn(false))
 
-    // API.get('proyectoApi', '/users', {})
-    //   .then(res => console.log(res))
-    //   .catch(err => console.error(err))
+    API.get('proyectoApi', '/users', {})
+      .then(res => console.log(res))
+      .catch(err => console.error(err))
   }, []);
 
   return (

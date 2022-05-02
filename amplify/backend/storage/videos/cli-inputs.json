@@ -1,0 +1,10 @@
+{
+  "resourceName": "videos",
+  "tableName": "videos",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

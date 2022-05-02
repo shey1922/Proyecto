@@ -1,10 +1,9 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
-import { API, Auth } from 'aws-amplify'
+import { Auth } from 'aws-amplify'
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context";
-import Swal from "sweetalert2";
 
 const Container = styled.div`
   height: 100vh;
@@ -86,8 +85,8 @@ export default function Login() {
       setLoggedIn(true);
       navigate('/', { replace: true });
     } catch (err) {
-      setLoggedIn(false);
       console.error(err);
+      setLoggedIn(false);
       setEmail('');
       setPassword('');
     }

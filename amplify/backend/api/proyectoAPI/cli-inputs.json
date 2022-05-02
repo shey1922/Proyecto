@@ -36,9 +36,16 @@
         "setting": "open"
       }
     },
-    "/employees": {
-      "name": "/employees",
-      "lambdaFunction": "employeesFunction",
+    "/modules": {
+      "name": "/modules",
+      "lambdaFunction": "moduleFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/videos": {
+      "name": "/videos",
+      "lambdaFunction": "videoFunction",
       "permissions": {
         "setting": "open"
       }
