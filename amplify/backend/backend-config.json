@@ -144,11 +144,6 @@
           }
         }
       ]
-    },
-    "employeesFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
     }
   },
   "api": {
@@ -195,16 +190,15 @@
             "Name",
             "Arn"
           ]
-        },
-        {
-          "category": "function",
-          "resourceName": "employeesFunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
         }
       ]
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual"
     }
   }
 }

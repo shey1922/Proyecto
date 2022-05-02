@@ -35,13 +35,6 @@
       "permissions": {
         "setting": "open"
       }
-    },
-    "/employees": {
-      "name": "/employees",
-      "lambdaFunction": "employeesFunction",
-      "permissions": {
-        "setting": "open"
-      }
     }
   }
 }
