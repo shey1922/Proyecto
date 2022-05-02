@@ -96,7 +96,6 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
-<<<<<<< HEAD
         },
         "moduleFunction": {
             "Name": "string",
@@ -115,8 +114,6 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "LambdaExecutionRole": "string",
             "Region": "string"
-=======
->>>>>>> c8aed9868a38b691d15a74ce61f9a18c59c0e934
         }
     },
     "api": {

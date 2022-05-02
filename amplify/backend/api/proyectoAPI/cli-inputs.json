@@ -35,7 +35,6 @@
       "permissions": {
         "setting": "open"
       }
-<<<<<<< HEAD
     },
     "/modules": {
       "name": "/modules",
@@ -50,8 +49,6 @@
       "permissions": {
         "setting": "open"
       }
-=======
->>>>>>> c8aed9868a38b691d15a74ce61f9a18c59c0e934
     }
   }
 }
