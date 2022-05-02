@@ -9,37 +9,56 @@
       "UnauthRoleName": "amplify-proyecto-dev-141320-unauthRole",
       "StackName": "amplify-proyecto-dev-141320",
       "StackId": "arn:aws:cloudformation:us-east-1:776710310144:stack/amplify-proyecto-dev-141320/72fce010-c339-11ec-969c-129d75033097",
-      "AmplifyAppId": "d37o71vgus8gm0"
+      "AmplifyAppId": "d37o71vgus8gm0",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
         "true": {},
-        "proyectod5f19ae8": {}
+        "proyectoAuth": {}
       },
       "function": {
         "postFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/postFunction-32755939424577386b6e-build.zip"
+          "s3Key": "amplify-builds/postFunction-4f444b6443696e386834-build.zip"
         },
         "commentFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/commentFunction-3957456e434b6477515a-build.zip"
+          "s3Key": "amplify-builds/commentFunction-7179536279514c647543-build.zip"
         },
         "quizzesFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/quizzesFunction-516b376f544e73672b4b-build.zip"
+          "s3Key": "amplify-builds/quizzesFunction-726471492f4b32376e61-build.zip"
         },
         "usersFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/usersFunction-4150333730636e32696b-build.zip"
+          "s3Key": "amplify-builds/usersFunction-466971314f414b4f446c-build.zip"
         },
         "coursesFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/coursesFunction-34425939455a47744b46-build.zip"
+          "s3Key": "amplify-builds/coursesFunction-79384666633069347341-build.zip"
         },
         "employeesFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
           "s3Key": "amplify-builds/employeesFunction-6251556e6159377a686d-build.zip"
+        },
+        "moduleFunction": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/moduleFunction-49384e49624659307a6f-build.zip"
+        },
+        "videoFunction": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/videoFunction-504350314d59584a7635-build.zip"
+        },
+        "proyectoAuthPostConfirmation": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/proyectoAuthPostConfirmation-51463678724a6271774b-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d37o71vgus8gm0",
+          "type": "manual"
         }
       }
     }

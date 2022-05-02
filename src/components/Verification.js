@@ -4,13 +4,6 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import theme from "../theme";
 
-// const Container = styled.div`
-//   height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
 const Wrapper = styled.div`
   padding: 4rem 1rem;
   border: 1px solid lightgray;

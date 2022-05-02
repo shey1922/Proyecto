@@ -1,4 +1,4 @@
-import { API, Auth } from "aws-amplify";
+import { Auth } from "aws-amplify";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -72,7 +72,6 @@ export default function Register() {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -81,35 +80,25 @@ export default function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const apiPromise = API.post("proyectoApi", "/users", {
-      body: {
-        firstName,
-        lastName,
-        username,
-        email
-      },
-    });
-
-    const authPromise = Auth.signUp({
-      username: email,
-      password,
-      attributes: {
-        email
-      }
-    });
-
-    Promise.all([apiPromise, authPromise])
-      .then(responses => {
-        setShowConfirmation(true);
-      })
-      .catch(err => {
-        setEmail("");
-        setPassword("");
-        setFirstName("");
-        setLastName("");
-        setUsername("");
-        setConfirmPassword("");
+    try {
+      await Auth.signUp({
+        username: email,
+        password,
+        attributes: {
+          email,
+          given_name: firstName,
+          family_name: lastName
+        }
       });
+
+      setShowConfirmation(true);
+    } catch (error) {
+      setEmail("");
+      setPassword("");
+      setFirstName("");
+      setLastName("");
+      setConfirmPassword("");
+    }
   };
 
   return (
@@ -139,12 +128,6 @@ export default function Register() {
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
-              {/* <Input
-                type="text"
-                placeholder="Nombre de usuario"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              /> */}
               <Input
                 type="email"
                 placeholder="Email"

@@ -1,10 +1,8 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "proyectod5f19ae8_identitypool_d5f19ae8",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "proyecd5f19ae8",
-    "userPoolName": "proyectod5f19ae8_userpool_d5f19ae8",
+    "resourceNameTruncated": "proyec87082c2d",
+    "userPoolName": "proyecto87082c2d_userpool_87082c2d",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -20,7 +18,9 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-      "email"
+      "email",
+      "family_name",
+      "given_name"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
@@ -31,16 +31,23 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "proyecd5f19ae8_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "proyec87082c2d_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "d5f19ae8",
-    "resourceName": "proyectod5f19ae8",
-    "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "sharedId": "87082c2d",
+    "resourceName": "proyectoAuth",
+    "authSelections": "userPoolOnly",
+    "useDefault": "manual",
     "usernameAttributes": [
       "email"
     ],
-    "triggers": {},
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {
+      "PostConfirmation": [
+        "custom"
+      ]
+    },
+    "hostedUI": false,
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,

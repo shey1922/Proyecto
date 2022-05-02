@@ -17,7 +17,7 @@ AWS.config.update({ region: process.env.TABLE_REGION });
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-let tableName = "comments";
+let tableName = "videos";
 if (process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
 }
@@ -28,7 +28,7 @@ const partitionKeyType = "S";
 const sortKeyName = "";
 const sortKeyType = "";
 const hasSortKey = sortKeyName !== "";
-const path = "/comments";
+const path = "/videos";
 const UNAUTH = 'UNAUTH';
 const hashKeyPath = '/:' + partitionKeyName;
 const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
@@ -60,7 +60,7 @@ app.get(path, function(req, res) {
   dynamodb.scan({ TableName: tableName }, (err, data) => {
     if (err) {
       res.statusCode = 500;
-      res.json({error: 'Could not load comments: ' + err});
+      res.json({error: 'Could not load videos: ' + err});
     } else {
       res.json(data.Items);
     }
