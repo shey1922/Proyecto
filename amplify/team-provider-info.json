@@ -20,15 +20,15 @@
       "function": {
         "postFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/postFunction-4f444b6443696e386834-build.zip"
+          "s3Key": "amplify-builds/postFunction-6f4a49466f6b4d564d71-build.zip"
         },
         "commentFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/commentFunction-7179536279514c647543-build.zip"
+          "s3Key": "amplify-builds/commentFunction-66743236684571663331-build.zip"
         },
         "quizzesFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/quizzesFunction-726471492f4b32376e61-build.zip"
+          "s3Key": "amplify-builds/quizzesFunction-6168444f68364633327a-build.zip"
         },
         "usersFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
@@ -36,7 +36,7 @@
         },
         "coursesFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/coursesFunction-79384666633069347341-build.zip"
+          "s3Key": "amplify-builds/coursesFunction-4a44304151634c582b33-build.zip"
         },
         "employeesFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
@@ -44,15 +44,15 @@
         },
         "moduleFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/moduleFunction-49384e49624659307a6f-build.zip"
+          "s3Key": "amplify-builds/moduleFunction-6a434934525631787751-build.zip"
         },
         "videoFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/videoFunction-504350314d59584a7635-build.zip"
+          "s3Key": "amplify-builds/videoFunction-434f3759445a31416b4f-build.zip"
         },
         "proyectoAuthPostConfirmation": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/proyectoAuthPostConfirmation-366338412f3358576659-build.zip"
+          "s3Key": "amplify-builds/proyectoAuthPostConfirmation-42443747704863496951-build.zip"
         }
       },
       "hosting": {
