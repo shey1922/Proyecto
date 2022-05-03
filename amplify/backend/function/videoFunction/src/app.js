@@ -12,6 +12,7 @@ const AWS = require('aws-sdk')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 const bodyParser = require('body-parser')
 const express = require('express')
+const { v4 } = require('uuid')
 
 AWS.config.update({ region: process.env.TABLE_REGION });
 
@@ -183,6 +184,8 @@ app.post(path, function(req, res) {
   if (userIdPresent) {
     req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
+
+  req.body.id = v4();
 
   let putItemParams = {
     TableName: tableName,

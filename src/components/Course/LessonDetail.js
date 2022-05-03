@@ -16,7 +16,7 @@ function LessonDetail() {
                 </div>
                 <div className="module-lesson-content">
                     <h5 className="title">
-                        Atención integral – Claves para la atención a mujeres víctimas de violencia
+                        Atención integral - Claves para la atención a mujeres víctimas de violencia
                     </h5>
                     <h5 className="subtitle"> Tiempo: {lessonTime}</h5>
                     <div className="video-ejm-container">
