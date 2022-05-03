@@ -186,6 +186,7 @@ app.post(path, function(req, res) {
   }
 
   req.body.id = v4();
+  req.body.uploadedAt = new Date();
 
   let putItemParams = {
     TableName: tableName,
