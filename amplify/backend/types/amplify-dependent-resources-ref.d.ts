@@ -1,6 +1,8 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
-        "proyectoAuth": {
+        "proyecto1d1fb605": {
+            "IdentityPoolId": "string",
+            "IdentityPoolName": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",
@@ -9,6 +11,22 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "storage": {
+        "dynamodb": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        },
+        "dynamoCourse": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        },
         "posts": {
             "Name": "string",
             "Arn": "string",
@@ -24,67 +42,9 @@ export type AmplifyDependentResourcesAttributes = {
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
             "Region": "string"
-        },
-        "quizzes": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
-        },
-        "users": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
-        },
-        "courses": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
-        },
-        "modules": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
-        },
-        "videos": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
         }
     },
     "function": {
-        "postFunction": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
-        "commentFunction": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
-        "quizzesFunction": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
         "usersFunction": {
             "Name": "string",
             "Arn": "string",
@@ -97,27 +57,27 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "moduleFunction": {
+        "AdminQueries80113a96": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "videoFunction": {
+        "postFunction": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "proyectoAuthPostConfirmation": {
+        "commentFunction": {
             "Name": "string",
             "Arn": "string",
-            "LambdaExecutionRole": "string",
-            "Region": "string"
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     },
     "api": {
-        "proyectoApi": {
+        "AdminQueries": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

@@ -1,19 +1,9 @@
 {
   "auth": {
-    "proyectoAuth": {
+    "proyecto1d1fb605": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "proyectoAuthPostConfirmation",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ],
+      "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
         "socialProviders": [],
@@ -21,9 +11,7 @@
           "EMAIL"
         ],
         "signupAttributes": [
-          "EMAIL",
-          "FAMILY_NAME",
-          "GIVEN_NAME"
+          "EMAIL"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
@@ -40,6 +28,14 @@
     }
   },
   "storage": {
+    "dynamodb": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "dynamoCourse": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
     "posts": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
@@ -47,29 +43,61 @@
     "comments": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
-    },
-    "quizzes": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "users": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "courses": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "modules": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "videos": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
+    "usersFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "dynamodb",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
+    },
+    "coursesFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "dynamoCourse",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
+    },
+    "AdminQueries80113a96": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true,
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "proyecto1d1fb605",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ]
+    },
     "postFunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -107,106 +135,6 @@
           }
         }
       ]
-    },
-    "quizzesFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "quizzes",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "usersFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "users",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "coursesFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "courses",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "moduleFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "modules",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "videoFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "videos",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "proyectoAuthPostConfirmation": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
     }
   },
   "api": {
@@ -214,30 +142,6 @@
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "postFunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "commentFunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "quizzesFunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
         {
           "category": "function",
           "resourceName": "usersFunction",
@@ -256,7 +160,7 @@
         },
         {
           "category": "function",
-          "resourceName": "moduleFunction",
+          "resourceName": "postFunction",
           "attributes": [
             "Name",
             "Arn"
@@ -264,20 +168,35 @@
         },
         {
           "category": "function",
-          "resourceName": "videoFunction",
+          "resourceName": "commentFunction",
           "attributes": [
             "Name",
             "Arn"
           ]
         }
       ]
-    }
-  },
-  "hosting": {
-    "amplifyhosting": {
-      "service": "amplifyhosting",
+    },
+    "AdminQueries": {
+      "service": "API Gateway",
       "providerPlugin": "awscloudformation",
-      "type": "manual"
+      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "proyecto1d1fb605",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "AdminQueries80113a96",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ]
     }
   }
 }

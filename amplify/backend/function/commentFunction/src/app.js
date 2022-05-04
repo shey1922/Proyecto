@@ -12,7 +12,6 @@ const AWS = require('aws-sdk')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 const bodyParser = require('body-parser')
 const express = require('express')
-const { v4 } = require('uuid')
 
 AWS.config.update({ region: process.env.TABLE_REGION });
 
@@ -55,19 +54,6 @@ const convertUrlType = (param, type) => {
       return param;
   }
 }
-
-app.get(path, function(req, res) {
-
-  dynamodb.scan({ TableName: tableName }, (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.json({error: 'Could not load comments: ' + err});
-    } else {
-      res.json(data.Items);
-    }
-  });
-
-});
 
 /********************************
  * HTTP Get method for list objects *
@@ -184,8 +170,6 @@ app.post(path, function(req, res) {
   if (userIdPresent) {
     req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
-
-  req.body.id = v4();
 
   let putItemParams = {
     TableName: tableName,

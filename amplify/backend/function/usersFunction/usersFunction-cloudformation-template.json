@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"7.6.26\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"8.0.2\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -16,13 +16,13 @@
     "s3Key": {
       "Type": "String"
     },
-    "storageusersName": {
+    "storagedynamodbName": {
       "Type": "String",
-      "Default": "storageusersName"
+      "Default": "storagedynamodbName"
     },
-    "storageusersArn": {
+    "storagedynamodbArn": {
       "Type": "String",
-      "Default": "storageusersArn"
+      "Default": "storagedynamodbArn"
     }
   },
   "Conditions": {
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "proyectoLambdaRole15fcdb8b",
+            "proyectoLambdaRoledf27c46d",
             {
               "Fn::Join": [
                 "",
                 [
-                  "proyectoLambdaRole15fcdb8b",
+                  "proyectoLambdaRoledf27c46d",
                   "-",
                   {
                     "Ref": "env"
@@ -182,14 +182,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storageusersArn"
+                  "Ref": "storagedynamodbArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storageusersArn"
+                        "Ref": "storagedynamodbArn"
                       },
                       "index/*"
                     ]
