@@ -1,27 +1,6 @@
 {
   "version": 1,
   "paths": {
-    "/posts": {
-      "name": "/posts",
-      "lambdaFunction": "postFunction",
-      "permissions": {
-        "setting": "open"
-      }
-    },
-    "/comments": {
-      "name": "/comments",
-      "lambdaFunction": "commentFunction",
-      "permissions": {
-        "setting": "open"
-      }
-    },
-    "/quizzes": {
-      "name": "/quizzes",
-      "lambdaFunction": "quizzesFunction",
-      "permissions": {
-        "setting": "open"
-      }
-    },
     "/users": {
       "name": "/users",
       "lambdaFunction": "usersFunction",
@@ -31,21 +10,42 @@
     },
     "/courses": {
       "name": "/courses",
-      "lambdaFunction": "coursesFunction",
+      "lambdaFunction": "coursesFunc",
       "permissions": {
         "setting": "open"
       }
     },
     "/modules": {
       "name": "/modules",
-      "lambdaFunction": "moduleFunction",
+      "lambdaFunction": "modulesFunc",
       "permissions": {
         "setting": "open"
       }
     },
     "/videos": {
       "name": "/videos",
-      "lambdaFunction": "videoFunction",
+      "lambdaFunction": "videoFunc",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/tests": {
+      "name": "/tests",
+      "lambdaFunction": "testFunc",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/questions": {
+      "name": "/questions",
+      "lambdaFunction": "questionsFunc",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/answers": {
+      "name": "/answers",
+      "lambdaFunction": "answerFunc",
       "permissions": {
         "setting": "open"
       }

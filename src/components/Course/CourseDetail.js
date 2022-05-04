@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import theme from '../../theme';
+import React from "react";
+import styled from "styled-components";
+import theme from "../../theme";
 
 const Container = styled.div`
   margin: 5rem;
@@ -23,7 +23,7 @@ const Button = styled.button`
   font-size: 1.5em;
   padding: 1rem 3rem;
   border-radius: 2rem;
-  transition: .5s;
+  transition: 0.5s;
 
   &:hover {
     background-color: ${theme.secondary};
@@ -42,7 +42,6 @@ const AboutText = styled.p`
 const Flex = styled.div`
   display: flex;
 `;
-
 
 const Content = styled.div`
   width: 70%;
@@ -66,7 +65,7 @@ const UnitButton = styled.button`
   padding: 1rem 5rem;
   text-align: center;
   border-radius: 3rem;
-  transition: .5s;
+  transition: 0.5s;
 
   &:hover {
     background-color: ${theme.secondary};
@@ -74,7 +73,6 @@ const UnitButton = styled.button`
 `;
 
 export default function CourseDetail() {
-
   return (
     <Container>
       <Title>Qué hacer en casos de maltrato</Title>
@@ -85,9 +83,22 @@ export default function CourseDetail() {
       <Flex>
         <Content>
           <AboutTitle>Acerca de este curso</AboutTitle>
-          <AboutText>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere beatae aliquid, incidunt officia ducimus quisquam aut ullam. Quisquam repellendus atque distinctio ipsam fugiat cumque corrupti minima inventore eum autem, expedita, enim tempora aperiam sint ad laboriosam fugit! Delectus incidunt dolorem, ea vitae explicabo ullam quam accusamus, corporis sit facilis sunt maxime mollitia perferendis fugiat, dolores cumque aliquid. Quae ab quia quos, voluptatem pariatur quisquam tenetur nostrum, iusto dicta repellendus in beatae fugit magni dolor asperiores harum? Neque magni enim unde delectus iusto sed minus quaerat odio commodi, porro perferendis maxime ea quas obcaecati inventore ipsa dolore qui molestias quo molestiae?</AboutText>
+          <AboutText>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere
+            beatae aliquid, incidunt officia ducimus quisquam aut ullam.
+            Quisquam repellendus atque distinctio ipsam fugiat cumque corrupti
+            minima inventore eum autem, expedita, enim tempora aperiam sint ad
+            laboriosam fugit! Delectus incidunt dolorem, ea vitae explicabo
+            ullam quam accusamus, corporis sit facilis sunt maxime mollitia
+            perferendis fugiat, dolores cumque aliquid. Quae ab quia quos,
+            voluptatem pariatur quisquam tenetur nostrum, iusto dicta
+            repellendus in beatae fugit magni dolor asperiores harum? Neque
+            magni enim unde delectus iusto sed minus quaerat odio commodi, porro
+            perferendis maxime ea quas obcaecati inventore ipsa dolore qui
+            molestias quo molestiae?
+          </AboutText>
         </Content>
-        <Content style={{ width: '30%', marginLeft: '12rem' }}>
+        <Content style={{ width: "30%", marginLeft: "12rem" }}>
           <Info>20 Horas para completar</Info>
           <Info>Fecha limite de inscripción</Info>
           <Info>Certificado al completar el curso</Info>
@@ -103,5 +114,5 @@ export default function CourseDetail() {
         <UnitButton>Unidad 5</UnitButton>
       </Units>
     </Container>
-  )
+  );
 }

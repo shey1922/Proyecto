@@ -18,41 +18,41 @@
         "proyectoAuth": {}
       },
       "function": {
-        "postFunction": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/postFunction-6f4a49466f6b4d564d71-build.zip"
-        },
-        "commentFunction": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/commentFunction-66743236684571663331-build.zip"
-        },
-        "quizzesFunction": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/quizzesFunction-6168444f68364633327a-build.zip"
-        },
         "usersFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
           "s3Key": "amplify-builds/usersFunction-466971314f414b4f446c-build.zip"
-        },
-        "coursesFunction": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/coursesFunction-4a44304151634c582b33-build.zip"
         },
         "employeesFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
           "s3Key": "amplify-builds/employeesFunction-6251556e6159377a686d-build.zip"
         },
-        "moduleFunction": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/moduleFunction-6a434934525631787751-build.zip"
-        },
-        "videoFunction": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/videoFunction-434f3759445a31416b4f-build.zip"
-        },
         "proyectoAuthPostConfirmation": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
           "s3Key": "amplify-builds/proyectoAuthPostConfirmation-42443747704863496951-build.zip"
+        },
+        "testFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/testFunc-716c3472555a7a7a394d-build.zip"
+        },
+        "questionsFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/questionsFunc-68346869525676743635-build.zip"
+        },
+        "videoFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/videoFunc-504b714766384c4b3453-build.zip"
+        },
+        "modulesFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/modulesFunc-4d324f587343436e4344-build.zip"
+        },
+        "answerFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/answerFunc-4a4e553169392f4e3657-build.zip"
+        },
+        "coursesFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/coursesFunc-784678586f4832797149-build.zip"
         }
       },
       "hosting": {

@@ -1,74 +1,75 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import modules from "../../data/modules";
 
 function SideBarCourse() {
 
-    const modules = [
-        {
-            name: "Preliminares",
-            lecciones: [
-                {lecciones: "Antes de empezar el curso"},
-                {lecciones: "Introducción al curso"},
-            ]
-        },
-        {
-            name: "Modulo 1",
-            lecciones: [
-                {lecciones: "leccion 1"},
-                {lecciones: "leccion 2"},
-                {lecciones: "leccion 3"},
-                {lecciones: "leccion 4"},
-            ]
-        },
-        {
-            name: "Modulo 2",
-            lecciones: [
-                {lecciones: "leccion 1"},
-                {lecciones: "leccion 2"},
-                {lecciones: "leccion 3"},
-                {lecciones: "leccion 4"},
-            ]
-        },
-        {
-            name: "Modulo 3",
-            lecciones: [
-                {lecciones: "leccion 1"},
-                {lecciones: "leccion 2"},
-                {lecciones: "leccion 3"},
-                {lecciones: "leccion 4"},
-            ]
-        },
-        {
-            name: "Modulo 4",
-            lecciones: [
-                {lecciones: "leccion 1"},
-                {lecciones: "leccion 2"},
-                {lecciones: "leccion 3"},
-                {lecciones: "leccion 4"},
-            ]
-        },
-        {
-            name: "Modulo 5",
-            lecciones: [
-                {lecciones: "leccion 1"},
-                {lecciones: "leccion 2"},
-                {lecciones: "leccion 3"},
-                {lecciones: "leccion 4"},
-            ]
-        },
-    ]
+    // const modules = [
+    //     {
+    //         name: "Preliminares",
+    //         lecciones: [
+    //             {lecciones: "Antes de empezar el curso"},
+    //             {lecciones: "Introducción al curso"},
+    //         ]
+    //     },
+    //     {
+    //         name: "Modulo 1",
+    //         lecciones: [
+    //             {lecciones: "leccion 1"},
+    //             {lecciones: "leccion 2"},
+    //             {lecciones: "leccion 3"},
+    //             {lecciones: "leccion 4"},
+    //         ]
+    //     },
+    //     {
+    //         name: "Modulo 2",
+    //         lecciones: [
+    //             {lecciones: "leccion 1"},
+    //             {lecciones: "leccion 2"},
+    //             {lecciones: "leccion 3"},
+    //             {lecciones: "leccion 4"},
+    //         ]
+    //     },
+    //     {
+    //         name: "Modulo 3",
+    //         lecciones: [
+    //             {lecciones: "leccion 1"},
+    //             {lecciones: "leccion 2"},
+    //             {lecciones: "leccion 3"},
+    //             {lecciones: "leccion 4"},
+    //         ]
+    //     },
+    //     {
+    //         name: "Modulo 4",
+    //         lecciones: [
+    //             {lecciones: "leccion 1"},
+    //             {lecciones: "leccion 2"},
+    //             {lecciones: "leccion 3"},
+    //             {lecciones: "leccion 4"},
+    //         ]
+    //     },
+    //     {
+    //         name: "Modulo 5",
+    //         lecciones: [
+    //             {lecciones: "leccion 1"},
+    //             {lecciones: "leccion 2"},
+    //             {lecciones: "leccion 3"},
+    //             {lecciones: "leccion 4"},
+    //         ]
+    //     },
+    // ]
      
-    const sendData = (moduleName, lecciones) => {
+    const sendData = (moduleName, content) => {
         console.log("a");
         localStorage.setItem("moduleName", moduleName);
-        localStorage.setItem("lecciones", lecciones)
+        localStorage.setItem("contenido", content)
     }
 
     const moduleList = modules.map(module =>  
-        <ul className="listsidebarcourse">
+        <ul className="listsidebarcourse" key={module.id}>
             <li className="elementsidebarcourse">
                 <Link to="/module-content" class="btn-text-sc" 
-                onClick={()=>sendData(module.name, module.lecciones)}>
+                onClick={()=>sendData(module.name, module.content)}>
                     {module.name}
                     <i class="fas fa-angle-right i-space"></i>
                 </Link>

@@ -40,23 +40,11 @@
     }
   },
   "storage": {
-    "posts": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "comments": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "quizzes": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
     "users": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     },
-    "courses": {
+    "courses2": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     },
@@ -64,69 +52,24 @@
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     },
-    "videos": {
+    "videos2": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "tests": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "questions": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "answers": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     }
   },
   "function": {
-    "postFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "posts",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "commentFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "comments",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "quizzesFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "quizzes",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
     "usersFunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -146,14 +89,19 @@
         }
       ]
     },
-    "coursesFunction": {
+    "proyectoAuthPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "coursesFunc": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "courses",
+          "resourceName": "courses2",
           "attributes": [
             "Name",
             "Arn"
@@ -165,7 +113,7 @@
         }
       ]
     },
-    "moduleFunction": {
+    "modulesFunc": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
@@ -184,14 +132,14 @@
         }
       ]
     },
-    "videoFunction": {
+    "videoFunc": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "videos",
+          "resourceName": "videos2",
           "attributes": [
             "Name",
             "Arn"
@@ -203,10 +151,62 @@
         }
       ]
     },
-    "proyectoAuthPostConfirmation": {
+    "testFunc": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "tests",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
+    },
+    "questionsFunc": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "questions",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
+    },
+    "answerFunc": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "answers",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
     }
   },
   "api": {
@@ -214,30 +214,6 @@
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "postFunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "commentFunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "quizzesFunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
         {
           "category": "function",
           "resourceName": "usersFunction",
@@ -248,7 +224,7 @@
         },
         {
           "category": "function",
-          "resourceName": "coursesFunction",
+          "resourceName": "coursesFunc",
           "attributes": [
             "Name",
             "Arn"
@@ -256,7 +232,7 @@
         },
         {
           "category": "function",
-          "resourceName": "moduleFunction",
+          "resourceName": "modulesFunc",
           "attributes": [
             "Name",
             "Arn"
@@ -264,7 +240,31 @@
         },
         {
           "category": "function",
-          "resourceName": "videoFunction",
+          "resourceName": "videoFunc",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "testFunc",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "questionsFunc",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "answerFunc",
           "attributes": [
             "Name",
             "Arn"
