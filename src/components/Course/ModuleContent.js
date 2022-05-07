@@ -8,16 +8,6 @@ function ModuleContent() {
 
     const storedModules = JSON.parse(localStorage.getItem("content"));
 
-    console.log(storedModules);
-
-    /*const lecciones= [
-        {name: "Lección 1", time: "25 minutos"},
-        {name: "Lección 2", time: "10 minutos"},
-        {name: "Lección 3", time: "04 minutos"},
-        {name: "Lección 4", time: "15 minutos"},
-        {name: "Cuestionario: " + textFromStorage, time: "30 minutos"}
-    ]*/
-
     const sendData = (modulesTitle, modulesLink) => {
         localStorage.setItem("lessonName", modulesTitle);
         localStorage.setItem("lessonVideo", modulesLink);
