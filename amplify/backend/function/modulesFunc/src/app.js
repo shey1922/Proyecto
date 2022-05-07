@@ -118,14 +118,14 @@ app.get(path + hashKeyPath, function(req, res) {
   //   }
   // }
 
-  let getItemParams = {
+  let params = {
     TableName: tableName,
     Key: {
       id: req.params.id
     }
   }
 
-  dynamodb.get(getItemParams,(err, data) => {
+  dynamodb.get(params,(err, data) => {
     if(err) {
       res.statusCode = 500;
       res.json({error: 'Could not load items: ' + err.message});

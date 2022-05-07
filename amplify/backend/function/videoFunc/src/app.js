@@ -61,21 +61,21 @@ const convertUrlType = (param, type) => {
  ********************************/
 
 app.get(path, function(req, res) {
-  const condition = {}
-  condition[partitionKeyName] = {
-    ComparisonOperator: 'EQ'
-  }
+  // const condition = {}
+  // condition[partitionKeyName] = {
+  //   ComparisonOperator: 'EQ'
+  // }
 
-  if (userIdPresent && req.apiGateway) {
-    condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
-  } else {
-    try {
-      condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.params[partitionKeyName], partitionKeyType) ];
-    } catch(err) {
-      res.statusCode = 500;
-      res.json({error: 'Wrong column type ' + err});
-    }
-  }
+  // if (userIdPresent && req.apiGateway) {
+  //   condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
+  // } else {
+  //   try {
+  //     condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.params[partitionKeyName], partitionKeyType) ];
+  //   } catch(err) {
+  //     res.statusCode = 500;
+  //     res.json({error: 'Wrong column type ' + err});
+  //   }
+  // }
 
   let queryParams = {
     TableName: tableName,
@@ -96,7 +96,7 @@ app.get(path, function(req, res) {
  * HTTP Get method for get single object *
  *****************************************/
 
-app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
+app.get(path + hashKeyPath, function(req, res) {
   const params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
@@ -109,14 +109,14 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
       res.json({error: 'Wrong column type ' + err});
     }
   }
-  if (hasSortKey) {
-    try {
-      params[sortKeyName] = convertUrlType(req.params[sortKeyName], sortKeyType);
-    } catch(err) {
-      res.statusCode = 500;
-      res.json({error: 'Wrong column type ' + err});
-    }
-  }
+  // if (hasSortKey) {
+  //   try {
+  //     params[sortKeyName] = convertUrlType(req.params[sortKeyName], sortKeyType);
+  //   } catch(err) {
+  //     res.statusCode = 500;
+  //     res.json({error: 'Wrong column type ' + err});
+  //   }
+  // }
 
   let getItemParams = {
     TableName: tableName,
@@ -133,6 +133,26 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
       } else {
         res.json(data) ;
       }
+    }
+  });
+});
+
+
+app.get(path + '/module' + sortKeyPath, function(req, res) {
+
+  let params = {
+    TableName: tableName,
+    Key: {
+      moduleId: req.params.moduleId
+    }
+  }
+
+  dynamodb.scan(params, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err});
+    } else {
+      res.json(data.Items);
     }
   });
 });
