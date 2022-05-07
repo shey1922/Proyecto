@@ -1,11 +1,19 @@
 import React from 'react'
 import SideBarCourse from './SideBarCourse';
+import exams from '../../data/exam';
 
 function QuizDetail() {
 
     const textFromStorage = localStorage.getItem('lessonName');
+    var questions1 = [];
+    if(textFromStorage === "Pretest – Atención Integral a Víctimas de Violencia Sexual"){
+        questions1 = [...exams[0].questions];
+    } else{
+        questions1 = [...exams[1].questions];
+    }
+    console.log(questions1);
 
-    const questions = [
+    /*const questions = [
         {
             quizNumber: "1", 
             question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat?",
@@ -51,9 +59,9 @@ function QuizDetail() {
             answer4: "Excepteur sint occaecat cupidatat non proident, sunt in culpa.",
             points: "05"
         }
-    ]
+    ]*/
 
-    const questionsList = questions.map(question =>
+    /*const questionsList = questions.map(question =>
         <div className="card-question">
             <div className="header-card-question">
                 <h4>Pregunta {question.quizNumber}</h4>
@@ -65,6 +73,24 @@ function QuizDetail() {
                 <p><i className="fas fa-check-square icon-quiz"></i>{question.answer2}</p>
                 <p><i className="fas fa-check-square icon-quiz"></i>{question.answer3}</p>
                 <p><i className="fas fa-check-square icon-quiz"></i>{question.answer4}</p>
+            </div>
+            <div className="footer-card-question">
+                <button className="save-answer">Guardar</button>
+            </div>
+        </div>
+    )*/
+
+    const questionsList = questions1.map(question =>
+        <div className="card-question">
+            <div className="header-card-question">
+                <h4>Pregunta {question.id}</h4>
+                <h4>Puntos: 2</h4>
+            </div>
+            <div className="content-question">
+                <h5>{question.question}</h5>
+                {question.answers.map(answer => 
+                    <p><i className="fas fa-check-square icon-quiz"></i>{answer.valor}</p>
+                )}
             </div>
             <div className="footer-card-question">
                 <button className="save-answer">Guardar</button>

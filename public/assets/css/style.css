@@ -2178,6 +2178,7 @@ main {
 }
 
 .module-lesson-content{
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2211,6 +2212,7 @@ main {
 .card-question{
   background-color: #EFEFEF;
   margin: 20px;
+  width: 80%;
 }
 
 .card-question > .header-card-question{
@@ -2308,4 +2310,27 @@ main {
   color: white;
   font-weight: bold;
   border-radius: 0.5rem;
+}
+.card-terms{
+  background-color: #EFEFEF;
+  width: 55%;
+  margin: 20px;
+  padding: 10px;
+}
+
+.card-terms > h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-terms > p {
+  font-size: 15px;
+  text-align: justify;
+
+}
+
+.title-section-manage-course-lesson{
+  font-size: 30px;
+  padding-top: 20px;
+
 }

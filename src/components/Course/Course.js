@@ -11,7 +11,12 @@ function Course(props) {
 
   return (
     <div className="card-course" onClick={handleClick}>
-      <div className="course-img-ejm"></div>
+      <div className="course-img-ejm">
+        <img className="course-img-ejm"
+        src="https://2evs.co/wp-content/uploads/2021/06/ViolenciaSexualPortada-01.jpg"
+        alt="new"
+        />
+      </div>
       <h5>{props.topic}</h5>
       <p>Administrador</p>
       <div className="footer-cad-course">
