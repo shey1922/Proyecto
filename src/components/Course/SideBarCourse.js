@@ -62,7 +62,7 @@ function SideBarCourse() {
     const sendData = (moduleName, content) => {
         console.log("a");
         localStorage.setItem("moduleName", moduleName);
-        localStorage.setItem("contenido", content)
+        localStorage.setItem("content", JSON.stringify(content));
     }
 
     const moduleList = modules.map(module =>  

@@ -40,11 +40,11 @@
         },
         "videoFunc": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/videoFunc-504b714766384c4b3453-build.zip"
+          "s3Key": "amplify-builds/videoFunc-7a4f4158614d434b6532-build.zip"
         },
         "modulesFunc": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/modulesFunc-4d324f587343436e4344-build.zip"
+          "s3Key": "amplify-builds/modulesFunc-3256636d70374b517a73-build.zip"
         },
         "answerFunc": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",

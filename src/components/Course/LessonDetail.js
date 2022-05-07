@@ -3,7 +3,8 @@ import SideBarCourse from './SideBarCourse';
 
 function LessonDetail() {
     const lessonName = localStorage.getItem('lessonName');
-    const lessonTime = localStorage.getItem('lessonTime');
+    const lessonVideo = localStorage.getItem('lessonVideo');
+    console.log(lessonVideo);
     return (
         <div className="flex">
             <SideBarCourse/>
@@ -15,12 +16,15 @@ function LessonDetail() {
                     </div>
                 </div>
                 <div className="module-lesson-content">
-                    <h5 className="title">
-                        Atención integral - Claves para la atención a mujeres víctimas de violencia
-                    </h5>
-                    <h5 className="subtitle"> Tiempo: {lessonTime}</h5>
-                    <div className="video-ejm-container">
-                    </div>
+                    <iframe
+                        width="853"
+                        height="480"
+                        src={`${lessonVideo}`}
+                        frameborder="0"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen
+                        title="video"
+                    />{" "}
                 </div>
             </div>
         </div>
