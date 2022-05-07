@@ -29,6 +29,7 @@ function ModuleContent() {
             navigate('/lesson-detail');
         }
     }
+
     
     const leccionesList = storedModules.map(modules =>
         <a className="list-lecciones-content" onClick={() => sendData(modules.title, modules.link, modules.type, modules.terms)}>
