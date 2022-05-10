@@ -2334,3 +2334,13 @@ main {
   padding-top: 20px;
 
 }
+
+.row-content-question{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.row-content-question > h4 {
+  margin-left: 10px;
+}

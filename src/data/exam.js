@@ -19,205 +19,182 @@ const exams = [
                         valor: "Pastillas para el estrés"
                     }
                 ],
-                correct: ""
+                correct: 1
             },
             {
                 id: 2,
                 question: "¿Cuál es la norma que regula el protocolo para atención a víctimas de violencia sexual?. Señale la opción correcta.",
                 answers: [
                     {
-                        id:1,
+                        id:4,
                         valor: "Resolución Nº 3100 de 2019"
                     },
                     {
-                        id:2,
+                        id:5,
                         valor: "Resolución Legislativa Nº 25279 de 1989"
                     },
                     {
-                        id:3,
+                        id:6,
                         valor: "Resolución Legislativa Nº 26583 de 1994"
                     },
                     {
-                        id:4,
+                        id:7,
                         valor: "Ley Nº 30364 del 24 de noviembre de 2015"
                     }
                 ],
-                correct: ""
-            },
-            {
-                id: 2,
-                question: "¿Cuál es la norma que regula el protocolo para atención a víctimas de violencia sexual?. Señale la opción correcta.",
-                answers: [
-                    {
-                        id:1,
-                        valor: "Resolución Nº 3100 de 2019"
-                    },
-                    {
-                        id:2,
-                        valor: "Resolución Legislativa Nº 25279 de 1989"
-                    },
-                    {
-                        id:3,
-                        valor: "Resolución Legislativa Nº 26583 de 1994"
-                    },
-                    {
-                        id:4,
-                        valor: "Ley Nº 30364 del 24 de noviembre de 2015"
-                    }
-                ],
-                correct: ""
+                correct: 7
             },
             {
                 id: 3,
                 question: "Según las definiciones actuales, abuso sexual es lo mismo que asalto sexual, para la justicia.  Señale V si es verdadero, F si considera que es falso.",
                 answers: [
                     {
-                        id:1,
+                        id:8,
                         valor: "Falso"
                     },
                     {
-                        id:2,
+                        id:9,
                         valor: "Verdadero"
                     }
                 ],
-                correct: ""
+                correct: 8
             },
             {
                 id: 4,
                 question: "Epidemiologicamente, cual considera que es el grupo etareo, mas afectado por el delito de violencia sexual.",
                 answers: [
                     {
-                        id:1,
+                        id:10,
                         valor: "11 a 14 años"
                     },
                     {
-                        id:2,
+                        id:11,
                         valor: "5 a 9 años"
                     },
                     {
-                        id:3,
+                        id:12,
                         valor: "14 a 17 años"
                     },
                     {
-                        id:4,
+                        id:13,
                         valor: "20 a 24 años"
                     }
                 ],
-                correct: ""
+                correct: 11
             },
             {
                 id: 5,
                 question: "Es importante determinar desde el inicio de la atención si la paciente fue víctima de delito sexual, con unos límites de tiempo determinados en la ley. Señale el correcto.",
                 answers: [
                     {
-                        id:1,
+                        id:14,
                         valor: "12 horas"
                     },
                     {
-                        id:2,
+                        id:15,
                         valor: "24 horas"
                     },
                     {
-                        id:3,
+                        id:16,
                         valor: "72 horas"
                     },
                     {
-                        id:4,
+                        id:17,
                         valor: "48 horas"
                     }
                 ],
-                correct: ""
+                correct: 16
             },
             {
                 id: 6,
                 question: "Como personal de salud nuestro trabajo con el paciente victima de violencia sexual, se centra únicamente en la atención de salud.",
                 answers: [
                     {
-                        id:1,
+                        id:18,
                         valor: "Verdadero"
                     },
                     {
-                        id:2,
+                        id:19,
                         valor: "Falso"
                     }
                 ],
-                correct: ""
+                correct: 19
             },
             {
                 id: 7,
                 question: "En el caso de paciente mayor de edad víctima de violencia sexual, no es necesario el consentimiento informado, a no ser que tenga alteraciones cognitivas.",
                 answers: [
                     {
-                        id:1,
+                        id:20,
                         valor: "Verdadero"
                     },
                     {
-                        id:2,
+                        id:21,
                         valor: "Falso"
                     }
                 ],
-                correct: ""
+                correct: 21
             },
             {
                 id: 8,
                 question: "En cuanto a la profilaxis post exposición, señale la opción correcta.",
                 answers: [
                     {
-                        id:1,
+                        id:22,
                         valor: "Debe ser prescrita por especialista"
                     },
                     {
-                        id:2,
+                        id:23,
                         valor: "Solo se usa en casos puntuales"
                     },
                     {
-                        id:3,
+                        id:24,
                         valor: "Todas las IPS lo deben tener disponible, para entrega inmediata"
                     },
                     {
-                        id:4,
+                        id:25,
                         valor: "Se entrega en el seguimiento a las tres semanas"
                     }
                 ],
-                correct: ""
+                correct: 24
             },
             {
                 id: 9,
                 question: "Para el acceso a la Profilaxis Post Exposición (PEP) para VIH en caso agresión sexual es antes de las 24 horas. Señale el correcto.",
                 answers: [
                     {
-                        id:1,
+                        id:26,
                         valor: "Verdadero"
                     },
                     {
-                        id:2,
+                        id:27,
                         valor: "Falso"
                     }
                 ],
-                correct: ""
+                correct: 27
             },
             {
                 id: 10,
                 question: "¿Cuál es el periodo que brindan a las personas con estrés postraumático como secuelade violencia sexual?",
                 answers: [
                     {
-                        id:1,
+                        id:28,
                         valor: "5 meses"
                     },
                     {
-                        id:2,
+                        id:29,
                         valor: "10 meses"
                     },
                     {
-                        id:3,
+                        id:30,
                         valor: "6 meses"
                     },
                     {
-                        id:4,
+                        id:31,
                         valor: "12 meses"
                     }
                 ],
-                correct: ""
+                correct: 29
             },
         ]
     },
@@ -230,14 +207,16 @@ const exams = [
                 answers: [
                     {
                         id:1,
-                        valor: "Falso"
+                        valor: "Falso",
+                        group: "1"
                     },
                     {
                         id:2,
-                        valor: "Verdadero"
+                        valor: "Verdadero",
+                        group: "1"
                     }
                 ],
-                correct: "Falso"
+                correct: 1
             },
             {
                 id: 2,
@@ -245,14 +224,16 @@ const exams = [
                 answers: [
                     {
                         id:1,
-                        valor: "Falso"
+                        valor: "Falso",
+                        group: "2"
                     },
                     {
                         id:2,
-                        valor: "Verdadero"
+                        valor: "Verdadero",
+                        group: "2"
                     }
                 ],
-                correct: "Verdadero"
+                correct: 2
             },
             {
                 id: 3,
@@ -260,14 +241,16 @@ const exams = [
                 answers: [
                     {
                         id:1,
-                        valor: "Falso"
+                        valor: "Falso",
+                        group: "3"
                     },
                     {
                         id:2,
-                        valor: "Verdadero"
+                        valor: "Verdadero",
+                        group: "3"
                     }
                 ],
-                correct: "Falso"
+                correct: 1
             },
             {
                 id: 4,
@@ -275,14 +258,16 @@ const exams = [
                 answers: [
                     {
                         id:1,
-                        valor: "Falso"
+                        valor: "Falso",
+                        group: "4"
                     },
                     {
                         id:2,
-                        valor: "Verdadero"
+                        valor: "Verdadero",
+                        group: "4"
                     }
                 ],
-                correct: "Verdadero"
+                correct: 2
             },
             {
                 id: 5,
@@ -290,27 +275,32 @@ const exams = [
                 answers: [
                     {
                         id:1,
-                        valor: "La atención siempre se hace en urgencias teniendo en cuenta las excepciones."
+                        valor: "La atención siempre se hace en urgencias teniendo en cuenta las excepciones.",
+                        group: "5"
                     },
                     {
                         id:2,
-                        valor: "La atención se hace en urgencias dependiendo del tiempo desde ocurrido el hecho."
+                        valor: "La atención se hace en urgencias dependiendo del tiempo desde ocurrido el hecho.",
+                        group: "5"
                     },
                     {
                         id:3,
-                        valor: "La atención siempre se hace en urgencias teniendo en cuenta las excepciones."
+                        valor: "La atención siempre se hace en urgencias teniendo en cuenta las excepciones.",
+                        group: "5"
                     },
                     {
                         id:4,
-                        valor: "En el caso de tener casos más urgentes en el servicio de urgencias se le da cita para otro día a la paciente."
+                        valor: "En el caso de tener casos más urgentes en el servicio de urgencias se le da cita para otro día a la paciente.",
+                        group: "5"
                     },
                     {
                         id:5,
-                        valor: "Solo se atienden en urgencias pacientes si los hechos ocurrieron hace 72 horas."
+                        valor: "Solo se atienden en urgencias pacientes si los hechos ocurrieron hace 72 horas.",
+                        group: "5"
                     }
 
                 ],
-                correct: "La atención siempre se hace en urgencias teniendo en cuenta las excepciones"
+                correct: 3
             },
             {
                 id: 6,
@@ -318,14 +308,16 @@ const exams = [
                 answers: [
                     {
                         id:1,
-                        valor: "Falso"
+                        valor: "Falso",
+                        group: "6"
                     },
                     {
                         id:2,
-                        valor: "Verdadero"
+                        valor: "Verdadero",
+                        group: "6"
                     }
                 ],
-                correct: "Falso"
+                correct: 1
             },
             {
                 id: 7,
@@ -333,14 +325,16 @@ const exams = [
                 answers: [
                     {
                         id:1,
-                        valor: "Falso"
+                        valor: "Falso",
+                        group: "7"
                     },
                     {
                         id:2,
-                        valor: "Verdadero"
+                        valor: "Verdadero",
+                        group: "7"
                     }
                 ],
-                correct: "Verdadero"
+                correct: 2
             },
             {
                 id: 8,
@@ -355,7 +349,7 @@ const exams = [
                         valor: "Verdadero"
                     }
                 ],
-                correct: "Verdadero"
+                correct: 2
             },
             {
                 id: 9,
@@ -370,7 +364,7 @@ const exams = [
                         valor: "Verdadero"
                     }
                 ],
-                correct: "Verdadero"
+                correct: 2
             },
             {
                 id: 10,
@@ -386,14 +380,14 @@ const exams = [
                     },
                     {
                         id:3,
-                        valor: "Lo más importante siempre es la atención clínica, por lo que los primeros auxilios sicológicos pueden ser proporcionados en otro momento"
+                        valor: "Esta establecido en el protocolo que la atención a la salud mental puede tener prioridad sobre la atención clínica."
                     },
                     {
                         id:4,
                         valor: "Se le debe informar a la paciente que nuestra función esta en tomar muestras y diligenciar únicamente la historia clínica.En el caso de tener casos más urgentes en el servicio de urgencias se le da cita para otro día a la paciente."
                     }
                 ],
-                correct: "La atención siempre se hace en urgencias teniendo en cuenta las excepciones"
+                correct: 3
             },
         ]
     },
