@@ -20,13 +20,13 @@ import EditQuiz from "./components/admin/EditQuiz";
 import EditDetailQuiz from "./components/admin/EditDetailQuiz"
 import EditDetailCourse from "./components/admin/EditDetailCourse";
 import Participants from "./components/admin/Participants";
-import CourseDetail from "./components/Course/CourseDetail";
 import Courses from "./components/Course/Courses";
 import Forum from "./components/Forum/Forum";
 import CourseDashboard from "./components/Course/CourseDashboard";
 import ModuleContent from "./components/Course/ModuleContent";
 import LessonDetail from "./components/Course/LessonDetail";
 import QuizDetail from "./components/Course/QuizDetail";
+import ResultQuiz from "./components/Course/ResultQuiz";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -78,7 +78,7 @@ ReactDOM.render(
           path="courses/:courseId"
           element={
             <PrivateRoute>
-              <CourseDetail />
+              <CourseDashboard />
             </PrivateRoute>
           }
         />
@@ -99,11 +99,11 @@ ReactDOM.render(
         <Route path="edit-detail-quiz" exact={true} element={<EditDetailQuiz/>}/>
         <Route path="edit-detail-course" exact={true} element={<EditDetailCourse />}/>
         <Route path="participants" exact={true} element={<Participants/>}/>
-        <Route path="course-dashboard" exact={true} element={<CourseDashboard/>}/>
-        <Route path="course-dashboard" exact={true} element={<CourseDashboard/>}/>
+        {/* <Route path="course-dashboard" exact={true} element={<CourseDashboard/>}/> */}
         <Route path="module-content" exact={true} element={<ModuleContent/>}/>
         <Route path="lesson-detail" exact={true} element={<LessonDetail/>}/>
         <Route path="quiz-detail" exact={true} element={<QuizDetail/>}/>
+        <Route path="result-quiz" exact ={true} element={<ResultQuiz/>}></Route>
       </Route>
     </Routes>
   </BrowserRouter>,

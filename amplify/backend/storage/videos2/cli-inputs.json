@@ -1,12 +1,12 @@
 {
-  "resourceName": "modules",
-  "tableName": "modules",
+  "resourceName": "videos2",
+  "tableName": "videos2",
   "partitionKey": {
     "fieldName": "id",
     "fieldType": "string"
   },
   "sortKey": {
-    "fieldName": "courseId",
+    "fieldName": "moduleId",
     "fieldType": "string"
   },
   "gsi": [],

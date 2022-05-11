@@ -1,12 +1,12 @@
 {
-  "resourceName": "modules",
-  "tableName": "modules",
+  "resourceName": "questions",
+  "tableName": "questions",
   "partitionKey": {
     "fieldName": "id",
     "fieldType": "string"
   },
   "sortKey": {
-    "fieldName": "courseId",
+    "fieldName": "testId",
     "fieldType": "string"
   },
   "gsi": [],

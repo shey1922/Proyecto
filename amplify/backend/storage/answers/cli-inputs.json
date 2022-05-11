@@ -1,12 +1,12 @@
 {
-  "resourceName": "modules",
-  "tableName": "modules",
+  "resourceName": "answers",
+  "tableName": "answers",
   "partitionKey": {
     "fieldName": "id",
     "fieldType": "string"
   },
   "sortKey": {
-    "fieldName": "courseId",
+    "fieldName": "questionId",
     "fieldType": "string"
   },
   "gsi": [],
