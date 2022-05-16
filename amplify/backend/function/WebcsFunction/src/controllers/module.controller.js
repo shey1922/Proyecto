@@ -25,6 +25,50 @@ const addModule = (req, res) => {
     });
 }
 
+const getVideosByModule = (req, res) => {
+    const { id } = req.params;
+
+    const queryParams = {
+        TableName: 'VideoTable-dev',
+        IndexName: 'VideoModuleGSI',
+        KeyConditionExpression: 'moduleId = :moduleId',
+        ExpressionAttributeValues: {
+            ':moduleId': id
+        }
+    };
+
+    db.query(queryParams, (err, data) => {
+        if (err) {
+            res.status(500).json({error: err, url: req.url, body: req.body});
+        } else {
+            res.status(200).json(data.Items);
+        }
+    });
+}
+
+const getTestsByModule = (req, res) => {
+    const { id } = req.params;
+
+    const queryParams = {
+        TableName: 'TestTable-dev',
+        IndexName: 'TestModuleGSI',
+        KeyConditionExpression: 'moduleId = :moduleId',
+        ExpressionAttributeValues: {
+            ':moduleId': id
+        }
+    };
+
+    db.query(queryParams, (err, data) => {
+        if (err) {
+            res.status(500).json({error: err, url: req.url, body: req.body});
+        } else {
+            res.status(200).json(data.Items);
+        }
+    });
+}
+
 module.exports = {
-    addModule
+    addModule,
+    getVideosByModule,
+    getTestsByModule
 }

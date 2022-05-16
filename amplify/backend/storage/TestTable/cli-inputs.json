@@ -5,6 +5,29 @@
     "fieldName": "id",
     "fieldType": "string"
   },
-  "gsi": [],
+  "gsi": [
+    {
+      "name": "TestModuleGSI",
+      "partitionKey": {
+        "fieldName": "moduleId",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      }
+    },
+    {
+      "name": "TestCourseGSI",
+      "partitionKey": {
+        "fieldName": "courseId",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      }
+    }
+  ],
   "triggerFunctions": []
 }

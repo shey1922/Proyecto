@@ -55,6 +55,12 @@
         "read",
         "update",
         "delete"
+      ],
+      "UserCourseTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
       ]
     }
   }

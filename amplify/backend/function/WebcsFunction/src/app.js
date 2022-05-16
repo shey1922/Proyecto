@@ -22,6 +22,9 @@
 	STORAGE_TESTTABLE_ARN
 	STORAGE_TESTTABLE_NAME
 	STORAGE_TESTTABLE_STREAMARN
+	STORAGE_USERCOURSETABLE_ARN
+	STORAGE_USERCOURSETABLE_NAME
+	STORAGE_USERCOURSETABLE_STREAMARN
 	STORAGE_USERTABLE_ARN
 	STORAGE_USERTABLE_NAME
 	STORAGE_USERTABLE_STREAMARN
@@ -36,15 +39,14 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
-
-
-
 const express = require('express')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 
 const userRouter = require('./routes/user.routes');
 const courseRouter = require('./routes/course.routes');
 const moduleRouter = require('./routes/module.routes');
+const videoRouter = require('./routes/video.routes');
+const testRouter = require('./routes/test.routes');
 
 // declare a new express app
 const app = express()
@@ -62,6 +64,8 @@ app.use(function(req, res, next) {
 app.use('/users', userRouter);
 app.use('/courses', courseRouter);
 app.use('/modules', moduleRouter);
+app.use('/videos', videoRouter);
+app.use('/tests', testRouter);
 
 app.listen(3000, function() {
     console.log("App started")

@@ -75,6 +75,10 @@
     "ModuleTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "UserCourseTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
@@ -174,6 +178,15 @@
         {
           "category": "storage",
           "resourceName": "ModuleTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "UserCourseTable",
           "attributes": [
             "Name",
             "Arn",

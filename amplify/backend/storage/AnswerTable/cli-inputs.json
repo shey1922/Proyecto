@@ -5,6 +5,18 @@
     "fieldName": "id",
     "fieldType": "string"
   },
-  "gsi": [],
+  "gsi": [
+    {
+      "name": "AnswerQuestionGSI",
+      "partitionKey": {
+        "fieldName": "questionId",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      }
+    }
+  ],
   "triggerFunctions": []
 }

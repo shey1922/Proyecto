@@ -70,8 +70,52 @@ const getModulesByCourse = (req, res) => {
     });
 }
 
+const getVideosByCourse = (req, res) => {
+    const { id } = req.params;
+
+    const queryParams = {
+        TableName: 'VideoTable-dev',
+        IndexName: 'VideoCourseGSI',
+        KeyConditionExpression: 'courseId = :courseId',
+        ExpressionAttributeValues: {
+            ':courseId': id
+        }
+    };
+
+    db.query(queryParams, (err, data) => {
+        if (err) {
+            res.status(500).json({error: err, url: req.url, body: req.body});
+        } else {
+            res.status(200).json(data.Items);
+        }
+    });
+}
+
+const getTestsByCourse = (req, res) => {
+    const { id } = req.params;
+
+    const queryParams = {
+        TableName: 'TestTable-dev',
+        IndexName: 'TestCourseGSI',
+        KeyConditionExpression: 'courseId = :courseId',
+        ExpressionAttributeValues: {
+            ':courseId': id
+        }
+    };
+
+    db.query(queryParams, (err, data) => {
+        if (err) {
+            res.status(500).json({error: err, url: req.url, body: req.body});
+        } else {
+            res.status(200).json(data.Items);
+        }
+    });
+}
+
 module.exports = {
     getCourses,
     addCourse,
-    getModulesByCourse
+    getModulesByCourse,
+    getVideosByCourse,
+    getTestsByCourse
 }
