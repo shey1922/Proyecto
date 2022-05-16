@@ -10,7 +10,6 @@ exports.handler = async (event, context) => {
         let params = {
             Item: {
                 'id': {S: event.request.userAttributes.sub},
-                '__typename': {S: 'User'},
                 'firstName': {S: event.request.userAttributes.given_name},
                 'lastName': {S: event.request.userAttributes.family_name},
                 'email': {S: event.request.userAttributes.email},
@@ -18,7 +17,7 @@ exports.handler = async (event, context) => {
                 'createdAt': {S: date.toISOString()},
                 'updatedAt': {S: date.toISOString()},
             },
-            TableName: process.env.USERTABLE
+            TableName: process.env.STORAGE_USERTABLE_NAME
         };
 
         // Call DynamoDB

@@ -13,5 +13,15 @@
   "triggerEventPath": "PostConfirmation.event.json",
   "roleName": "proyectoAuthPostConfirmation",
   "skipEdit": true,
-  "enableCors": false
+  "enableCors": false,
+  "permissions": {
+    "storage": {
+      "UserTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  }
 }

@@ -1,4 +1,10 @@
-/**
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+	STORAGE_USERTABLE_ARN
+	STORAGE_USERTABLE_NAME
+	STORAGE_USERTABLE_STREAMARN
+Amplify Params - DO NOT EDIT *//**
  * @fileoverview
  *
  * This CloudFormation Trigger creates a handler which awaits the other handlers

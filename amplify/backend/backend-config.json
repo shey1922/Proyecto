@@ -40,231 +40,157 @@
     }
   },
   "storage": {
-    "users": {
+    "UserTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     },
-    "courses2": {
+    "CourseTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     },
-    "modules": {
+    "VideoTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     },
-    "videos2": {
+    "TestTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     },
-    "tests": {
+    "QuestionTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     },
-    "questions": {
+    "AnswerTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     },
-    "answers": {
+    "ForumTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "CommentTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "ModuleTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     }
   },
   "function": {
-    "usersFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "users",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
     "proyectoAuthPostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "coursesFunc": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "courses2",
+          "resourceName": "UserTable",
           "attributes": [
             "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
+            "Arn",
+            "StreamArn"
+          ]
         }
       ]
     },
-    "modulesFunc": {
+    "WebcsFunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "modules",
+          "resourceName": "UserTable",
           "attributes": [
             "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "videoFunc": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
+            "Arn",
+            "StreamArn"
+          ]
+        },
         {
           "category": "storage",
-          "resourceName": "videos2",
+          "resourceName": "CourseTable",
           "attributes": [
             "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "testFunc": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
+            "Arn",
+            "StreamArn"
+          ]
+        },
         {
           "category": "storage",
-          "resourceName": "tests",
+          "resourceName": "VideoTable",
           "attributes": [
             "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "questionsFunc": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
+            "Arn",
+            "StreamArn"
+          ]
+        },
         {
           "category": "storage",
-          "resourceName": "questions",
+          "resourceName": "TestTable",
           "attributes": [
             "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "answerFunc": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
+            "Arn",
+            "StreamArn"
+          ]
+        },
         {
           "category": "storage",
-          "resourceName": "answers",
+          "resourceName": "QuestionTable",
           "attributes": [
             "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "AnswerTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "ForumTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "CommentTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "ModuleTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
         }
       ]
     }
   },
   "api": {
-    "proyectoApi": {
+    "WebcsAPI": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "usersFunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "coursesFunc",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "modulesFunc",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "videoFunc",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "testFunc",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "questionsFunc",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "answerFunc",
+          "resourceName": "WebcsFunction",
           "attributes": [
             "Name",
             "Arn"

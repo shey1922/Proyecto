@@ -9,7 +9,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "storage": {
-        "users": {
+        "UserTable": {
             "Name": "string",
             "Arn": "string",
             "StreamArn": "string",
@@ -17,111 +17,79 @@ export type AmplifyDependentResourcesAttributes = {
             "PartitionKeyType": "string",
             "Region": "string"
         },
-        "courses2": {
+        "CourseTable": {
             "Name": "string",
             "Arn": "string",
             "StreamArn": "string",
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
-            "SortKeyName": "string",
-            "SortKeyType": "string",
             "Region": "string"
         },
-        "modules": {
+        "VideoTable": {
             "Name": "string",
             "Arn": "string",
             "StreamArn": "string",
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
-            "SortKeyName": "string",
-            "SortKeyType": "string",
             "Region": "string"
         },
-        "videos2": {
+        "TestTable": {
             "Name": "string",
             "Arn": "string",
             "StreamArn": "string",
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
-            "SortKeyName": "string",
-            "SortKeyType": "string",
             "Region": "string"
         },
-        "tests": {
+        "QuestionTable": {
             "Name": "string",
             "Arn": "string",
             "StreamArn": "string",
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
-            "SortKeyName": "string",
-            "SortKeyType": "string",
             "Region": "string"
         },
-        "questions": {
+        "AnswerTable": {
             "Name": "string",
             "Arn": "string",
             "StreamArn": "string",
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
-            "SortKeyName": "string",
-            "SortKeyType": "string",
             "Region": "string"
         },
-        "answers": {
+        "ForumTable": {
             "Name": "string",
             "Arn": "string",
             "StreamArn": "string",
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
-            "SortKeyName": "string",
-            "SortKeyType": "string",
+            "Region": "string"
+        },
+        "CommentTable": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        },
+        "ModuleTable": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
             "Region": "string"
         }
     },
     "function": {
-        "usersFunction": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
         "proyectoAuthPostConfirmation": {
             "Name": "string",
             "Arn": "string",
             "LambdaExecutionRole": "string",
             "Region": "string"
         },
-        "coursesFunc": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
-        "modulesFunc": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
-        "videoFunc": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
-        "testFunc": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
-        "questionsFunc": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
-        "answerFunc": {
+        "WebcsFunction": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -129,7 +97,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "api": {
-        "proyectoApi": {
+        "WebcsAPI": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

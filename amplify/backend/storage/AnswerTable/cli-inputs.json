@@ -1,0 +1,10 @@
+{
+  "resourceName": "AnswerTable",
+  "tableName": "AnswerTable",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

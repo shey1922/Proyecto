@@ -18,41 +18,17 @@
         "proyectoAuth": {}
       },
       "function": {
-        "usersFunction": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/usersFunction-466971314f414b4f446c-build.zip"
-        },
         "employeesFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
           "s3Key": "amplify-builds/employeesFunction-6251556e6159377a686d-build.zip"
         },
         "proyectoAuthPostConfirmation": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/proyectoAuthPostConfirmation-42443747704863496951-build.zip"
+          "s3Key": "amplify-builds/proyectoAuthPostConfirmation-4d347738304e6a4f4d4d-build.zip"
         },
-        "testFunc": {
+        "WebcsFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/testFunc-716c3472555a7a7a394d-build.zip"
-        },
-        "questionsFunc": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/questionsFunc-68346869525676743635-build.zip"
-        },
-        "videoFunc": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/videoFunc-7a4f4158614d434b6532-build.zip"
-        },
-        "modulesFunc": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/modulesFunc-3256636d70374b517a73-build.zip"
-        },
-        "answerFunc": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/answerFunc-4a4e553169392f4e3657-build.zip"
-        },
-        "coursesFunc": {
-          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/coursesFunc-784678586f4832797149-build.zip"
+          "s3Key": "amplify-builds/WebcsFunction-726c4e47515a65644b74-build.zip"
         }
       },
       "hosting": {

@@ -1,0 +1,699 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"8.2.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Parameters": {
+    "CloudWatchRule": {
+      "Type": "String",
+      "Default": "NONE",
+      "Description": " Schedule Expression"
+    },
+    "deploymentBucketName": {
+      "Type": "String"
+    },
+    "env": {
+      "Type": "String"
+    },
+    "s3Key": {
+      "Type": "String"
+    },
+    "storageUserTableName": {
+      "Type": "String",
+      "Default": "storageUserTableName"
+    },
+    "storageUserTableArn": {
+      "Type": "String",
+      "Default": "storageUserTableArn"
+    },
+    "storageUserTableStreamArn": {
+      "Type": "String",
+      "Default": "storageUserTableStreamArn"
+    },
+    "storageCourseTableName": {
+      "Type": "String",
+      "Default": "storageCourseTableName"
+    },
+    "storageCourseTableArn": {
+      "Type": "String",
+      "Default": "storageCourseTableArn"
+    },
+    "storageCourseTableStreamArn": {
+      "Type": "String",
+      "Default": "storageCourseTableStreamArn"
+    },
+    "storageVideoTableName": {
+      "Type": "String",
+      "Default": "storageVideoTableName"
+    },
+    "storageVideoTableArn": {
+      "Type": "String",
+      "Default": "storageVideoTableArn"
+    },
+    "storageVideoTableStreamArn": {
+      "Type": "String",
+      "Default": "storageVideoTableStreamArn"
+    },
+    "storageTestTableName": {
+      "Type": "String",
+      "Default": "storageTestTableName"
+    },
+    "storageTestTableArn": {
+      "Type": "String",
+      "Default": "storageTestTableArn"
+    },
+    "storageTestTableStreamArn": {
+      "Type": "String",
+      "Default": "storageTestTableStreamArn"
+    },
+    "storageQuestionTableName": {
+      "Type": "String",
+      "Default": "storageQuestionTableName"
+    },
+    "storageQuestionTableArn": {
+      "Type": "String",
+      "Default": "storageQuestionTableArn"
+    },
+    "storageQuestionTableStreamArn": {
+      "Type": "String",
+      "Default": "storageQuestionTableStreamArn"
+    },
+    "storageAnswerTableName": {
+      "Type": "String",
+      "Default": "storageAnswerTableName"
+    },
+    "storageAnswerTableArn": {
+      "Type": "String",
+      "Default": "storageAnswerTableArn"
+    },
+    "storageAnswerTableStreamArn": {
+      "Type": "String",
+      "Default": "storageAnswerTableStreamArn"
+    },
+    "storageForumTableName": {
+      "Type": "String",
+      "Default": "storageForumTableName"
+    },
+    "storageForumTableArn": {
+      "Type": "String",
+      "Default": "storageForumTableArn"
+    },
+    "storageForumTableStreamArn": {
+      "Type": "String",
+      "Default": "storageForumTableStreamArn"
+    },
+    "storageCommentTableName": {
+      "Type": "String",
+      "Default": "storageCommentTableName"
+    },
+    "storageCommentTableArn": {
+      "Type": "String",
+      "Default": "storageCommentTableArn"
+    },
+    "storageCommentTableStreamArn": {
+      "Type": "String",
+      "Default": "storageCommentTableStreamArn"
+    },
+    "storageModuleTableName": {
+      "Type": "String",
+      "Default": "storageModuleTableName"
+    },
+    "storageModuleTableArn": {
+      "Type": "String",
+      "Default": "storageModuleTableArn"
+    },
+    "storageModuleTableStreamArn": {
+      "Type": "String",
+      "Default": "storageModuleTableStreamArn"
+    }
+  },
+  "Conditions": {
+    "ShouldNotCreateEnvResources": {
+      "Fn::Equals": [
+        {
+          "Ref": "env"
+        },
+        "NONE"
+      ]
+    }
+  },
+  "Resources": {
+    "LambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Metadata": {
+        "aws:asset:path": "./src",
+        "aws:asset:property": "Code"
+      },
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
+        },
+        "Handler": "index.handler",
+        "FunctionName": {
+          "Fn::If": [
+            "ShouldNotCreateEnvResources",
+            "WebcsFunction",
+            {
+              "Fn::Join": [
+                "",
+                [
+                  "WebcsFunction",
+                  "-",
+                  {
+                    "Ref": "env"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "ENV": {
+              "Ref": "env"
+            },
+            "REGION": {
+              "Ref": "AWS::Region"
+            },
+            "STORAGE_USERTABLE_NAME": {
+              "Ref": "storageUserTableName"
+            },
+            "STORAGE_USERTABLE_ARN": {
+              "Ref": "storageUserTableArn"
+            },
+            "STORAGE_USERTABLE_STREAMARN": {
+              "Ref": "storageUserTableStreamArn"
+            },
+            "STORAGE_COURSETABLE_NAME": {
+              "Ref": "storageCourseTableName"
+            },
+            "STORAGE_COURSETABLE_ARN": {
+              "Ref": "storageCourseTableArn"
+            },
+            "STORAGE_COURSETABLE_STREAMARN": {
+              "Ref": "storageCourseTableStreamArn"
+            },
+            "STORAGE_VIDEOTABLE_NAME": {
+              "Ref": "storageVideoTableName"
+            },
+            "STORAGE_VIDEOTABLE_ARN": {
+              "Ref": "storageVideoTableArn"
+            },
+            "STORAGE_VIDEOTABLE_STREAMARN": {
+              "Ref": "storageVideoTableStreamArn"
+            },
+            "STORAGE_TESTTABLE_NAME": {
+              "Ref": "storageTestTableName"
+            },
+            "STORAGE_TESTTABLE_ARN": {
+              "Ref": "storageTestTableArn"
+            },
+            "STORAGE_TESTTABLE_STREAMARN": {
+              "Ref": "storageTestTableStreamArn"
+            },
+            "STORAGE_QUESTIONTABLE_NAME": {
+              "Ref": "storageQuestionTableName"
+            },
+            "STORAGE_QUESTIONTABLE_ARN": {
+              "Ref": "storageQuestionTableArn"
+            },
+            "STORAGE_QUESTIONTABLE_STREAMARN": {
+              "Ref": "storageQuestionTableStreamArn"
+            },
+            "STORAGE_ANSWERTABLE_NAME": {
+              "Ref": "storageAnswerTableName"
+            },
+            "STORAGE_ANSWERTABLE_ARN": {
+              "Ref": "storageAnswerTableArn"
+            },
+            "STORAGE_ANSWERTABLE_STREAMARN": {
+              "Ref": "storageAnswerTableStreamArn"
+            },
+            "STORAGE_FORUMTABLE_NAME": {
+              "Ref": "storageForumTableName"
+            },
+            "STORAGE_FORUMTABLE_ARN": {
+              "Ref": "storageForumTableArn"
+            },
+            "STORAGE_FORUMTABLE_STREAMARN": {
+              "Ref": "storageForumTableStreamArn"
+            },
+            "STORAGE_COMMENTTABLE_NAME": {
+              "Ref": "storageCommentTableName"
+            },
+            "STORAGE_COMMENTTABLE_ARN": {
+              "Ref": "storageCommentTableArn"
+            },
+            "STORAGE_COMMENTTABLE_STREAMARN": {
+              "Ref": "storageCommentTableStreamArn"
+            },
+            "STORAGE_MODULETABLE_NAME": {
+              "Ref": "storageModuleTableName"
+            },
+            "STORAGE_MODULETABLE_ARN": {
+              "Ref": "storageModuleTableArn"
+            },
+            "STORAGE_MODULETABLE_STREAMARN": {
+              "Ref": "storageModuleTableStreamArn"
+            }
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaExecutionRole",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs14.x",
+        "Layers": [],
+        "Timeout": 25
+      }
+    },
+    "LambdaExecutionRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": {
+          "Fn::If": [
+            "ShouldNotCreateEnvResources",
+            "proyectoLambdaRolefd44da91",
+            {
+              "Fn::Join": [
+                "",
+                [
+                  "proyectoLambdaRolefd44da91",
+                  "-",
+                  {
+                    "Ref": "env"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "lambdaexecutionpolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Resource": {
+                "Fn::Sub": [
+                  "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*",
+                  {
+                    "region": {
+                      "Ref": "AWS::Region"
+                    },
+                    "account": {
+                      "Ref": "AWS::AccountId"
+                    },
+                    "lambda": {
+                      "Ref": "LambdaFunction"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageUserTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageUserTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageCourseTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageCourseTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageVideoTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageVideoTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageTestTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageTestTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageQuestionTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageQuestionTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageAnswerTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageAnswerTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageForumTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageForumTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageCommentTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageCommentTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageModuleTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageModuleTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "Name": {
+      "Value": {
+        "Ref": "LambdaFunction"
+      }
+    },
+    "Arn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "LambdaFunction",
+          "Arn"
+        ]
+      }
+    },
+    "Region": {
+      "Value": {
+        "Ref": "AWS::Region"
+      }
+    },
+    "LambdaExecutionRole": {
+      "Value": {
+        "Ref": "LambdaExecutionRole"
+      }
+    }
+  }
+}
