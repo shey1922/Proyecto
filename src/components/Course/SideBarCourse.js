@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import modules from "../../data/modules";
+import { ProgressBar } from 'react-bootstrap'
+import Swal from 'sweetalert2';
 
 function SideBarCourse() {
 
@@ -58,25 +60,52 @@ function SideBarCourse() {
     //         ]
     //     },
     // ]
-     
+
     const sendData = (moduleName, content) => {
         console.log("a");
         localStorage.setItem("moduleName", moduleName);
+
         localStorage.setItem("content", JSON.stringify(content));
     }
 
-    const moduleList = modules.map(module =>  
+    const moduleList = modules.map(module =>
         <ul className="listsidebarcourse" key={module.id}>
             <li className="elementsidebarcourse">
-                <Link to="/module-content" class="btn-text-sc" 
-                onClick={()=>sendData(module.name, module.content)}>
+                <Link to="/module-content" class="btn-text-sc"
+                    onClick={() => sendData(module.name, module.content)}>
                     {module.name}
                     <i class="fas fa-angle-right i-space"></i>
                 </Link>
             </li>
         </ul>
-      )
-
+    )
+    const now = 80;
+    const progressBar = {
+        height: '12px',
+        fontSize: '12px',
+        color: '#224bcf',
+        borderRadius: '0px',
+        marginLeft: '2px',
+        marginRight: '25px',
+        marginTop: '15px',
+    };
+    function confirmInscription() {
+        Swal.fire({
+            title: '¿Desea confirmar su inscripción al curso?',
+            showCancelButton: true,
+            icon: 'question',
+            width: '25%',
+            height: '25%',
+            fontSize: '20px',
+            confirmButtonText: 'Inscribirme',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                Swal.fire('¡Felicidades, ya está inscrita!', '', 'success')
+            }
+        })
+    }
 
     return (
         <div className="sidebarcourse">
@@ -84,13 +113,19 @@ function SideBarCourse() {
                 <h3 class="side-title">
                     Curso atención integral a víctimas de violencia sexual
                 </h3>
-                <h5 class="side-p">
-                    Tiempo restante : 2 meses, 3 semanas
-                </h5>
+                <div class="side-p">
+                    <h5>
+                        Tiempo restante : 2 meses, 3 semanas
+                    </h5>
+                    <ProgressBar style={progressBar} now={now} label={`${now}%`} />
+                </div>
+
             </div>
             {moduleList}
             <div className="footer-sidebar">
                 <button className="btn-footer-sidebar">VOLVER AL CURSO</button>
+                <div></div>
+                <button onClick={confirmInscription} className="btn-footer-sidebar">INSCRIBIRSE AL CURSO</button>
                 <div></div>
                 <button className="btn-footer-sidebar">VALORACIÓN DEL CURSO</button>
             </div>

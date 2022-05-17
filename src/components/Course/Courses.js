@@ -122,6 +122,15 @@ function Courses() {
       </div> */}
       <div className="recent-courses-student">
         <div className="title-line">
+          <h4>MIS CURSOS</h4>
+          <div className="line"></div>
+        </div>
+        <div className="courses-list-container">
+          {courses.map(c => <Course key={c.id} id={c.id} topic={c.topic} />)}
+        </div>
+      </div>
+      <div className="recent-courses-student">
+        <div className="title-line">
           <h4>TODOS LOS CURSOS</h4>
           <div className="line"></div>
         </div>
