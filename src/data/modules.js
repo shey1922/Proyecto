@@ -269,6 +269,58 @@ const modules = [
                 terms: []
             },
         ]
+    },
+    {
+        id: 7,
+        name: 'VIDEO CONFERENCIAS',
+        content: [
+            {
+                id: 1,
+                title: 'Sala de Video conferencia 1',
+                type: 'lesson',
+                url: 'https://meet.google.com/xir-ztqi-kqi',
+                terms: [],
+            },
+            {
+                id: 2,
+                title: 'Sala de Video conferencia 2',
+                type: 'lesson',
+                url: 'https://meet.google.com/grj-ntxt-sus',
+                terms: [],
+            },
+            {
+                id: 3,
+                title: 'Sala de Video conferencia 3',
+                type: 'lesson',
+                url: 'https://meet.google.com/can-wniw-rox',
+                terms: []
+            },
+            {
+                id: 4,
+                title: 'Sala de Video conferencia 4',
+                type: 'lesson',
+                url: 'https://meet.google.com/mst-borz-npe',
+                terms: []
+            },
+        ]
+    },
+    {
+        id: 8,
+        name: 'MIS NOTAS',
+        content: [
+            {
+                id: 1,
+                title: 'Resultados de examen de Atención Integral a Víctimas de Violencia Sexual',
+                type: 'lesson',
+                terms: [{ title: "Nota del examen: 18" },],
+            },
+            {
+                id: 2,
+                title: 'Resultados de examen Final de Atención Integral a Víctimas de Violencia Sexual',
+                type: 'lesson',
+                terms: [{ title: "Nota del examen: 20" },],
+            },
+        ]
     }
 ];
 

@@ -18,13 +18,14 @@ function ModuleContent() {
         {name: "Cuestionario: " + textFromStorage, time: "30 minutos"}
     ]*/
 
-    const sendData = (modulesTitle, modulesLink, modulesType, modulesTerms) => {
+    const sendData = (modulesTitle, modulesLink, modulesType, modulesTerms,modulesUrl) => {
         if(modulesType === "quiz") {
             localStorage.setItem("lessonName", modulesTitle);
             navigate('/quiz-detail');
         } else {
             localStorage.setItem("lessonName", modulesTitle);
             localStorage.setItem("lessonVideo", modulesLink);
+            localStorage.setItem("videoConfe",modulesUrl)
             localStorage.setItem("termsModule", JSON.stringify(modulesTerms));
             navigate('/lesson-detail');
         }
@@ -32,7 +33,7 @@ function ModuleContent() {
 
     
     const leccionesList = storedModules.map(modules =>
-        <a className="list-lecciones-content" onClick={() => sendData(modules.title, modules.link, modules.type, modules.terms)}>
+        <a className="list-lecciones-content" onClick={() => sendData(modules.title, modules.link, modules.type, modules.terms, modules.url)}>
             <h5>{modules.title}</h5>
             <div className="aux">
                 <i class="fas fa-angle-right i-space fa-3x"></i>
