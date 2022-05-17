@@ -36,7 +36,7 @@ function Navbar() {
             <Link to="/forum">Foro</Link>
           </li>
           <li>
-            <Link to="/" onClick={signOut}>Salir</Link>  
+            <Link to="/" onClick={signOut}>Salir</Link>
           </li>
         </ul>
       </nav>
