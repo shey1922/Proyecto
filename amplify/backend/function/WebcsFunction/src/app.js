@@ -47,6 +47,10 @@ const courseRouter = require('./routes/course.routes');
 const moduleRouter = require('./routes/module.routes');
 const videoRouter = require('./routes/video.routes');
 const testRouter = require('./routes/test.routes');
+const questionRouter = require('./routes/question.routes');
+const answerRouter = require('./routes/answer.routes');
+const forumRouter = require('./routes/forum.routes');
+const commentRouter = require('./routes/comment.routes');
 
 // declare a new express app
 const app = express()
@@ -66,6 +70,10 @@ app.use('/courses', courseRouter);
 app.use('/modules', moduleRouter);
 app.use('/videos', videoRouter);
 app.use('/tests', testRouter);
+app.use('/questions', questionRouter);
+app.use('/answer', answerRouter);
+app.use('/forums', forumRouter);
+app.use('/comments', commentRouter);
 
 app.listen(3000, function() {
     console.log("App started")

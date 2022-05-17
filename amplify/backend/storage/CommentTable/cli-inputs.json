@@ -5,6 +5,18 @@
     "fieldName": "id",
     "fieldType": "string"
   },
-  "gsi": [],
+  "gsi": [
+    {
+      "name": "CommentForumGSI",
+      "partitionKey": {
+        "fieldName": "forumId",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      }
+    }
+  ],
   "triggerFunctions": []
 }
