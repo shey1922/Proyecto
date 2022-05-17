@@ -75,7 +75,7 @@ const getVideosByCourse = (req, res) => {
 
     const queryParams = {
         TableName: 'VideoTable-dev',
-        IndexName: 'VideoCourseGSI',
+        IndexName: 'VideoCourseIndex',
         KeyConditionExpression: 'courseId = :courseId',
         ExpressionAttributeValues: {
             ':courseId': id

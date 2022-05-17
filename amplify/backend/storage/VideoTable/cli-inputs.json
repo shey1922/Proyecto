@@ -18,9 +18,9 @@
       }
     },
     {
-      "name": "VideoCourseGSI",
+      "name": "VideoCourseIndex",
       "partitionKey": {
-        "fieldName": "moduleId",
+        "fieldName": "courseId",
         "fieldType": "string"
       },
       "sortKey": {
