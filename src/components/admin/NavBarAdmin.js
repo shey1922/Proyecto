@@ -1,18 +1,20 @@
-import React from "react";
+import { Auth } from "aws-amplify";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context";
 
 function NavBarAdmin() {
 
-  //const { setCurrentUser } = useContext(AuthContext);
+  const { setLoggedIn } = useContext(AuthContext);
 
-  /*const signOut = async () => {
+  const signOut = async () => {
     try {
       await Auth.signOut();
-      setCurrentUser('');
+      setLoggedIn(false);
     } catch (err) {
       console.error(err);
     }
-  };*/
+  };
 
   return (
     <header className="header">
@@ -32,7 +34,7 @@ function NavBarAdmin() {
             <Link to="/courses">Cursos</Link>
           </li>
           <li>
-            <Link to="/">Salir</Link>  
+            <Link to="/" onClick={signOut}>Salir</Link>  
           </li>
         </ul>
       </nav>

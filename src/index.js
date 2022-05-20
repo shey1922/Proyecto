@@ -90,8 +90,8 @@ ReactDOM.render(
             </PrivateRoute>
           }
         />
-        <Route path="home-admin" exact={true} element={<HomeAdmin />} />
-        <Route path="default-home" exact={true} element={<DefaultHome />} />
+        {/* <Route path="home-admin" exact={true} element={<DefaultHome />} /> */}
+        {/* <Route path="default-home" exact={true} element={<DefaultHome />} /> */}
         <Route path="manage-course"  exact={true} element={<ManageCourse />} />
         <Route path="manage-quiz"  exact={true} element={<ManageQuiz />} />
         <Route path="edit-course" exact={true} element={<EditCourse />}/>

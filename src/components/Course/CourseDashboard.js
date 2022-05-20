@@ -10,7 +10,7 @@ function CourseDashboard() {
   const [modules, setModules] = useState([]);
 
   useEffect(() => {
-    API.get('proyectoApi', '/modules', {})
+    API.get('WebcsAPI', '/modules', {})
       .then(setModules)
       .catch(console.error);
   }, []);

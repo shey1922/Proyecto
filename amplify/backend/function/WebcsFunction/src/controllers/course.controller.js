@@ -48,6 +48,10 @@ const addCourse = (req, res) => {
     });
 }
 
+const register = (req, res) => {
+    
+}
+
 const getModulesByCourse = (req, res) => {
 
     const { id } = req.params;

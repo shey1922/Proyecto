@@ -36,7 +36,51 @@ const getUserById = (req, res) => {
     });
 }
 
+const getCommentsByUser = (req, res) => {
+    const { id } = req.params;
+
+    const queryParams = {
+        TableName: 'CommentTable-dev',
+        IndexName: 'CommentUserIndex',
+        KeyConditionExpression: 'userId = :userId',
+        ExpressionAttributeValues: {
+            ':userId': id
+        }
+    };
+
+    db.query(queryParams, (err, data) => {
+        if (err) {
+            res.status(500).json({error: err, url: req.url, body: req.body});
+        } else {
+            res.status(200).json(data.Items);
+        }
+    });
+}
+
+const getForumsByUser = (req, res) => {
+    const { id } = req.params;
+
+    const queryParams = {
+        TableName: 'ForumTable-dev',
+        IndexName: 'ForumUserIndex',
+        KeyConditionExpression: 'userId = :userId',
+        ExpressionAttributeValues: {
+            ':userId': id
+        }
+    };
+
+    db.query(queryParams, (err, data) => {
+        if (err) {
+            res.status(500).json({error: err, url: req.url, body: req.body});
+        } else {
+            res.status(200).json(data.Items);
+        }
+    });
+}
+
 module.exports = {
     getUsers,
-    getUserById
+    getUserById,
+    getCommentsByUser,
+    getForumsByUser
 }

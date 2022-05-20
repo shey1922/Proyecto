@@ -13,23 +13,32 @@ Amplify.configure(awsExports);
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isAdmin, setSetAdmin] = useState(false);
+  const [isAdmin, setAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    Auth.currentAuthenticatedUser()
-      .then(session => {
+    const verifySessionAndAdmin = async () => {
+      try {
+        await Auth.currentAuthenticatedUser();
+        const { username } = await Auth.currentUserPoolUser();
+        const user = await API.get('WebcsAPI', `/users/${username}`, {});
         setLoggedIn(true);
+        setAdmin(user.isAdmin);
         navigate('/', { replace: true });
-      })
-      .catch(err => setLoggedIn(false))
+      } catch (err) {
+        setLoggedIn(false);
+        setAdmin(false);
+      }
+    }
+
+    verifySessionAndAdmin();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ loggedIn, setLoggedIn }}>
-      {loggedIn && <Navbar />}
+    <AuthContext.Provider value={{ loggedIn, setLoggedIn, isAdmin, setAdmin }}>
+      {loggedIn && !isAdmin && <Navbar />}
       <Outlet />
-      {loggedIn && <Footer />}
+      {loggedIn && !isAdmin && <Footer />}
     </AuthContext.Provider>
   );
 }

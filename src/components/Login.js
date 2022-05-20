@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
-import { Auth } from 'aws-amplify'
+import { API, Auth } from 'aws-amplify'
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context";
 
@@ -71,7 +71,7 @@ const Panel = styled.div`
 
 export default function Login() {
 
-  const { setLoggedIn } = useContext(AuthContext);
+  const { setLoggedIn, setAdmin } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -82,6 +82,11 @@ export default function Login() {
     event.preventDefault();
     try {
       await Auth.signIn(email, password);
+      const { username } = await Auth.currentUserPoolUser();
+      const { isAdmin } = await API.get('WebcsAPI', `/users/${username}`, {});
+      console.log(username);
+      console.log(isAdmin);
+      setAdmin(isAdmin);
       setLoggedIn(true);
       navigate('/', { replace: true });
     } catch (err) {
@@ -110,10 +115,8 @@ export default function Login() {
             <Input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             <span>¿Olvidaste tu contraseña?</span>
             <Button type="submit">INICIAR SESIÓN</Button>
+            <Button onClick={() => navigate('/home-admin')}>ADMIN</Button>
           </Form>
-          
-          <Button type="submit" onClick={() => navigate('/home-admin')}>Login Admin</Button>
-          
         </Box>
         <Panel>
           <Title>¡Saludos!</Title>
