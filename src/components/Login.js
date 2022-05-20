@@ -115,7 +115,6 @@ export default function Login() {
             <Input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             <span>¿Olvidaste tu contraseña?</span>
             <Button type="submit">INICIAR SESIÓN</Button>
-            <Button onClick={() => navigate('/home-admin')}>ADMIN</Button>
           </Form>
         </Box>
         <Panel>
