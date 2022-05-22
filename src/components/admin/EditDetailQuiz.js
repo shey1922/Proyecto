@@ -16,7 +16,7 @@ function EditDetailQuiz() {
               <div className="head-section-quiz">
                 <div className="column-1-head-section">
                   <h2 className="title-section-manage-course">Edit Quiz</h2>
-                  <p className="route-section-manage-course"> <a onClick={() => navigate('/default-home')}>Home</a> &gt; <a onClick={() => navigate('/edit-quiz')}>List Quizes</a> &gt; <a>Add Quiz</a></p>
+                  <p className="route-section-manage-course"> <a onClick={() => navigate('/default-home')}>Home</a> &gt; <a onClick={() => navigate('/edit-quiz')}>List Quizes</a> &gt; <a>Edit Quiz</a></p>
                 </div>
               </div>
               <div className="body-section-edit-course">

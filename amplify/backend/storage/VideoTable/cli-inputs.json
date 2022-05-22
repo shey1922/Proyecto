@@ -18,9 +18,15 @@
       }
     },
     {
+<<<<<<< Updated upstream
       "name": "VideoCourseGSI",
       "partitionKey": {
         "fieldName": "moduleId",
+=======
+      "name": "VideoCourseIndex",
+      "partitionKey": {
+        "fieldName": "courseId",
+>>>>>>> Stashed changes
         "fieldType": "string"
       },
       "sortKey": {

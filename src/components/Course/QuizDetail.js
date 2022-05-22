@@ -87,7 +87,7 @@ function QuizDetail() {
             else{
                 swal.fire('Cuestionario Enviado!', '', 'success');
                 if(array[u].value === correctAnswers[u]){
-                    count +=2;
+                    count += 2;
                 }
             }
         }
@@ -104,6 +104,9 @@ function QuizDetail() {
         if(aux === 10){
             localStorage.setItem("notaExamen", count);
             navigate('/result-quiz');
+            localStorage.setItem("answers", JSON.stringify(array));
+            localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
+            localStorage.setItem("questions", JSON.stringify(questions1));
         }
     }
 

@@ -10,7 +10,7 @@ function Courses() {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    API.get('proyectoApi', '/courses', {})
+    API.get('WebcsAPI', '/courses', {})
       .then(setCourses)
       .catch(console.error);
   }, []);

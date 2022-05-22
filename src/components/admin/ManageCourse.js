@@ -1,12 +1,69 @@
 import React from "react";
 import NavBarAdmin from './NavBarAdmin'
 import SideBarAdmin from "./SideBar";
-import Modal from 'react-bootstrap/Modal'
+import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from "react-router-dom";
+import { Alert } from '@mui/material';
 
 function ManageCourse() {
+  const navigate = useNavigate();
   const [modalShow, setModalShow] = React.useState(false);
-  
+  const [show, setShow] = React.useState(false);
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [courseTitle, setCourseTitle] = React.useState("");
+  const [courseDescription, setDescription] = React.useState("");
+  const [courseHour, setCourseHour] = React.useState(0);
+  const [courseLessons, setLessons] = React.useState(0);
+  const [courseLevel, setLevel] = React.useState("Beginner");
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+    handleCloseAlert();
+  }
+
+  const handleShowAlert = () => setShowAlert(true);
+  const handleCloseAlert = () => setShowAlert(false);
+
+  const updateCourseTitle = (event) => {
+    setCourseTitle(event.target.value)
+  }
+
+  const updateDescription = (event) => {
+    setDescription(event.target.value)
+  }
+
+  const updateHour = (event) => {
+    setCourseHour(event.target.value)
+  }
+
+  const updateLessons = (event) => {
+    setLessons(event.target.value)
+  }
+
+  const updateLevel = (event) => {
+    setLevel(event.target.value)
+  }
+
+  const changeAddSections = () => {
+    console.log(courseTitle);
+    console.log(courseDescription);
+    console.log(courseHour);
+    console.log(courseLessons);
+    console.log(courseLevel);
+    if(courseTitle === "" | courseDescription === "" | courseHour === 0 | courseLessons === 0 | courseLevel === ""){
+      handleShowAlert();
+    } else {
+      localStorage.setItem("ACcourseTitle", courseTitle);
+      localStorage.setItem("ACcourseDescription", courseDescription);
+      localStorage.setItem("ACcourseHour", courseHour);
+      localStorage.setItem("ACcourseLessons", courseLessons);
+      localStorage.setItem("ACcourseLevel", courseLevel);
+      handleClose();
+      navigate('/add-course');
+    }
+  }
+
   return (
     <div>
       <NavBarAdmin></NavBarAdmin>
@@ -19,7 +76,7 @@ function ManageCourse() {
               <p className="route-section-manage-course">Home &gt; Cursos </p>
             </div>
             <div className="column-2-head-section">
-              <button className="btn-add-course">ADD COURSE</button>
+              <button className="btn-add-course" onClick={handleShow}>ADD COURSE</button>
             </div>
           </div>
 
@@ -27,6 +84,54 @@ function ManageCourse() {
             show={modalShow}
             onHide={() => setModalShow(false)}
           />
+
+          <Modal show={show} onHide={handleClose} centered>
+            <Modal.Header closeButton>
+              <Modal.Title>Create Course</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              { (showAlert === false) ? <div></div>: 
+                <Alert severity="error">
+                  <h5>Falta completar datos!</h5>
+                </Alert>}
+              <div className="add-course-modal">
+                <div className="section-modal-add-course">
+                  <label>Course Title</label>
+                  <input className="input-add-course-modal" placeholder="Course title example" onChange={(event) => updateCourseTitle(event)}></input>
+                </div>
+                <div className="section-modal-add-course">
+                  <label>Description</label>
+                  <textarea className="input-ta-add-course-modal" rows="3" placeholder="Description course" onChange={(event) => updateDescription(event)}></textarea>
+                </div>
+                <div className="section-modal-add-course column-3">
+                  <div className="box-s">
+                    <label>Hours</label>
+                    <input className="input-add-course-modal" placeholder="0" type="number" onChange={(event) => updateHour(event)}></input>
+                  </div>
+                  <div className="box-s">
+                    <label>Lecciones</label>
+                    <input className="input-add-course-modal" placeholder="0" type="number" onChange={(event) => updateLessons(event)}></input>
+                  </div>
+                  <div className="box-s">
+                    <label>Level</label>
+                    <select name="typequestion" id="typequestion1" onChange={(event) => updateLevel(event)}>
+                      <option value="Beginer">Beginner</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Advanced">Advanced  </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <button className="close-btn" onClick={handleClose}>
+                Close
+              </button>
+              <button className="add-section-btn" onClick={(event) => changeAddSections()}>
+                Add Sections
+              </button>
+            </Modal.Footer>
+          </Modal>
 
           <div className="show-courses-section">
             <h3 className="subtitle-section-list-course">Section 1 title</h3>

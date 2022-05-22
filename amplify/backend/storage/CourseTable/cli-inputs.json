@@ -5,6 +5,22 @@
     "fieldName": "id",
     "fieldType": "string"
   },
+<<<<<<< Updated upstream
   "gsi": [],
+=======
+  "gsi": [
+    {
+      "name": "CourseUserIndex",
+      "partitionKey": {
+        "fieldName": "enrolledUserId",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      }
+    }
+  ],
+>>>>>>> Stashed changes
   "triggerFunctions": []
 }

@@ -3,9 +3,37 @@ import NavBarAdmin from './NavBarAdmin'
 import SideBarAdmin from "./SideBar";
 import { useNavigate } from "react-router-dom";
 import swal from 'sweetalert2';
+import Modal from 'react-bootstrap/Modal';
+import { Alert } from '@mui/material';
 
 function ManageQuiz() {
   const navigate = useNavigate();
+
+  const [showAlert1, setShowAlert1] = React.useState(false);
+  const [show, setShow] = React.useState(false);
+
+  const [quizTitle, setQuizTitle] = React.useState("");
+  const [courseAssign, setCourseAssign] = React.useState("");
+  const [sectionAssign, setSectionAssign] = React.useState("");
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+  }
+  const handleShowAlert = () => setShowAlert1(true);
+  const handleCloseAlert = () => setShowAlert1(false);
+
+  const updateQuizTitle = (event) => {
+    setQuizTitle(event.target.value)
+  }
+
+  const updatecourseAssign = (event) => {
+    setCourseAssign(event.target.value)
+  }
+
+  const updatesectionAssign = (event) => {
+    setSectionAssign(event.target.value)
+  }
 
   function refreshPage() {
     window.location.reload(false);
@@ -26,6 +54,13 @@ function ManageQuiz() {
     })
   }
 
+  const changeAddQuestions = () => {
+    console.log(quizTitle);
+    console.log(courseAssign);
+    console.log(sectionAssign);
+    navigate('/add-quiz');
+  }
+
   return (
     <div>
       <NavBarAdmin></NavBarAdmin>
@@ -38,9 +73,50 @@ function ManageQuiz() {
               <p className="route-section-manage-course">Home &gt; Quizes </p>
             </div>
             <div className="column-2-head-section">
-              <button className="btn-add-course">ADD QUIZ</button>
+              <button className="btn-add-course" onClick={handleShow}>ADD QUIZ</button>
             </div>
           </div>
+          <Modal show={show} onHide={handleClose} centered>
+            <Modal.Header closeButton>
+              <Modal.Title>Create Quiz</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              { (showAlert1 === false) ? <div></div>: 
+                <Alert severity="error">
+                  <h5>Falta completar datos!</h5>
+                </Alert>}
+              <div className="add-course-modal">
+                <div className="section-modal-add-course">
+                  <label>Quiz Title</label>
+                  <input className="input-add-course-modal" placeholder="Quiz title example" onChange={(event) => updateQuizTitle(event)}></input>
+                </div>
+                <div className="section-modal-add-course">
+                  <label>Course</label>
+                  <select name="typequestion" id="typequestion1" onChange={(event) => updatecourseAssign(event)}>
+                    <option value="Curso 1">Curso 1</option>
+                    <option value="Curso 2">Curso 2</option>
+                    <option value="Curso 3">Curso 3</option>
+                  </select>
+                </div>
+                <div className="section-modal-add-course">
+                  <label>Section</label>
+                  <select name="typequestion" id="typequestion1" onChange={(event) => updatesectionAssign(event)}>
+                    <option value="Section 1">Section 1</option>
+                    <option value="Section 2">Section 2</option>
+                    <option value="Section 3">Section 3</option>
+                  </select>
+                </div>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <button className="close-btn" onClick={handleClose}>
+                Close
+              </button>
+              <button className="add-section-btn" onClick={(event) => changeAddQuestions()}>
+                Add Questions
+              </button>
+            </Modal.Footer>
+          </Modal>
           <div className="show-quiz-section">
             <div className="list-items-quizes">
               <div class="item-quiz">

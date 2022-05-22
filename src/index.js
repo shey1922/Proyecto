@@ -27,6 +27,8 @@ import ModuleContent from "./components/Course/ModuleContent";
 import LessonDetail from "./components/Course/LessonDetail";
 import QuizDetail from "./components/Course/QuizDetail";
 import ResultQuiz from "./components/Course/ResultQuiz";
+import AddCourse from "./components/admin/AddCourse";
+import AddQuiz from "./components/admin/AddQuiz";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -103,7 +105,9 @@ ReactDOM.render(
         <Route path="module-content" exact={true} element={<ModuleContent/>}/>
         <Route path="lesson-detail" exact={true} element={<LessonDetail/>}/>
         <Route path="quiz-detail" exact={true} element={<QuizDetail/>}/>
-        <Route path="result-quiz" exact ={true} element={<ResultQuiz/>}></Route>
+        <Route path="result-quiz" exact ={true} element={<ResultQuiz/>}/>
+        <Route path="add-course" exact ={true} element={<AddCourse/>} />
+        <Route path="add-quiz" exact ={true} element={<AddQuiz/>} />
       </Route>
     </Routes>
   </BrowserRouter>,

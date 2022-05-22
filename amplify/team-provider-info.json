@@ -25,10 +25,69 @@
         "proyectoAuthPostConfirmation": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
           "s3Key": "amplify-builds/proyectoAuthPostConfirmation-4d347738304e6a4f4d4d-build.zip"
+<<<<<<< Updated upstream
+=======
+        },
+        "testFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/testFunc-716c3472555a7a7a394d-build.zip"
+        },
+        "questionsFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/questionsFunc-68346869525676743635-build.zip"
+        },
+        "videoFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/videoFunc-7a4f4158614d434b6532-build.zip"
+        },
+        "modulesFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/modulesFunc-3256636d70374b517a73-build.zip"
+        },
+        "answerFunc": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/answerFunc-4a4e553169392f4e3657-build.zip"
+>>>>>>> Stashed changes
         },
         "WebcsFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+<<<<<<< Updated upstream
           "s3Key": "amplify-builds/WebcsFunction-445a6d38374a35344f45-build.zip"
+=======
+          "s3Key": "amplify-builds/coursesFunc-784678586f4832797149-build.zip"
+        },
+        "coursesLambda": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/coursesLambda-4e643250666b49566f31-build.zip"
+        },
+        "modulesLambda": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/modulesLambda-4e6a3156674759367836-build.zip"
+        },
+        "videoLambda": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/videoLambda-6461306a50504b574976-build.zip"
+        },
+        "testLambda": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/testLambda-656f7336556671763352-build.zip"
+        },
+        "questionLambda": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/questionLambda-7062484c41575756694e-build.zip"
+        },
+        "answerLambda": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/answerLambda-51595031685052594561-build.zip"
+        },
+        "proyectoutilFunction": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/proyectoutilFunction-LambdaLayerVersion0e5af165-build.zip"
+        },
+        "WebcsFunction": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/WebcsFunction-44365848413964647367-build.zip"
+>>>>>>> Stashed changes
         }
       },
       "hosting": {

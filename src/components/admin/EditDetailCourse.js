@@ -32,8 +32,8 @@ function EditDetailCourse() {
               <div className="content-manage-course">
                 <div className="head-section">
                   <div className="column-1-head-section">
-                    <h2 className="title-section-manage-course">Courses</h2>
-                    <p className="route-section-manage-course"> <a>Home</a> &gt; <a onClick={() => navigate('/edit-course')}>List Courses</a> &gt; <a>Add Course</a></p>
+                    <h2 className="title-section-manage-course">Edit Course</h2>
+                    <p className="route-section-manage-course"> <a>Home</a> &gt; <a onClick={() => navigate('/edit-course')}>List Courses</a> &gt; <a>Edit Course</a></p>
                   </div>
                 </div>
               </div>
