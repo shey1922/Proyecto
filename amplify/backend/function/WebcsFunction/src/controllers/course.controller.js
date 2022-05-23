@@ -1,5 +1,6 @@
 const { v4 } = require('uuid');
 const db = require('../db');
+const { mapArrayToFilterExpression } = require('../util');
 
 const getCourses = (req, res) => {
     const scanParams = {
@@ -48,8 +49,32 @@ const addCourse = (req, res) => {
     });
 }
 
-const register = (req, res) => {
-    
+const enroll = (req, res) => {
+    const { userId } = req.body;
+
+    if (!userId) return res.status(400).json({ error: 'userId is missing' });
+
+    const enrollmentDate = new Date();
+
+    const newEnrollment = {
+        userId,
+        courseId: req.params.id,
+        enrollmentDate: enrollmentDate.toISOString(),
+        completed: false
+    };
+
+    const putParams = {
+        TableName: 'UserCourseTable-dev',
+        Item: newEnrollment
+    };
+
+    db.put(putParams, (err, data) => {
+        if (err) {
+            res.status(500).json({error: err, url: req.url, body: req.body});
+        } else {
+            res.status(201).json({ message: 'Enrollment completed successfully' });
+        }
+    });
 }
 
 const getModulesByCourse = (req, res) => {
@@ -116,10 +141,40 @@ const getTestsByCourse = (req, res) => {
     });
 }
 
+const getParticipantsByCourse = async (req, res) => {
+    const { id } = req.params;
+
+    const queryParams = {
+        TableName: 'UserCourseTable-dev',
+        IndexName: 'FilterUserIndex',
+        KeyConditionExpression: 'courseId = :courseId',
+        ExpressionAttributeValues: {
+            ':courseId': id
+        }
+    }
+    
+    try {
+        const { Items } = await db.query(queryParams).promise();
+        const userIds = Items.map(item => item.userId);
+        const attributeValues = mapArrayToFilterExpression(userIds);
+        const userScanParams = {
+            TableName: 'UserTable-dev',
+            FilterExpression: `id IN (${Object.keys(attributeValues).toString()})`,
+            ExpressionAttributeValues: attributeValues 
+        };
+        const data = await db.scan(userScanParams).promise();
+        res.status(200).json(data.Items);
+    } catch (err) {
+        res.status(500).json({error: err, url: req.url, body: req.body});
+    }
+}
+
 module.exports = {
     getCourses,
     addCourse,
+    enroll,
     getModulesByCourse,
     getVideosByCourse,
-    getTestsByCourse
+    getTestsByCourse,
+    getParticipantsByCourse
 }

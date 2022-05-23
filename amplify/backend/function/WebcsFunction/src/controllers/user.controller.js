@@ -1,4 +1,5 @@
 const db = require('../db');
+const { mapArrayToFilterExpression } = require('../util');
 
 const getUsers = (req, res) => {
 
@@ -78,9 +79,40 @@ const getForumsByUser = (req, res) => {
     });
 }
 
+const getEnrolledCourses = async (req, res) => {
+    const { id } = req.params;
+
+    const queryParams = {
+        TableName: 'UserCourseTable-dev',
+        KeyConditionExpression: 'userId = :userId',
+        ExpressionAttributeValues: {
+            ':userId': id
+        }
+    }
+
+    const { Items } = await db.query(queryParams).promise();
+    const courseIds = Items.map(item => item.courseId);
+    const attributeValues = mapArrayToFilterExpression(courseIds);
+
+    const courseScanParams = {
+        TableName: 'CourseTable-dev',
+        FilterExpression: `id IN (${Object.keys(attributeValues).toString()})`,
+        ExpressionAttributeValues: attributeValues
+    };
+
+    try {
+        const data = await db.scan(courseScanParams).promise();
+        res.status(200).json(data.Items);
+    } catch (err) {
+        res.status(500).json({error: err, url: req.url, body: req.body});
+    }
+    
+}
+
 module.exports = {
     getUsers,
     getUserById,
     getCommentsByUser,
-    getForumsByUser
+    getForumsByUser,
+    getEnrolledCourses
 }

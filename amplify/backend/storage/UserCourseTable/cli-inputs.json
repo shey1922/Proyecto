@@ -9,6 +9,18 @@
     "fieldName": "courseId",
     "fieldType": "string"
   },
-  "gsi": [],
+  "gsi": [
+    {
+      "name": "FilterUserIndex",
+      "partitionKey": {
+        "fieldName": "courseId",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "userId",
+        "fieldType": "string"
+      }
+    }
+  ],
   "triggerFunctions": []
 }

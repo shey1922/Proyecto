@@ -74,6 +74,9 @@ app.use('/questions', questionRouter);
 app.use('/answer', answerRouter);
 app.use('/forums', forumRouter);
 app.use('/comments', commentRouter);
+app.get('/auth', function(req, res) {
+	res.status(200).send(req.apiGateway.event.requestContext.identity.cognitoIdentityId);
+});
 
 app.listen(3000, function() {
     console.log("App started")

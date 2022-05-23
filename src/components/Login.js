@@ -81,11 +81,8 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await Auth.signIn(email, password);
-      const { username } = await Auth.currentUserPoolUser();
+      const { username } = await Auth.signIn(email, password);
       const { isAdmin } = await API.get('WebcsAPI', `/users/${username}`, {});
-      console.log(username);
-      console.log(isAdmin);
       setAdmin(isAdmin);
       setLoggedIn(true);
       navigate('/', { replace: true });

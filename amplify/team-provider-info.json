@@ -28,7 +28,7 @@
         },
         "WebcsFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/WebcsFunction-70577a78683859763571-build.zip"
+          "s3Key": "amplify-builds/WebcsFunction-4832727448696e426173-build.zip"
         }
       },
       "hosting": {
