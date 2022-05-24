@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SideBarCourse from './SideBarCourse';
 import exams from '../../data/exam';
 import swal from 'sweetalert2';
+import { API } from 'aws-amplify';
 import { useNavigate } from "react-router-dom";
 
 function QuizDetail() {
@@ -13,45 +14,61 @@ function QuizDetail() {
     var questions1 = [];
     var correctAnswers = [];
 
-    const[array,setArray]= useState([
-        {id: 1, value: 0},
-        {id: 2, value: 0},
-        {id: 3, value: 0},
-        {id: 4, value: 0},
-        {id: 5, value: 0},
-        {id: 6, value: 0},
-        {id: 7, value: 0},
-        {id: 8, value: 0},
-        {id: 9, value: 0},
-        {id: 10, value: 0},
+    const [array, setArray] = useState([
+        { id: 1, value: 0 },
+        { id: 2, value: 0 },
+        { id: 3, value: 0 },
+        { id: 4, value: 0 },
+        { id: 5, value: 0 },
+        { id: 6, value: 0 },
+        { id: 7, value: 0 },
+        { id: 8, value: 0 },
+        { id: 9, value: 0 },
+        { id: 10, value: 0 },
     ])
 
-    const updateItem =(id, whichvalue, newvalue)=> {
-        var index = array.findIndex(x=> x.id === id);
+    const alternativesID = [0]
+    const anwserID = [0]
+
+    const [alternatives, setAlternatives] = useState([])
+    const [answers, setAnswers] = useState([])
+
+    useEffect(() => {
+        API.get('WebcsAPI', `/questions/${alternativesID}/alternatives`, {})
+            .then(setAlternatives, console.log('Alternativa encontrada'))
+            .catch(console.error);
+
+        API.get('WebcsAPI', `/questions/${anwserID}/correct-answers`, {})
+            .then(setAnswers, console.log('Respuesta encontrada'))
+            .catch(console.error);
+    }, []);
+
+    const updateItem = (id, whichvalue, newvalue) => {
+        var index = array.findIndex(x => x.id === id);
 
         let g = array[index]
         g[whichvalue] = newvalue
-        if (index === -1){
+        if (index === -1) {
             // handle error
             console.log('no match')
         }
         else
             setArray([
-                ...array.slice(0,index),
+                ...array.slice(0, index),
                 g,
-                ...array.slice(index+1)
-                ]
+                ...array.slice(index + 1)
+            ]
             );
     }
 
-    if(textFromStorage === "Pretest – Atención Integral a Víctimas de Violencia Sexual"){
+    if (textFromStorage === "Pretest – Atención Integral a Víctimas de Violencia Sexual") {
         questions1 = [...exams[0].questions];
-        for(var i = 0; i < questions1.length; i++) {
+        for (var i = 0; i < questions1.length; i++) {
             correctAnswers.push(questions1[i].correct);
         }
-    } else{
+    } else {
         questions1 = [...exams[1].questions];
-        for(var l = 0; l < questions1.length; l++) {
+        for (var l = 0; l < questions1.length; l++) {
             correctAnswers.push(questions1[l].correct);
         }
     }
@@ -64,9 +81,9 @@ function QuizDetail() {
     }
 
     const validateAnswer = (correct, idQuestion) => {
-        if(array[idQuestion-1].value === 0){
+        if (array[idQuestion - 1].value === 0) {
             swal.fire('Seleccine una respuesta!', '', 'error');
-        } else if(auxAnswer === correct){
+        } else if (auxAnswer === correct) {
             console.log("CORRECTO")
             swal.fire('Respuesta Guardada', '', 'success');
             setAuxLenghtAnswers(auxLenghtAnswers + 1);
@@ -79,29 +96,29 @@ function QuizDetail() {
 
     const sendQuiz = () => {
         let count = 0;
-        for(var u = 0; u < questions1.length; u++) {
-            if(array[u].value === 0 ){
+        for (var u = 0; u < questions1.length; u++) {
+            if (array[u].value === 0) {
                 swal.fire('Falta completar algunas respuestas!', '', 'error');
                 break;
             }
-            else{
+            else {
                 swal.fire('Cuestionario Enviado!', '', 'success');
-                if(array[u].value === correctAnswers[u]){
-                    count +=2;
+                if (array[u].value === correctAnswers[u]) {
+                    count += 2;
                 }
             }
         }
-        var aux = 0; 
-        for(var b = 0; b < questions1.length; b++) {
-            if(array[b].value === 0 ){
+        var aux = 0;
+        for (var b = 0; b < questions1.length; b++) {
+            if (array[b].value === 0) {
                 console.log("a");
                 break;
             }
-            else{
-                aux+=1;
+            else {
+                aux += 1;
             }
         }
-        if(aux === 10){
+        if (aux === 10) {
             localStorage.setItem("notaExamen", count);
             navigate('/result-quiz');
         }
@@ -132,7 +149,7 @@ function QuizDetail() {
 
     return (
         <div className="flex">
-            <SideBarCourse/>
+            <SideBarCourse />
             <div className="content-manage-course">
                 <h2 className="title-section-quiz-detail">{textFromStorage}</h2>
                 {questionsList}

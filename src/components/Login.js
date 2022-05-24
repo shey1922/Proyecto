@@ -83,6 +83,9 @@ export default function Login() {
     try {
       const { username } = await Auth.signIn(email, password);
       const { isAdmin } = await API.get('WebcsAPI', `/users/${username}`, {});
+      console.log(username);
+      localStorage.setItem("userId", username);
+      console.log(isAdmin);
       setAdmin(isAdmin);
       setLoggedIn(true);
       navigate('/', { replace: true });

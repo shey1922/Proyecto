@@ -10,21 +10,6 @@ function Footer() {
           <a href="home.html">
             <i className="fas fa-arrow-right" /> Inicio
           </a>
-          <a href="about.html">
-            <i className="fas fa-arrow-right" /> Acerca de
-          </a>
-          <a href="course-1.html">
-            <i className="fas fa-arrow-right" /> Curso-1
-          </a>
-          <a href="course-2.html">
-            <i className="fas fa-arrow-right" /> Curso-2
-          </a>
-          <a href="course-3.html">
-            <i className="fas fa-arrow-right" /> Curso-3
-          </a>
-          <a href="teachers.html">
-            <i className="fas fa-arrow-right" /> Administradores
-          </a>
           <a href="blog.html">
             <i className="fas fa-arrow-right" /> Blog
           </a>

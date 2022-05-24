@@ -9,7 +9,7 @@ function DefaultHome() {
       <div className="flex">
         <SideBarAdmin></SideBarAdmin>
         <div className="defaulthome">
-          default home
+          a
         </div>
       </div>
     </div>

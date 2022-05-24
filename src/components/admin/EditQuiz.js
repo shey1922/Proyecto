@@ -32,8 +32,8 @@ function EditQuiz() {
         <div className="content-edit-quizes">
           <div className="head-section-quiz">
             <div className="column-1-head-section">
-              <h2 className="title-section-manage-course">List Quizes</h2>
-              <p className="route-section-manage-course">Home &gt; List Quizes </p>
+              <h2 className="title-section-manage-course">Lista de Cuestionarios</h2>
+              <p className="route-section-manage-course">Home &gt; Lista de Cuestionarios </p>
             </div>
             <div className="column-2-head-section">
               <i class='fa fa-ellipsis-v fa-2x'></i>
@@ -44,9 +44,9 @@ function EditQuiz() {
             <thead>
               <tr>
                 <th>Id</th>
-                <th>Quiz Name</th>
-                <th>Participants</th>
-                <th>Actions</th>
+                <th>Nombre del Cuestionario</th>
+                <th>Participantes</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>

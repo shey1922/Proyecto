@@ -7,13 +7,24 @@ const modules = [
                 id: 1,
                 title: 'Antes de empezar el curso',
                 type: 'lesson',
+                list: [
+                    {ul: "Luego de desarrollar o ver el recurso mostrado (Video, Podcast o Juego) da clic en SIGUIENTE UNIDAD."},
+                    {ul: "En la parte superior izquierda de la pantalla, podrás observar tu avance del curso."},
+                    {ul: "Crea un clima agradable que te ayude a concentrarte en el estudio. Elige un lugar cómodo, silencioso, que tenga buena iluminación y ventilación."},
+                    {ul: "Organiza bien tu tiempo para que otras actividades no interrumpan tu navegación del curso."},
+                    {ul: "Toma nota de los asuntos que te parezcan más relevantes."},
+                    {ul: "Ten a la mano lo que consideres necesario para favorecer tu aprendizaje según preferencia, por ejemplo, lapicero, cuaderno, aplicación para hacer notas digitales, etc."},
+                    {ul: "Iniciarás con un cuestionario de autoevaluación (PRETEST) en donde podrás medir tus conocimientos, sí los respondes todos acertadamente nos parecería maravilloso, de todas maneras te aseguramos que aprenderás algo diferente y reforzaras tu aprendizaje durante el curso, por otra parte, si no logras contestarlos todos acertadamente, ¡no te preocupes! de eso se trata el proceso de aprendizaje, consolidar el conocimiento de acuerdo a saberes previos (pedagogía constructivista)."},
+                    {ul: "Si el curso es de contenido gratuito, NO incluye la constancia de participación (certificado) este es opcional y tendrá un costo, solo si lo deseas. Este se pagaría una vez finalices el curso. SIGUIENTE UNIDAD"}
+                ],
                 terms: []
             },
             {
                 id: 2,
                 title: 'Introducción al curso de atención a víctimas de violenca sexual',
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 3,
@@ -31,7 +42,8 @@ const modules = [
                 title: 'Atención integral - Claves para la atención a mujeres víctimas de violencia',
                 link: "https://www.youtube.com/watch?v=zYrC0R8yQ9I",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 2,
@@ -92,21 +104,24 @@ const modules = [
                         paraph: "Tales como regulación de la vida social, servicios domésticos forzados, esterilización forzada, y aborto forzado. Por regulación de la vida social se considera el acto o conjunto de actos por los cuales, y mediante el uso de la fuerza o la amenaza de su uso se controla la sexualidad y la regula la vida afectiva. Por aborto forzado se entiende todo acto que tiene como finalidad la interrupción inducida de un embarazo en contra de la voluntad de la mujer embarazada. La esterilización forzada se entiende como la acción de planificación reproductiva definitiva producto de la obligación no consentida de la persona. Por servicios domésticos forzados se entiende el conjunto de acciones mediante el cual generalmente un grupo que detenta la fuerza obliga a un grupo de personas o a una persona a realizar para ellos labores domésticas que pueden trascender incluso a actos sexuales."
                     }
                 ],
-                type: 'lesson'
+                type: 'lesson',
+                list: []
             },
             {
                 id: 3,
                 title: 'Violencia sexual – Epidemiología',
                 link: "https://www.youtube.com/watch?v=z0t3tJpkfeM",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 4,
                 title: 'Rutas de atención – Minsalud',
                 link: "https://www.youtube.com/watch?v=QqUiaRmx794",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
         ]
     },
@@ -119,48 +134,55 @@ const modules = [
                 title: 'Protocolo - Paso 1',
                 link: "https://www.youtube.com/watch?v=WNVMZ5sfNz0",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 6,
                 title: 'Protocolo - Paso 2',
                 link: "https://www.youtube.com/watch?v=SC7sQYhujeg",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 7,
                 title: 'Protocolo - Paso 3',
                 link: "https://www.youtube.com/watch?v=Pp87jIX8q5M",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 21,
                 title: 'Protocolo - Paso 4',
                 link: "https://www.youtube.com/watch?v=6iN0vSy0VM0",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 8,
                 title: 'Protocolo - Paso 4 - Segunda Parte',
                 link: "https://www.youtube.com/watch?v=E6RuVzLfon4",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 9,
                 title: 'Protocolo - Paso 5',
                 link: "https://www.youtube.com/watch?v=x3NoSc7CjDM",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 10,
                 title: 'Tomas de muestras forenses',
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
         ]
     },
@@ -173,35 +195,40 @@ const modules = [
                 title: 'Protocolo - Paso 6',
                 link: "https://www.youtube.com/watch?v=kgDonZ0bbow",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 12,
                 title: 'Protocolo - Paso 7',
                 link: "https://www.youtube.com/watch?v=mnCYpBF9mKc",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 13,
                 title: 'Protocolo - Paso 8',
                 link: "https://www.youtube.com/watch?v=S1HqLu1rHh0",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 14,
                 title: 'Protocolo - Paso 9',
                 link: "https://www.youtube.com/watch?v=yLLhlBKAvrU",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 15,
                 title: 'Protocolo - Paso 10',
                 link: "https://www.youtube.com/watch?v=uQsxjtFdiwk",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
         ]
     },
@@ -214,35 +241,40 @@ const modules = [
                 title: 'Protocolo - Paso 11',
                 link: "https://www.youtube.com/watch?v=I6UK60Cw64M",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 17,
                 title: 'Protocolo - Paso 12',
                 link: "https://www.youtube.com/watch?v=tuWEMsBH8Sw",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 18,
                 title: 'Protocolo - Paso 13',
                 link: "https://www.youtube.com/watch?v=-kMc2ewjk2o",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 19,
                 title: 'Protocolo - Paso 14',
                 link: "https://www.youtube.com/watch?v=uxOLXFbHLr4",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 20,
                 title: 'Protocolo - Paso 15',
                 link: "https://www.youtube.com/watch?v=IB0GHY2jkdk",
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
         ]
     },
@@ -254,19 +286,22 @@ const modules = [
                 id: 16,
                 title: 'Evaluación Curso Atención Integral a Víctimas de Violencia Sexual',
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 17,
                 title: 'Violencia Sexual Test',
                 type: 'quiz',
-                terms: []
+                terms: [],
+                list: []
             },
             {
                 id: 18,
                 title: 'Certificado del Curso',
                 type: 'lesson',
-                terms: []
+                terms: [],
+                list: []
             },
         ]
     },
@@ -312,13 +347,13 @@ const modules = [
                 id: 1,
                 title: 'Resultados de examen de Atención Integral a Víctimas de Violencia Sexual',
                 type: 'lesson',
-                terms: [{ title: "Nota del examen: 18" },],
+                terms: [{ title: "Nota del examen: 18", parah: "Nota aprobatoria" },],
             },
             {
                 id: 2,
                 title: 'Resultados de examen Final de Atención Integral a Víctimas de Violencia Sexual',
                 type: 'lesson',
-                terms: [{ title: "Nota del examen: 20" },],
+                terms: [{ title: "Nota del examen: 20", parah: "Nota aprobatoria" },],
             },
         ]
     }

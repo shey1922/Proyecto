@@ -44,7 +44,7 @@ function ModuleContent() {
     return (
         <div className="flex">
             <SideBarCourse/>
-            <div className="content-manage-course">
+            <div className="content-manage-course-1">
                 <div className="head-section-quiz">
                     <div className="column-1-head-section">
                         <h2 className="title-section-manage-course">{textFromStorage}</h2>

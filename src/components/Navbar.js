@@ -27,9 +27,6 @@ function Navbar() {
             <Link to="/">Inicio</Link>
           </li>
           <li>
-            <Link to="/about">Acerca de</Link>
-          </li>
-          <li>
             <Link to="/courses">Cursos</Link>
           </li>
           <li>

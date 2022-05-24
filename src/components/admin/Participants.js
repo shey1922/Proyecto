@@ -39,8 +39,8 @@ function Participants() {
                 <div className="participants-content">
                 <div className="head-section-quiz">
                     <div className="column-1-head-section">
-                        <h2 className="title-section-manage-course">Participants</h2>
-                        <p className="route-section-manage-course">Home &gt; List of participants</p>
+                        <h2 className="title-section-manage-course">Lista de participantes</h2>
+                        <p className="route-section-manage-course">Home &gt; Lista of participantes</p>
                     </div>
                     <div className="column-2-head-section">
                         <div class="box">

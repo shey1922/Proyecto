@@ -91,14 +91,15 @@ const getEnrolledCourses = async (req, res) => {
     }
 
     const { Items } = await db.query(queryParams).promise();
-    const courseIds = Items.map(item => item.courseId);
-    const attributeValues = mapArrayToFilterExpression(courseIds);
+    console.log(Items);
 
     const courseScanParams = {
         TableName: 'CourseTable-dev',
-        FilterExpression: `id IN (${Object.keys(attributeValues).toString()})`,
-        ExpressionAttributeValues: attributeValues
-    };
+        FilterExpression: 'contains (id, :ids)',
+        ExpressionAttributeValues: {
+            ':ids': Items.map(r => r.courseId)
+        }
+    }
 
     try {
         const data = await db.scan(courseScanParams).promise();
