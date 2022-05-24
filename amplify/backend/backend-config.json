@@ -79,6 +79,10 @@
     "UserCourseTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "UserTestTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
@@ -187,6 +191,15 @@
         {
           "category": "storage",
           "resourceName": "UserCourseTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "UserTestTable",
           "attributes": [
             "Name",
             "Arn",

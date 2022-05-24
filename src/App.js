@@ -20,8 +20,9 @@ function App() {
     const verifySessionAndAdmin = async () => {
       try {
         await Auth.currentAuthenticatedUser();
-        const { username } = await Auth.currentUserPoolUser();
-        const user = await API.get('WebcsAPI', `/users/${username}`, {});
+        const response = await Auth.currentUserPoolUser();
+        console.log(response);
+        const user = await API.get('WebcsAPI', `/users/${response.username}`, {});
         setLoggedIn(true);
         setAdmin(user.isAdmin);
         navigate('/', { replace: true });

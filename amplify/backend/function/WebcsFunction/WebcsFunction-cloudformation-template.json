@@ -135,6 +135,18 @@
     "storageModuleTableStreamArn": {
       "Type": "String",
       "Default": "storageModuleTableStreamArn"
+    },
+    "storageUserTestTableName": {
+      "Type": "String",
+      "Default": "storageUserTestTableName"
+    },
+    "storageUserTestTableArn": {
+      "Type": "String",
+      "Default": "storageUserTestTableArn"
+    },
+    "storageUserTestTableStreamArn": {
+      "Type": "String",
+      "Default": "storageUserTestTableStreamArn"
     }
   },
   "Conditions": {
@@ -279,6 +291,15 @@
             },
             "STORAGE_MODULETABLE_STREAMARN": {
               "Ref": "storageModuleTableStreamArn"
+            },
+            "STORAGE_USERTESTTABLE_NAME": {
+              "Ref": "storageUserTestTableName"
+            },
+            "STORAGE_USERTESTTABLE_ARN": {
+              "Ref": "storageUserTestTableArn"
+            },
+            "STORAGE_USERTESTTABLE_STREAMARN": {
+              "Ref": "storageUserTestTableStreamArn"
             }
           }
         },
@@ -713,6 +734,39 @@
                     [
                       {
                         "Ref": "storageUserCourseTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageUserTestTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageUserTestTableArn"
                       },
                       "index/*"
                     ]

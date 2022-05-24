@@ -61,6 +61,12 @@
         "read",
         "update",
         "delete"
+      ],
+      "UserTestTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
       ]
     }
   }
