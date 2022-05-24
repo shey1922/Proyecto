@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { API } from 'aws-amplify';
 import SideBarCourse from './SideBarCourse';
 import ReactPlayer from 'react-player';
 import Button from 'react-bootstrap/Button';
@@ -7,6 +8,7 @@ function LessonDetail() {
     const lessonName = localStorage.getItem('lessonName');
     const lessonVideo = localStorage.getItem('lessonVideo');
     const videoConfe = localStorage.getItem('videoConfe');
+    const examResults = localStorage.getItem('examResults');
     const termsModule = JSON.parse(localStorage.getItem("termsModule"));
     console.log(termsModule);
 
@@ -17,6 +19,13 @@ function LessonDetail() {
             <p>{ternms.parph1}</p>
         </div>
     )
+    const [testId, setTestId] = useState([])
+    useEffect(() => {
+        API.get('WebcsAPI', `/modules/${testId}/tests`, {})
+            .then(setTestId, console.log('Tests encontrados'))
+            .catch(console.error);
+    }, []);
+
 
     const buttonVideo = {
         height: "50px",
@@ -52,6 +61,12 @@ function LessonDetail() {
                         ? <div></div>
                         : <Button style={buttonVideo} variant="outline-primary" href={videoConfe} target="_blank" rel="noopener noreferrer">Entrar a la video conferencia</Button>}
                 </div>
+                {lessonName === "Resultados de examen de Atención Integral a Víctimas de Violencia Sexual" ?
+                    termsList :
+                    <div></div>}
+                {lessonName === "Resultados de examen Final de Atención Integral a Víctimas de Violencia Sexual" ?
+                    termsList :
+                    <div></div>}
             </div>
         </div>
     )

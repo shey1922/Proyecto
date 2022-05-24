@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import { API } from 'aws-amplify';
+import React, { useEffect, useState } from "react";
 import modules from "../../data/modules";
 import { ProgressBar } from 'react-bootstrap'
-import Swal from 'sweetalert2';
 
 function SideBarCourse() {
 
@@ -60,7 +60,7 @@ function SideBarCourse() {
     //         ]
     //     },
     // ]
-
+    
     const sendData = (moduleName, content) => {
         console.log("a");
         localStorage.setItem("moduleName", moduleName);
@@ -89,23 +89,6 @@ function SideBarCourse() {
         marginRight: '25px',
         marginTop: '15px',
     };
-    function confirmInscription() {
-        Swal.fire({
-            title: '¿Desea confirmar su inscripción al curso?',
-            showCancelButton: true,
-            icon: 'question',
-            width: '25%',
-            height: '25%',
-            fontSize: '20px',
-            confirmButtonText: 'Inscribirme',
-            cancelButtonText: 'Cancelar',
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                Swal.fire('¡Felicidades, ya está inscrita!', '', 'success')
-            }
-        })
-    }
 
     return (
         <div className="sidebarcourse">
@@ -124,8 +107,6 @@ function SideBarCourse() {
             {moduleList}
             <div className="footer-sidebar">
                 <button className="btn-footer-sidebar">VOLVER AL CURSO</button>
-                <div></div>
-                <button onClick={confirmInscription} className="btn-footer-sidebar">INSCRIBIRSE AL CURSO</button>
                 <div></div>
                 <button className="btn-footer-sidebar">VALORACIÓN DEL CURSO</button>
             </div>

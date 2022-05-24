@@ -312,13 +312,13 @@ const modules = [
                 id: 1,
                 title: 'Resultados de examen de Atención Integral a Víctimas de Violencia Sexual',
                 type: 'lesson',
-                terms: [{ title: "Nota del examen: 18" },],
+                terms: [{ title: "Nota del examen: 18", parah: "Nota aprobatoria" },],
             },
             {
                 id: 2,
                 title: 'Resultados de examen Final de Atención Integral a Víctimas de Violencia Sexual',
                 type: 'lesson',
-                terms: [{ title: "Nota del examen: 20" },],
+                terms: [{ title: "Nota del examen: 20", parah: "Nota aprobatoria" },],
             },
         ]
     }

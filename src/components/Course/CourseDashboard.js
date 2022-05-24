@@ -10,17 +10,21 @@ function CourseDashboard() {
   const [modules, setModules] = useState([]);
 
   useEffect(() => {
-    API.get('WebcsAPI', '/modules', {})
-      .then(setModules)
+    API.get('WebcsAPI', `/courses/${courseId}/modules`, {})
+      .then(setModules, console.log('encontrado'))
       .catch(console.error);
+
+    // API.get('WebcsAPI', '/modules', {})
+    //   .then(setModules)
+    //   .catch(console.error);
   }, []);
 
   return (
     <div className="flex">
-        <SideBarCourse modules={modules} />
-        <div className="content-manage-course">
-            Default View
-        </div>
+      <SideBarCourse modules={modules} />
+      <div className="content-manage-course">
+        Default View
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { API } from 'aws-amplify';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -40,25 +41,42 @@ const PostAnswer = styled.div`
   flex-direction: column;
 `;
 
+
 function Post() {
+
+  const commentsID = '';
+
+  const [comments, setComments] = useState([])
+
+  const response = API.get('WebcsAPI', `/users/${commentsID[0]}/comments`, {})
+    .then(response => response.json())
+    .then(data => {
+      console.log('Respuesta', data)
+    })
+    .catch(console.error);
+
+  useEffect(() => {
+
+  }, []);
+
   return (
     <Wrapper>
-        <PostAuthor>
-            <PostAuthorAvatar src="assets/images/teacher-1.png" alt="usuario" />
-            <PostAuthorInfo>
-                <strong>Usuario</strong>
-                <p>Hace 1 día</p>
-            </PostAuthorInfo>
-        </PostAuthor>
-        <PostTopic>
-            <PostTitle to="/">
-                Using Angular HttpClientModule instead of HttpModule
-            </PostTitle>
-        </PostTopic>
-        <PostAnswer>
-            <h3>3</h3>
-            <p>Respuestas</p>
-        </PostAnswer>
+      <PostAuthor>
+        <PostAuthorAvatar src="assets/images/teacher-1.png" alt="usuario" />
+        <PostAuthorInfo>
+          <strong>Usuario</strong>
+          <p>Hace 1 día</p>
+        </PostAuthorInfo>
+      </PostAuthor>
+      <PostTopic>
+        <PostTitle to="/">
+          Using Angular HttpClientModule instead of HttpModule
+        </PostTitle>
+      </PostTopic>
+      <PostAnswer>
+        <h3>3</h3>
+        <p>Respuestas</p>
+      </PostAnswer>
     </Wrapper>
   )
 }
