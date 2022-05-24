@@ -6,63 +6,7 @@ import { ProgressBar } from 'react-bootstrap'
 
 function SideBarCourse() {
 
-    // const modules = [
-    //     {
-    //         name: "Preliminares",
-    //         lecciones: [
-    //             {lecciones: "Antes de empezar el curso"},
-    //             {lecciones: "Introducción al curso"},
-    //         ]
-    //     },
-    //     {
-    //         name: "Modulo 1",
-    //         lecciones: [
-    //             {lecciones: "leccion 1"},
-    //             {lecciones: "leccion 2"},
-    //             {lecciones: "leccion 3"},
-    //             {lecciones: "leccion 4"},
-    //         ]
-    //     },
-    //     {
-    //         name: "Modulo 2",
-    //         lecciones: [
-    //             {lecciones: "leccion 1"},
-    //             {lecciones: "leccion 2"},
-    //             {lecciones: "leccion 3"},
-    //             {lecciones: "leccion 4"},
-    //         ]
-    //     },
-    //     {
-    //         name: "Modulo 3",
-    //         lecciones: [
-    //             {lecciones: "leccion 1"},
-    //             {lecciones: "leccion 2"},
-    //             {lecciones: "leccion 3"},
-    //             {lecciones: "leccion 4"},
-    //         ]
-    //     },
-    //     {
-    //         name: "Modulo 4",
-    //         lecciones: [
-    //             {lecciones: "leccion 1"},
-    //             {lecciones: "leccion 2"},
-    //             {lecciones: "leccion 3"},
-    //             {lecciones: "leccion 4"},
-    //         ]
-    //     },
-    //     {
-    //         name: "Modulo 5",
-    //         lecciones: [
-    //             {lecciones: "leccion 1"},
-    //             {lecciones: "leccion 2"},
-    //             {lecciones: "leccion 3"},
-    //             {lecciones: "leccion 4"},
-    //         ]
-    //     },
-    // ]
-    
     const sendData = (moduleName, content) => {
-        console.log("a");
         localStorage.setItem("moduleName", moduleName);
 
         localStorage.setItem("content", JSON.stringify(content));

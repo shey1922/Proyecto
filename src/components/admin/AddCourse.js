@@ -8,9 +8,7 @@ import swal from 'sweetalert2';
 
 function AddCourse() {
 
-    const courseId = localStorage.getItem('editIdCourseModal');
     const userId = localStorage.getItem('userId');
-    const modulesListasdasdas = JSON.parse(localStorage.getItem("editListModulesCourse"));
 
     const [showAlert, setShowAlert] = React.useState(false);
     const [showAlertComponent, setShowAlertComponent]  = React.useState(false);
@@ -19,7 +17,7 @@ function AddCourse() {
     const [leccionName, setLeccionName] = React.useState("");
     const [urlLink, setUrlLink] = React.useState("");
 
-    const [sectionList, setSectionList] = React.useState(modulesListasdasdas);
+    const [sectionList, setSectionList] = React.useState([]);
     const [leccionList, setLeccionList] = React.useState([]);
 
     const [show, setShow] = React.useState(false);
@@ -41,7 +39,7 @@ function AddCourse() {
         console.log(sectionList);
     }
 
-    const courseTitleFS = localStorage.getItem("editTitleCourse");
+    const courseTitleFS = localStorage.getItem("ACcourseTitle");
     const courseDescriptionFS = localStorage.getItem("ACcourseDescription");
     const courseHourFS = localStorage.getItem("ACcourseHour");
     const courseLessonsFS = localStorage.getItem("ACcourseLessons");
@@ -97,19 +95,64 @@ function AddCourse() {
             handleShowAlert();
         } else {
             setSectionList([...sectionList, {
-                name: sectionName, 
+                title: sectionName, 
+                lecciones: leccionList
             }]);
-            API.post('WebcsAPI', '/modules', {
-                body: {
-                  name: sectionName,
-                  courseId: courseId
-              }
-            }).then(r => console.log(r)).catch(console.error);
             setSectionName("");
             setLeccionName("");
             setUrlLink("");
+            console.log(sectionName);
+            console.log(sectionList);
             handleClose();
         }
+        
+    }
+
+    const PostCourse = () => {
+
+        swal.fire({
+            icon: 'question',
+            title: '¿Está seguro de crear el curso: ' + courseTitle + ' ?',
+            showDenyButton: true,
+            confirmButtonText: 'Crear',
+            denyButtonText: `Cacnelar`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                if(courseTitle === ""){
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                        footer: '<a href="">Why do I have this issue?</a>'
+                      })
+                } else {
+                    if (sectionList.length === 0){
+                        swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                            footer: '<a href="">Why do I have this issue?</a>'
+                        })
+                    }
+                    else {
+                        API.post('WebcsAPI', '/courses', {
+                            body: {
+                                topic: courseTitle,
+                                createdBy: userId
+                            }
+                        }).then(r => console.log(r))
+                        .catch(console.error);
+                    }
+                }
+                
+
+            } else if (result.isDenied) {
+              swal.fire('Los cambios no han sido guardado', '', 'info')
+            }
+          })
+
+
         
     }
 
@@ -128,7 +171,7 @@ function AddCourse() {
     const sectionArray = sectionList.map(section => 
         <div className="card-section-list">
             <div className="row-1">
-                <h4>{section.name}</h4>
+                <h4>{section.title}</h4>
                 <i className="fas fa-arrow-down"></i>
             </div>
             {/*<div className="row-2">
@@ -201,14 +244,14 @@ function AddCourse() {
                 <div className="content-manage-course">
                     <div className="head-section">
                         <div className="column-1-head-section">
-                            <h2 className="title-section-manage-course">Editar Cursos</h2>
-                            <p className="route-section-manage-course">Home &gt; Administrar Cursos &gt; Editar Cursos</p>
+                            <h2 className="title-section-manage-course">Agregar Cursos</h2>
+                            <p className="route-section-manage-course">Home &gt; Administrar Cursos &gt; Agregar Cursos</p>
                         </div>
                     </div>
                     <div className="body-section-edit-course">
                     <div className="column-section-1-edit-course">
                     <div className="basic-info-section-edit-course">
-                        <h3></h3>
+                        <h3>INFORMACIÓN BÁSICA</h3>
                         <div class="line"></div>
                         <div className="input-element-edit-course">
                             <h4>TITULO DEL CURSO</h4>
@@ -248,10 +291,37 @@ function AddCourse() {
                     <div className="column-section-2-edit-course">
                     <div className="card-aactions-buttons-edit-course">
                         <div className="head-card-actions-button">
-                        <button className="save-changes-btn-edit-course">ACTUALIZAR</button>
+                        <button className="save-changes-btn-edit-course" onClick={PostCourse}>CREAR CURSO</button>
                         </div>
                         <div className="bottom-card-actions-button">
                             <a className="cnl">Cancel</a>
+                        </div>
+                    </div>
+                    <div className="section-video-edit-course">
+                        <h3>PRESENTATION VIDEO</h3>
+                        <div className="src-video-example">
+                        <div className="video-resource"></div>
+                        <div className="bottom-section-video-src">
+                            <h4>URL</h4>
+                            <input className="input-url-video"></input>
+                            <p>Enter a valid video URL</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div className="options-edit-course">
+                        <h3>OPTIONS</h3>
+                        <div className="card-option-edit-course">
+                        <h4>CATEGORY</h4>
+                        <select name="cateryCourse" id="categories">
+                            <option value="Category1">Category 1</option>
+                            <option value="Category2">Category 2</option>
+                            <option value="Category3">Category 3</option>
+                            <option value="Category4">Category 4</option>
+                        </select>
+                        <h4>PRICE</h4>
+                        <input classname="input-type-number-edit-course" type="number" placeholder="0.00"></input>
+                        <h4>TAGS</h4>
+                        <input type="text" className="tags-category"></input>
                         </div>
                     </div>
                     </div>

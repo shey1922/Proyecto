@@ -32,8 +32,8 @@ function EditCourse() {
         <div className="content-edit-quizes">
           <div className="head-section-quiz">
               <div className="column-1-head-section">
-                <h2 className="title-section-manage-course">List Courses</h2>
-                <p className="route-section-manage-course">Home &gt; List Courses </p>
+                <h2 className="title-section-manage-course">Lista de Cursos</h2>
+                <p className="route-section-manage-course">Home &gt; Lista de Cursos </p>
               </div>
               <div className="column-2-head-section">
                 <i class='fa fa-ellipsis-v fa-2x'></i>
@@ -44,9 +44,9 @@ function EditCourse() {
             <thead>
               <tr>
                 <th>Id</th>
-                <th>Course Name</th>
-                <th>Students</th>
-                <th>Actions</th>
+                <th>Nombre del Curso</th>
+                <th>Estudiantes</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
