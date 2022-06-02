@@ -1,0 +1,659 @@
+{
+  "Description": "Root Stack for AWS Amplify CLI",
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "DeploymentBucketName": {
+      "Type": "String",
+      "Default": "DeploymentBucket",
+      "Description": "Name of the common deployment bucket provided by the parent stack"
+    },
+    "AuthRoleName": {
+      "Type": "String",
+      "Default": "AuthRoleName",
+      "Description": "Name of the common deployment bucket provided by the parent stack"
+    },
+    "UnauthRoleName": {
+      "Type": "String",
+      "Default": "UnAuthRoleName",
+      "Description": "Name of the common deployment bucket provided by the parent stack"
+    }
+  },
+  "Outputs": {
+    "Region": {
+      "Description": "CloudFormation provider root stack Region",
+      "Value": {
+        "Ref": "AWS::Region"
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-Region"
+        }
+      }
+    },
+    "StackName": {
+      "Description": "CloudFormation provider root stack ID",
+      "Value": {
+        "Ref": "AWS::StackName"
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-StackName"
+        }
+      }
+    },
+    "StackId": {
+      "Description": "CloudFormation provider root stack name",
+      "Value": {
+        "Ref": "AWS::StackId"
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-StackId"
+        }
+      }
+    },
+    "AuthRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "AuthRole",
+          "Arn"
+        ]
+      }
+    },
+    "UnauthRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "UnauthRole",
+          "Arn"
+        ]
+      }
+    },
+    "DeploymentBucketName": {
+      "Description": "CloudFormation provider root stack deployment bucket name",
+      "Value": {
+        "Ref": "DeploymentBucketName"
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-DeploymentBucketName"
+        }
+      }
+    },
+    "AuthRoleName": {
+      "Value": {
+        "Ref": "AuthRole"
+      }
+    },
+    "UnauthRoleName": {
+      "Value": {
+        "Ref": "UnauthRole"
+      }
+    }
+  },
+  "Resources": {
+    "DeploymentBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": {
+          "Ref": "DeploymentBucketName"
+        },
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+              }
+            }
+          ]
+        }
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain"
+    },
+    "AuthRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "",
+              "Effect": "Deny",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com"
+              },
+              "Action": "sts:AssumeRoleWithWebIdentity"
+            }
+          ]
+        },
+        "RoleName": {
+          "Ref": "AuthRoleName"
+        }
+      }
+    },
+    "UnauthRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "",
+              "Effect": "Deny",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com"
+              },
+              "Action": "sts:AssumeRoleWithWebIdentity"
+            }
+          ]
+        },
+        "RoleName": {
+          "Ref": "UnauthRoleName"
+        }
+      }
+    },
+    "AuthTriggerCustomLambdaStack": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json",
+        "Parameters": {
+          "env": "dev",
+          "userpoolId": {
+            "Fn::GetAtt": [
+              "authproyectoAuth",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "userpoolArn": {
+            "Fn::GetAtt": [
+              "authproyectoAuth",
+              "Outputs.UserPoolArn"
+            ]
+          },
+          "functionproyectoAuthPostConfirmationArn": {
+            "Fn::GetAtt": [
+              "functionproyectoAuthPostConfirmation",
+              "Outputs.Arn"
+            ]
+          },
+          "functionproyectoAuthPostConfirmationName": {
+            "Fn::GetAtt": [
+              "functionproyectoAuthPostConfirmation",
+              "Outputs.Name"
+            ]
+          }
+        }
+      },
+      "DependsOn": [
+        "authproyectoAuth",
+        "functionproyectoAuthPostConfirmation"
+      ]
+    },
+    "authproyectoAuth": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/auth/proyectoAuth-cloudformation-template.json",
+        "Parameters": {
+          "resourceNameTruncated": "proyec87082c2d",
+          "userPoolName": "proyecto87082c2d_userpool_87082c2d",
+          "autoVerifiedAttributes": "email",
+          "mfaConfiguration": "OFF",
+          "mfaTypes": "SMS Text Message",
+          "smsAuthenticationMessage": "Your authentication code is {####}",
+          "smsVerificationMessage": "Your verification code is {####}",
+          "emailVerificationSubject": "Your verification code",
+          "emailVerificationMessage": "Your verification code is {####}",
+          "defaultPasswordPolicy": false,
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": "",
+          "requiredAttributes": "email,family_name,given_name",
+          "aliasAttributes": "",
+          "userpoolClientGenerateSecret": false,
+          "userpoolClientRefreshTokenValidity": 30,
+          "userpoolClientWriteAttributes": "email",
+          "userpoolClientReadAttributes": "email",
+          "userpoolClientLambdaRole": "proyec87082c2d_userpoolclient_lambda_role",
+          "userpoolClientSetAttributes": false,
+          "sharedId": "87082c2d",
+          "resourceName": "proyectoAuth",
+          "authSelections": "userPoolOnly",
+          "useDefault": "manual",
+          "usernameAttributes": "email",
+          "userPoolGroups": false,
+          "adminQueries": false,
+          "triggers": "{\"PostConfirmation\":[\"custom\"]}",
+          "hostedUI": false,
+          "userPoolGroupList": "",
+          "serviceName": "Cognito",
+          "usernameCaseSensitive": false,
+          "useEnabledMfas": true,
+          "authRoleArn": {
+            "Fn::GetAtt": [
+              "AuthRole",
+              "Arn"
+            ]
+          },
+          "unauthRoleArn": {
+            "Fn::GetAtt": [
+              "UnauthRole",
+              "Arn"
+            ]
+          },
+          "breakCircularDependency": true,
+          "dependsOn": "[object Object]",
+          "permissions": "",
+          "authTriggerConnections": "{\"triggerType\":\"PostConfirmation\",\"lambdaFunctionName\":\"proyectoAuthPostConfirmation\"}",
+          "env": "dev"
+        }
+      }
+    },
+    "storageUserTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "UserTable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageCourseTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/CourseTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "CourseTable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageVideoTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/VideoTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "VideoTable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageTestTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/TestTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "TestTable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageQuestionTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/QuestionTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "QuestionTable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageAnswerTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/AnswerTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "AnswerTable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageForumTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/ForumTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "ForumTable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageCommentTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/CommentTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "CommentTable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageModuleTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/ModuleTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "ModuleTable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageUserCourseTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserCourseTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "UserCourseTable",
+          "partitionKeyName": "userId",
+          "partitionKeyType": "S",
+          "sortKeyName": "courseId",
+          "sortKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageUserTestTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserTestTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "UserTestTable",
+          "partitionKeyName": "testId",
+          "partitionKeyType": "S",
+          "sortKeyName": "userId",
+          "sortKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "functionproyectoAuthPostConfirmation": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/function/proyectoAuthPostConfirmation-cloudformation-template.json",
+        "Parameters": {
+          "modules": "custom",
+          "resourceName": "proyectoAuthPostConfirmation",
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/proyectoAuthPostConfirmation-4d347738304e6a4f4d4d-build.zip",
+          "storageUserTableName": {
+            "Fn::GetAtt": [
+              "storageUserTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageUserTableArn": {
+            "Fn::GetAtt": [
+              "storageUserTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageUserTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageUserTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "env": "dev"
+        }
+      }
+    },
+    "functionWebcsFunction": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/function/WebcsFunction-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+          "s3Key": "amplify-builds/WebcsFunction-4d594348663673636956-build.zip",
+          "storageUserTableName": {
+            "Fn::GetAtt": [
+              "storageUserTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageUserTableArn": {
+            "Fn::GetAtt": [
+              "storageUserTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageUserTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageUserTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageCourseTableName": {
+            "Fn::GetAtt": [
+              "storageCourseTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageCourseTableArn": {
+            "Fn::GetAtt": [
+              "storageCourseTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageCourseTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageCourseTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageVideoTableName": {
+            "Fn::GetAtt": [
+              "storageVideoTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageVideoTableArn": {
+            "Fn::GetAtt": [
+              "storageVideoTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageVideoTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageVideoTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageTestTableName": {
+            "Fn::GetAtt": [
+              "storageTestTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageTestTableArn": {
+            "Fn::GetAtt": [
+              "storageTestTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageTestTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageTestTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageQuestionTableName": {
+            "Fn::GetAtt": [
+              "storageQuestionTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageQuestionTableArn": {
+            "Fn::GetAtt": [
+              "storageQuestionTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageQuestionTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageQuestionTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageAnswerTableName": {
+            "Fn::GetAtt": [
+              "storageAnswerTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageAnswerTableArn": {
+            "Fn::GetAtt": [
+              "storageAnswerTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageAnswerTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageAnswerTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageForumTableName": {
+            "Fn::GetAtt": [
+              "storageForumTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageForumTableArn": {
+            "Fn::GetAtt": [
+              "storageForumTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageForumTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageForumTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageCommentTableName": {
+            "Fn::GetAtt": [
+              "storageCommentTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageCommentTableArn": {
+            "Fn::GetAtt": [
+              "storageCommentTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageCommentTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageCommentTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageModuleTableName": {
+            "Fn::GetAtt": [
+              "storageModuleTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageModuleTableArn": {
+            "Fn::GetAtt": [
+              "storageModuleTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageModuleTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageModuleTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageUserCourseTableName": {
+            "Fn::GetAtt": [
+              "storageUserCourseTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageUserCourseTableArn": {
+            "Fn::GetAtt": [
+              "storageUserCourseTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageUserCourseTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageUserCourseTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageUserTestTableName": {
+            "Fn::GetAtt": [
+              "storageUserTestTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageUserTestTableArn": {
+            "Fn::GetAtt": [
+              "storageUserTestTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageUserTestTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageUserTestTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "env": "dev"
+        }
+      }
+    },
+    "apiWebcsAPI": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/api/WebcsAPI-cloudformation-template.json",
+        "Parameters": {
+          "functionWebcsFunctionName": {
+            "Fn::GetAtt": [
+              "functionWebcsFunction",
+              "Outputs.Name"
+            ]
+          },
+          "functionWebcsFunctionArn": {
+            "Fn::GetAtt": [
+              "functionWebcsFunction",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "dev"
+        }
+      }
+    },
+    "hostingamplifyhosting": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "Parameters": {
+          "appId": "d37o71vgus8gm0",
+          "type": "manual",
+          "env": "dev"
+        }
+      }
+    }
+  }
+}

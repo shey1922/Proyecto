@@ -1,40 +1,64 @@
+import { Box, Divider, List, ListItem, Typography } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
 
-function Footer() {
+export default function Footer() {
   return (
-    <section className="footer">
-      <div className="box-container">
-        <div className="box">
-          <h3>Explorar</h3>
-          <a href="home.html">
-            <i className="fas fa-arrow-right" /> Inicio
-          </a>
-          <a href="blog.html">
-            <i className="fas fa-arrow-right" /> Blog
-          </a>
-          <a href="contact.html">
-            <i className="fas fa-arrow-right" /> Contacto
-          </a>
-        </div>
-        <div className="box">
-          <h3>Redes Sociales</h3>
-          <a href="https://www.gob.pe/minsa">
-            <i className="fas fa-heartbeat" /> MINSA
-          </a>
-          <a href="https://www.facebook.com/PeruPaisDigital/">
-            <i className="fab fa-facebook-f" /> Facebook
-          </a>
-          <a href="https://twitter.com/PeruPaisDigital">
-            <i className="fab fa-twitter" /> Twitter
-          </a>
-        </div>
-      </div>
-      <div className="credit">
-        Creado por <span> Sheyla Mallma </span> | Todos los derechos reservados!
-      </div>
-    </section>
+    <Box
+      sx={{
+        padding: "3rem 0",
+        backgroundColor: "#F5F5F5",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "5rem",
+        }}
+      >
+        <Box>
+          <Typography variant="h6">Explorar</Typography>
+          <List>
+            <ListItem>
+              <Typography>Inicio</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Cursos</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Mi Aprendizaje</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Foro</Typography>
+            </ListItem>
+          </List>
+        </Box>
+        <Box>
+          <Typography variant="h6">Redes Sociales</Typography>
+          <List>
+            <ListItem>
+              <Typography>MINSA</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Facebook</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Twitter</Typography>
+            </ListItem>
+          </List>
+        </Box>
+      </Box>
+      <Divider variant="middle" sx={{ margin: "2rem 0" }} />
+      <Typography variant="h6" sx={{ alignSelf: "center" }}>
+        Creado por{" "}
+        <Typography variant="h6" color="secondary" component="span">
+          {" "}
+          Sheyla Mallma{" "}
+        </Typography>{" "}
+        | Todos los derechos reservados
+      </Typography>
+    </Box>
   );
 }
-
-export default Footer;

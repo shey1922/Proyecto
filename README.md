@@ -1,136 +1,70 @@
-## Getting started
+# Getting Started with Create React App
 
-1. Clone this repository
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-2. Install al the project dependencies
+## Available Scripts
 
-```
-npm install
-```
+In the project directory, you can run:
 
-3. Copy the new index.html file with some necesary imports
+### `npm start`
 
-```
-cp base/index-01.html public/index.html
-```
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Getting started with Amplify
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-1. Go to your AWS console and create a new Amplify Backend Application
+### `npm test`
 
-2. Open the AdminUI for that application
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Add authentication
+### `npm run build`
 
-1. In the admin UI add authentication with the default settings and deploy it.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-2. After the application finish deploying. Go to your react application and do amplify pull as the instructions mentions.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-3. Add authentication in your front end
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```
-cp base/App-01.css src/App.css
-cp base/App-01.js src/App.js
-```
+### `npm run eject`
 
-4. Start the react app and see what happen. Create an account.
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-```
-npm start
-```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Add GraphQL API
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-1. Go back to the AdminUI and in data, create a new model.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-Make sure that you choose the cognito user pool (the authentication we just created) as authentication model for this API.
+## Learn More
 
-Model name: Note
-Attributes:
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-- id
-- note: string!
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-2. Deploy the API and after it finish deploying follow the instructions on amplify pull.
+### Code Splitting
 
-3. Add the API in your client
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-```
-cp base/App-02.js src/App.js 
-```
+### Analyzing the Bundle Size
 
-4. Check the react app and see what happened. Add a note, delete it.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Deploy this in the cloud
+### Making a Progressive Web App
 
-1. Create a new repository in github and put the react app in there.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-NOTE: if you cloned this project make sure first to remove the origin so you can commit this code to a new place.
+### Advanced Configuration
 
-```
-git remote remove origin
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-2. Go to the AWS Console and Amplify and add a new github project for the frontend.
-   Note: Pick the existing backend enviroment or if you want to have multiple environments pick a new one.
+### Deployment
 
-3. Open the link and test the application that is in the cloud.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-## Add ML capabilities
+### `npm run build` fails to minify
 
-1. In the AdminUI, modify the data model and deploy it
-
-Model: Note
-Attributes:
-
-- id
-- note
-- sentiment: String ---> NEW
-- spanish: String ---> NEW
-
-2. In the client pull the changes as the instructions mention
-
-3. Add predictions Interpret --> TEXT
-
-```
-$ amplify add predictions
-? Please select from one of the categories below Interpret
-? What would you like to interpret? Interpret Text
-? Provide a friendly name for your resource interpretTextXXX
-? What kind of interpretation would you like? All
-? Who should have access? Auth users only
-Successfully added resource interpretTextXXX locally
-```
-
-4. Add predictions Convert --> Translate
-
-```
-$ amplify add predictions
-? Please select from one of the categories below Convert
-? What would you like to convert? Translate text into a different language
-? Provide a friendly name for your resource translateTextfaXXX
-? What is the source language? English
-? What is the target language? Spanish
-? Who should have access? Auth users only
-Successfully added resource translateTextfaXXX locally
-```
-
-5. When that is complete do amplify push
-
-```
-amplify push
-```
-
-6. Then modify the client to see the new features in action:
-
-```
-cp base/App-03.js src/App.js
-```
-
-7. Commit all the new changes in github and see how the CICD pipeline in the Amplify app triggers.
-
-8. Test it in the cloud.
-
-## In spanish - Mira todo este tutorial en formato video
-
-https://www.youtube.com/watch?v=xIy0KVMOHHw
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

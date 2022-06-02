@@ -1,0 +1,73 @@
+{
+  "lambdaLayers": [],
+  "permissions": {
+    "storage": {
+      "UserTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "CourseTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "VideoTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "TestTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "QuestionTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "AnswerTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "ForumTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "CommentTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "ModuleTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "UserCourseTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "UserTestTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  }
+}
