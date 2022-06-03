@@ -18,7 +18,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ManageCourses from "./components/ManageCourses";
 import CoursesTable from "./components/CoursesTable";
 import ParticipantsTable from "./components/ParticipantsTable";
-import AddCourseForm from "./components/AddCourseForm";
+import CourseForm from "./components/CourseForm";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -37,7 +37,7 @@ root.render(
             </Route>
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="cursos" element={<ManageCourses />} />
-              <Route path="cursos/form" element={<AddCourseForm />} />
+              <Route path="cursos/form" element={<CourseForm />} />
               <Route path="detalle-cursos" element={<CoursesTable />} />
               <Route path="participantes" element={<ParticipantsTable />} />
             </Route>

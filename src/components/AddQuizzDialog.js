@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Dialog,
   DialogActions,
@@ -11,55 +10,63 @@ import React, { useState } from "react";
 import AddQuestionPaper from "./AddQuestionPaper";
 
 export default function AddQuizzDialog({ open, setOpen, content, setContent }) {
+  const [showQuestionPaper, setShowQuestionPaper] = useState(false);
   const [title, setTitle] = useState("");
   const [questions, setQuestions] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSave = () => {
     setContent([...content, { title, questions, type: "QUIZ" }]);
     setTitle("");
-    setQuestions([{ statement: "" }]);
+    setQuestions([]);
     setOpen(false);
   };
 
   const handleAddQuestion = () => {
-    setQuestions([...questions, { statement: "" }]);
+    setShowQuestionPaper(true);
   };
 
   const handleCancelButton = () => {
-    setQuestions([{ statement: "" }]);
+    setTitle("");
+    setQuestions([]);
     setOpen(false);
   };
 
   return (
     <Dialog open={open} fullWidth>
-      <Box component="form" onSubmit={handleSubmit}>
-        <DialogTitle>Crear Cuestionario</DialogTitle>
-        <DialogContent>
-          <TextField
-            variant="standard"
-            label="Titulo"
-            fullWidth
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            sx={{ marginBottom: 3 }}
+      <DialogTitle>Crear Cuestionario</DialogTitle>
+      <DialogContent>
+        <TextField
+          variant="standard"
+          label="Titulo"
+          fullWidth
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          sx={{ mb: 3 }}
+        />
+        {questions.map((_question, index) => (
+          <AddQuestionPaper
+            key={index}
+            saved={true}
+            questions={questions}
+            setQuestions={setQuestions}
           />
-          {questions.map((_question, index) => (
-            <AddQuestionPaper
-              key={index}
-              questions={questions}
-              setQuestions={setQuestions}
-            />
-          ))}
-          <Button variant="contained" fullWidth onClick={handleAddQuestion}>
-            Agregar Enunciado
-          </Button>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCancelButton}>Cancelar</Button>
-          <Button type="submit">Guardar</Button>
-        </DialogActions>
-      </Box>
+        ))}
+        {showQuestionPaper && (
+          <AddQuestionPaper
+            setShow={setShowQuestionPaper}
+            questions={questions}
+            setQuestions={setQuestions}
+            saved={false}
+          />
+        )}
+        <Button variant="contained" fullWidth onClick={handleAddQuestion}>
+          Agregar Enunciado
+        </Button>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleCancelButton}>Cancelar</Button>
+        <Button onClick={handleSave}>Guardar</Button>
+      </DialogActions>
     </Dialog>
   );
 }

@@ -13,8 +13,7 @@ export default function AddVideoDialog({ open, setOpen, content, setContent }) {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleClick = () => {
     setContent([...content, { title, url, type: "VIDEO" }]);
     setTitle("");
     setUrl("");
@@ -23,7 +22,7 @@ export default function AddVideoDialog({ open, setOpen, content, setContent }) {
 
   return (
     <Dialog open={open}>
-      <Box component="form" sx={{ width: "24rem" }} onSubmit={handleSubmit}>
+      <Box sx={{ width: "24rem" }}>
         <DialogTitle>Contenido del Video</DialogTitle>
         <DialogContent>
           <TextField
@@ -45,7 +44,7 @@ export default function AddVideoDialog({ open, setOpen, content, setContent }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setOpen(false)}>Cancelar</Button>
-          <Button type="submit">Agregar</Button>
+          <Button onClick={handleClick}>Agregar</Button>
         </DialogActions>
       </Box>
     </Dialog>

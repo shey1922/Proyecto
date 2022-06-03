@@ -3,6 +3,10 @@ import {
   Fab,
   FormControl,
   FormControlLabel,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
   Paper,
   Radio,
   RadioGroup,
@@ -10,21 +14,38 @@ import {
   TextField,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import CheckIcon from "@mui/icons-material/Check";
 import DeleteIcon from "@mui/icons-material/Delete";
+import SaveIcon from "@mui/icons-material/Save";
 import React, { useState } from "react";
+import AddAlternativeItem from "./AddAlternativeItem";
 
-export default function AddQuestionPaper({ questions, setQuestions }) {
-  const [saved, setSaved] = useState(false);
+export default function AddQuestionPaper({
+  questions,
+  setQuestions,
+  setShow,
+  saved,
+}) {
   const [statement, setStatement] = useState("");
-  const [binary, setBinary] = useState(false);
-  const [multipleOption, setMultipleOption] = useState(false);
+  const [content, setContent] = useState("");
+  const [alternatives, setAlternatives] = useState([]);
+  const [option, setOption] = useState("B");
 
   const handleSaveQuestion = () => {
-    questions.pop();
-    setQuestions([...questions, { statement }]);
+    setQuestions([...questions, { statement, option, alternatives }]);
     setStatement("");
-    setSaved(true);
+    setAlternatives([]);
+    setShow(false);
+  };
+
+  const handleAddAlternative = () => {
+    setAlternatives([...alternatives, { content, isCorrect: false }]);
+    setContent("");
+  };
+
+  const onClickAlternative = (index) => {
+    const newAlternatives = [...alternatives];
+    newAlternatives[index].isCorrect = !newAlternatives[index].isCorrect;
+    setAlternatives(newAlternatives);
   };
 
   return (
@@ -40,46 +61,80 @@ export default function AddQuestionPaper({ questions, setQuestions }) {
         onChange={(e) => setStatement(e.target.value)}
         sx={{ mb: 3 }}
       />
-      <FormControl disabled={saved}>
+      <FormControl disabled={saved} sx={{ display: "block" }}>
         <RadioGroup
           row
-          aria-labelledby="quizzType"
+          aria-labelledby="questionType"
           name="row-radio-buttons-group"
+          value={option}
+          onChange={(e) => setOption(e.target.value)}
         >
           <FormControlLabel
             value="B"
             control={<Radio />}
-            hiddenLabel
             label="Verdadero/Falso"
           />
           <FormControlLabel value="M" control={<Radio />} label="Múltiple" />
         </RadioGroup>
       </FormControl>
-      <Stack direction="row" justifyContent="flex-end" spacing={2}>
-        {!saved ? (
-          <>
-            <Fab color="error" aria-label="add" size="small">
-              <DeleteIcon />
-            </Fab>
-            <Fab
-              color="primary"
-              aria-label="add"
-              size="small"
-              onClick={handleSaveQuestion}
-            >
-              <CheckIcon />
-            </Fab>
-          </>
-        ) : (
+      {option === "B" ? (
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemText>Verdadero</ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemText>Falso</ListItemText>
+            </ListItemButton>
+          </ListItem>
+        </List>
+      ) : (
+        <>
+          <List>
+            {alternatives.map((alternative, index) => (
+              <AddAlternativeItem
+                key={index}
+                {...alternative}
+                handleClick={() => onClickAlternative(index)}
+              />
+            ))}
+          </List>
+          <TextField
+            hiddenLabel
+            fullWidth
+            size="small"
+            variant="outlined"
+            placeholder="Inserte alternativa..."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            sx={{ mb: 2 }}
+          />
           <Button
             variant="contained"
             color="secondary"
             size="small"
             startIcon={<AddIcon />}
+            onClick={handleAddAlternative}
           >
             Alternativa
           </Button>
-        )}
+        </>
+      )}
+      <Stack direction="row" justifyContent="flex-end" spacing={2}>
+        <Fab color="error" aria-label="add" size="small">
+          <DeleteIcon />
+        </Fab>
+        <Fab
+          color="primary"
+          aria-label="add"
+          size="small"
+          onClick={handleSaveQuestion}
+          disabled={saved}
+        >
+          <SaveIcon />
+        </Fab>
       </Stack>
     </Paper>
   );
