@@ -1,21 +1,39 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import ModulePaper from "./ModulePaper";
-import ModuleDialog from "./ModuleDialog";
 import { CourseContext } from "../context";
 
 export default function CourseForm() {
-  const [openModuleDialog, setOpenModuleDialog] = useState(false);
-  const [courseName, setCourseName] = useState("");
-  const [courseDescription, setCourseDescription] = useState("");
-  const [modules, setModules] = useState([]);
+  const [openVideoDialog, setOpenVideoDialog] = useState(false);
+  const [openQuizzDialog, setOpenQuizzDialog] = useState(false);
 
-  const handleAddModule = () => {
-    setOpenModuleDialog(true);
+  const [course, setCourse] = useState({
+    name: "",
+    description: "",
+    modules: [],
+  });
+
+  const handleClick = () => {
+    setCourse({
+      ...course,
+      modules: [
+        ...course.modules,
+        { name: "", description: "", resources: [] },
+      ],
+    });
   };
 
   return (
-    <CourseContext.Provider value={{ modules, setModules }}>
+    <CourseContext.Provider
+      value={{
+        course,
+        setCourse,
+        openVideoDialog,
+        setOpenVideoDialog,
+        openQuizzDialog,
+        setOpenQuizzDialog,
+      }}
+    >
       <Paper elevation={3} sx={{ mt: 5, padding: 5 }}>
         <form>
           <Box display="flex" justifyContent="space-between" mb={3}>
@@ -27,8 +45,8 @@ export default function CourseForm() {
             label="Nombre del curso"
             variant="outlined"
             fullWidth
-            value={courseName}
-            onChange={(e) => setCourseName(e.target.value)}
+            value={course.name}
+            onChange={(e) => setCourse({ ...course, name: e.target.value })}
             sx={{ display: "block", mb: 2 }}
           />
           <TextField
@@ -36,20 +54,21 @@ export default function CourseForm() {
             label="Descripción"
             variant="outlined"
             fullWidth
-            value={courseDescription}
-            onChange={(e) => setCourseDescription(e.target.value)}
+            value={course.description}
+            onChange={(e) =>
+              setCourse({ ...course, description: e.target.value })
+            }
             sx={{ display: "block", mb: 2 }}
           />
           <Typography variant="h6">Módulos</Typography>
-          {modules.map((module, index) => (
+          {course.modules.map((module, index) => (
             <ModulePaper key={index} {...module} />
           ))}
-          <Button variant="contained" fullWidth onClick={handleAddModule}>
+          <Button variant="contained" fullWidth onClick={handleClick}>
             Agregar Módulo
           </Button>
         </form>
       </Paper>
-      <ModuleDialog open={openModuleDialog} setOpen={setOpenModuleDialog} />
     </CourseContext.Provider>
   );
 }

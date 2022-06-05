@@ -1,140 +1,106 @@
-import {
-  Button,
-  Fab,
-  FormControl,
-  FormControlLabel,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Paper,
-  Radio,
-  RadioGroup,
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Button, List, Paper, Stack, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
-import SaveIcon from "@mui/icons-material/Save";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AddAlternativeItem from "./AddAlternativeItem";
+import SaveIcon from "@mui/icons-material/Save";
+import { QuizzContext } from "../context";
 
-export default function AddQuestionPaper({
-  questions,
-  setQuestions,
-  setShow,
-  saved,
-}) {
-  const [statement, setStatement] = useState("");
-  const [content, setContent] = useState("");
-  const [alternatives, setAlternatives] = useState([]);
-  const [option, setOption] = useState("B");
+export default function AddQuestionPaper({ setShow }) {
+  const { quiz, setQuiz } = useContext(QuizzContext);
+  const [question, setQuestion] = useState({
+    statement: "",
+    alternatives: [],
+  });
 
-  const handleSaveQuestion = () => {
-    setQuestions([...questions, { statement, option, alternatives }]);
-    setStatement("");
-    setAlternatives([]);
-    setShow(false);
+  const [alternative, setAlternative] = useState({
+    text: "",
+    correct: false,
+  });
+
+  const handleAlternativeClick = (index) => () => {
+    const updatedAlternatives = question.alternatives.map((alternative) => ({
+      ...alternative,
+      correct: false,
+    }));
+    updatedAlternatives[index].correct = true;
+    setQuestion({ ...question, alternatives: updatedAlternatives });
   };
 
   const handleAddAlternative = () => {
-    setAlternatives([...alternatives, { content, isCorrect: false }]);
-    setContent("");
+    setQuestion({
+      ...question,
+      alternatives: [...question.alternatives, alternative],
+    });
+    setAlternative({
+      text: "",
+      correct: false,
+    });
   };
 
-  const onClickAlternative = (index) => {
-    const newAlternatives = [...alternatives];
-    newAlternatives[index].isCorrect = !newAlternatives[index].isCorrect;
-    setAlternatives(newAlternatives);
+  const handleSave = () => {
+    setQuiz({ ...quiz, questions: [...quiz.questions, question] });
+    setQuestion({
+      statement: "",
+      alternatives: [],
+    });
+    setShow(false);
   };
 
   return (
-    <Paper elevation={3} sx={{ padding: 4, mb: 3 }}>
+    <Paper elevation={3} sx={{ padding: 3, mb: 3 }}>
       <TextField
-        hiddenLabel
-        placeholder="Ingrese un enunciado"
+        label="Pregunta"
         size="small"
         fullWidth
-        variant={saved ? "filled" : "outlined"}
-        InputProps={{ readOnly: saved }}
-        value={statement}
-        onChange={(e) => setStatement(e.target.value)}
+        variant="standard"
+        value={question.statement}
+        onChange={(e) =>
+          setQuestion({ ...question, statement: e.target.value })
+        }
         sx={{ mb: 3 }}
       />
-      <FormControl disabled={saved} sx={{ display: "block" }}>
-        <RadioGroup
-          row
-          aria-labelledby="questionType"
-          name="row-radio-buttons-group"
-          value={option}
-          onChange={(e) => setOption(e.target.value)}
-        >
-          <FormControlLabel
-            value="B"
-            control={<Radio />}
-            label="Verdadero/Falso"
-          />
-          <FormControlLabel value="M" control={<Radio />} label="Múltiple" />
-        </RadioGroup>
-      </FormControl>
-      {option === "B" ? (
+      {question.alternatives.length > 0 && (
         <List>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText>Verdadero</ListItemText>
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText>Falso</ListItemText>
-            </ListItemButton>
-          </ListItem>
+          {question.alternatives.map((alternative, index) => (
+            <AddAlternativeItem
+              key={index}
+              {...alternative}
+              handleClick={handleAlternativeClick(index)}
+            />
+          ))}
         </List>
-      ) : (
-        <>
-          <List>
-            {alternatives.map((alternative, index) => (
-              <AddAlternativeItem
-                key={index}
-                {...alternative}
-                handleClick={() => onClickAlternative(index)}
-              />
-            ))}
-          </List>
-          <TextField
-            hiddenLabel
-            fullWidth
-            size="small"
-            variant="outlined"
-            placeholder="Inserte alternativa..."
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            sx={{ mb: 2 }}
-          />
-          <Button
-            variant="contained"
-            color="secondary"
-            size="small"
-            startIcon={<AddIcon />}
-            onClick={handleAddAlternative}
-          >
-            Alternativa
-          </Button>
-        </>
       )}
-      <Stack direction="row" justifyContent="flex-end" spacing={2}>
-        <Fab color="error" aria-label="add" size="small">
-          <DeleteIcon />
-        </Fab>
-        <Fab
-          color="primary"
-          aria-label="add"
+      <TextField
+        hiddenLabel
+        fullWidth
+        size="small"
+        variant="outlined"
+        placeholder="Alternativa..."
+        value={alternative.text}
+        onChange={(e) =>
+          setAlternative({ ...alternative, text: e.target.value })
+        }
+        sx={{ mb: 3 }}
+      />
+      <Stack direction="row" justifyContent="space-between">
+        <Button
+          variant="contained"
+          color="secondary"
           size="small"
-          onClick={handleSaveQuestion}
-          disabled={saved}
+          startIcon={<AddIcon />}
+          onClick={handleAddAlternative}
         >
-          <SaveIcon />
-        </Fab>
+          Alternativa
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          startIcon={<SaveIcon />}
+          onClick={handleSave}
+        >
+          Guardar
+        </Button>
       </Stack>
     </Paper>
   );

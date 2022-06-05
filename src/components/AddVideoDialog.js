@@ -7,16 +7,24 @@ import {
   DialogTitle,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { CourseContext } from "../context";
 
-export default function AddVideoDialog({ open, setOpen, content, setContent }) {
-  const [title, setTitle] = useState("");
-  const [url, setUrl] = useState("");
+export default function AddVideoDialog({ open, setOpen, module, setModule }) {
+  // const { course, setCourse } = useContext(CourseContext);
+  const [video, setVideo] = useState({
+    title: "",
+    url: "",
+    type: "VIDEO",
+  });
 
   const handleClick = () => {
-    setContent([...content, { title, url, type: "VIDEO" }]);
-    setTitle("");
-    setUrl("");
+    setModule({ ...module, resources: [...module.resources, video] });
+    setVideo({
+      title: "",
+      url: "",
+      type: "VIDEO",
+    });
     setOpen(false);
   };
 
@@ -30,16 +38,16 @@ export default function AddVideoDialog({ open, setOpen, content, setContent }) {
             variant="standard"
             label="Titulo"
             fullWidth
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={video.title}
+            onChange={(e) => setVideo({ ...video, title: e.target.value })}
           />
           <TextField
             sx={{ display: "block" }}
             variant="standard"
             label="Video URL"
             fullWidth
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            value={video.url}
+            onChange={(e) => setVideo({ ...video, url: e.target.value })}
           />
         </DialogContent>
         <DialogActions>

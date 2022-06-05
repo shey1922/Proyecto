@@ -1,4 +1,5 @@
 import {
+  Checkbox,
   ListItem,
   ListItemButton,
   ListItemIcon,
@@ -7,20 +8,14 @@ import {
 import CheckIcon from "@mui/icons-material/Check";
 import React from "react";
 
-export default function AddAlternativeItem({
-  content,
-  isCorrect,
-  handleClick,
-}) {
+export default function AddAlternativeItem({ text, correct, handleClick }) {
   return (
     <ListItem disablePadding>
       <ListItemButton onClick={handleClick}>
-        <ListItemText>{content}</ListItemText>
-        {isCorrect && (
-          <ListItemIcon>
-            <CheckIcon />
-          </ListItemIcon>
-        )}
+        <ListItemIcon>
+          <Checkbox edge="start" checked={correct} disableRipple />
+        </ListItemIcon>
+        <ListItemText>{text}</ListItemText>
       </ListItemButton>
     </ListItem>
   );
