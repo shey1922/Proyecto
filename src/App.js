@@ -10,10 +10,10 @@ function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     const verifySession = async () => {
       try {
+        console.log("A");
         const { username } = await Auth.currentAuthenticatedUser();
         const currentUser = await API.get("WebcsAPI", `/users/${username}`, {});
         setLoggedIn(true);
@@ -26,8 +26,9 @@ function App() {
         console.error(err);
       }
     };
-
     verifySession();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

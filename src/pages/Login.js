@@ -38,7 +38,9 @@ export default function Login() {
       const currentUser = await API.get("WebcsAPI", `/users/${username}`, {});
       setUser(currentUser);
       setLoggedIn(true);
-      navigate("/", { replace: true });
+      currentUser.isAdmin
+        ? navigate("/admin-dashboard/cursos", { replace: true })
+        : navigate("/", { replace: true });
     } catch (err) {
       setFormValues({
         email: "",

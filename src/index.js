@@ -68,7 +68,7 @@ root.render(
               <Route path="contenido/:contentId" element={<CourseContent />} />
             </Route>
             <Route
-              path="admin"
+              path="admin-dashboard"
               element={
                 <AdminRoute>
                   <AdminDashboard />
