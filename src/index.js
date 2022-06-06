@@ -10,8 +10,6 @@ import Courses from "./pages/Courses";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MyLearning from "./pages/MyLearning";
-
-import "./index.css";
 import MyCourse from "./pages/MyCourse";
 import CourseContent from "./components/CourseContent";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -20,6 +18,11 @@ import CoursesTable from "./components/CoursesTable";
 import ParticipantsTable from "./components/ParticipantsTable";
 import CourseForm from "./components/CourseForm";
 
+import "./index.css";
+import PrivateRoute from "./routers/PrivateRoute";
+import AdminRoute from "./routers/AdminRoute";
+import AccountVerification from "./pages/AccountVerification";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -27,15 +30,51 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route index element={<Home />} />
+            <Route
+              index
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              }
+            />
             <Route path="signin" element={<Login />} />
             <Route path="signup" element={<Register />} />
-            <Route path="cursos" element={<Courses />} />
-            <Route path="mis-cursos" element={<MyLearning />} />
-            <Route path="curso/:courseId" element={<MyCourse />}>
+            <Route path="verification" element={<AccountVerification />} />
+            <Route
+              path="cursos"
+              element={
+                <PrivateRoute>
+                  <Courses />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="mis-cursos"
+              element={
+                <PrivateRoute>
+                  <MyLearning />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="curso/:courseId"
+              element={
+                <PrivateRoute>
+                  <MyCourse />
+                </PrivateRoute>
+              }
+            >
               <Route path="contenido/:contentId" element={<CourseContent />} />
             </Route>
-            <Route path="admin" element={<AdminDashboard />}>
+            <Route
+              path="admin"
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              }
+            >
               <Route path="cursos" element={<ManageCourses />} />
               <Route path="cursos/form" element={<CourseForm />} />
               <Route path="detalle-cursos" element={<CoursesTable />} />

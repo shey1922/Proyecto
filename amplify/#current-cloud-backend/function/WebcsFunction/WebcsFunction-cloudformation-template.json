@@ -147,6 +147,18 @@
     "storageUserTestTableStreamArn": {
       "Type": "String",
       "Default": "storageUserTestTableStreamArn"
+    },
+    "storageUserModuleTableName": {
+      "Type": "String",
+      "Default": "storageUserModuleTableName"
+    },
+    "storageUserModuleTableArn": {
+      "Type": "String",
+      "Default": "storageUserModuleTableArn"
+    },
+    "storageUserModuleTableStreamArn": {
+      "Type": "String",
+      "Default": "storageUserModuleTableStreamArn"
     }
   },
   "Conditions": {
@@ -300,6 +312,15 @@
             },
             "STORAGE_USERTESTTABLE_STREAMARN": {
               "Ref": "storageUserTestTableStreamArn"
+            },
+            "STORAGE_USERMODULETABLE_NAME": {
+              "Ref": "storageUserModuleTableName"
+            },
+            "STORAGE_USERMODULETABLE_ARN": {
+              "Ref": "storageUserModuleTableArn"
+            },
+            "STORAGE_USERMODULETABLE_STREAMARN": {
+              "Ref": "storageUserModuleTableStreamArn"
             }
           }
         },
@@ -767,6 +788,39 @@
                     [
                       {
                         "Ref": "storageUserTestTableArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageUserModuleTableArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageUserModuleTableArn"
                       },
                       "index/*"
                     ]

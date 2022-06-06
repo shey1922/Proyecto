@@ -55,7 +55,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/auth/proyectoAuth-cloudformation-template.json",
         "logicalId": "authproyectoAuth"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.725Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.438Z",
       "output": {
         "UserPoolId": "us-east-1_gFRc5PvLm",
         "AppClientIDWeb": "5mg1tl5ctvs299q6i4kme19qik",
@@ -74,7 +74,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserTable-cloudformation-template.json",
         "logicalId": "storageUserTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.735Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.446Z",
       "output": {
         "PartitionKeyName": "id",
         "Region": "us-east-1",
@@ -92,7 +92,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/CourseTable-cloudformation-template.json",
         "logicalId": "storageCourseTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.748Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.459Z",
       "output": {
         "PartitionKeyName": "id",
         "Region": "us-east-1",
@@ -110,7 +110,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/VideoTable-cloudformation-template.json",
         "logicalId": "storageVideoTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.761Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.471Z",
       "output": {
         "PartitionKeyName": "id",
         "Region": "us-east-1",
@@ -128,7 +128,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/TestTable-cloudformation-template.json",
         "logicalId": "storageTestTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.774Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.484Z",
       "output": {
         "PartitionKeyName": "id",
         "Region": "us-east-1",
@@ -146,7 +146,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/QuestionTable-cloudformation-template.json",
         "logicalId": "storageQuestionTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.788Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.495Z",
       "output": {
         "PartitionKeyName": "id",
         "Region": "us-east-1",
@@ -164,7 +164,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/AnswerTable-cloudformation-template.json",
         "logicalId": "storageAnswerTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.802Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.507Z",
       "output": {
         "PartitionKeyName": "id",
         "Region": "us-east-1",
@@ -182,7 +182,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/ForumTable-cloudformation-template.json",
         "logicalId": "storageForumTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.815Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.519Z",
       "output": {
         "PartitionKeyName": "id",
         "Region": "us-east-1",
@@ -200,7 +200,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/CommentTable-cloudformation-template.json",
         "logicalId": "storageCommentTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.830Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.531Z",
       "output": {
         "PartitionKeyName": "id",
         "Region": "us-east-1",
@@ -218,7 +218,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/ModuleTable-cloudformation-template.json",
         "logicalId": "storageModuleTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.843Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.543Z",
       "output": {
         "PartitionKeyName": "id",
         "Region": "us-east-1",
@@ -236,7 +236,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserCourseTable-cloudformation-template.json",
         "logicalId": "storageUserCourseTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.856Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.555Z",
       "output": {
         "PartitionKeyName": "userId",
         "SortKeyName": "courseId",
@@ -256,7 +256,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserTestTable-cloudformation-template.json",
         "logicalId": "storageUserTestTable"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.870Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.566Z",
       "output": {
         "PartitionKeyName": "testId",
         "SortKeyName": "userId",
@@ -268,6 +268,26 @@
         "Name": "UserTestTable-dev"
       },
       "lastPushDirHash": "369QOKo1dDmUaCCYDJDKZ6QGeEU="
+    },
+    "UserModuleTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserModuleTable-cloudformation-template.json",
+        "logicalId": "storageUserModuleTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:56.394Z",
+      "output": {
+        "PartitionKeyName": "moduleId",
+        "SortKeyName": "userId",
+        "SortKeyType": "S",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/UserModuleTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/UserModuleTable-dev/stream/2022-06-06T06:07:05.563",
+        "PartitionKeyType": "S",
+        "Name": "UserModuleTable-dev"
+      },
+      "lastPushDirHash": "K76DQL7sQbh82aT1YL95/39UWC8="
     }
   },
   "function": {
@@ -287,7 +307,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/function/proyectoAuthPostConfirmation-cloudformation-template.json",
         "logicalId": "functionproyectoAuthPostConfirmation"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.884Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.589Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:776710310144:function:proyectoAuthPostConfirmation-dev",
@@ -410,16 +430,25 @@
             "Arn",
             "StreamArn"
           ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "UserModuleTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
         }
       ],
-      "lastPushTimeStamp": "2022-05-25T04:08:31.656Z",
-      "lastBuildTimeStamp": "2022-05-25T04:06:49.910Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:56.394Z",
+      "lastBuildTimeStamp": "2022-06-06T06:06:39.828Z",
       "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2022-05-25T04:06:50.700Z",
-      "distZipFilename": "WebcsFunction-4d594348663673636956-build.zip",
+      "lastPackageTimeStamp": "2022-06-06T06:06:43.430Z",
+      "distZipFilename": "WebcsFunction-36553657507273397842-build.zip",
       "s3Bucket": {
         "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-        "s3Key": "amplify-builds/WebcsFunction-4d594348663673636956-build.zip"
+        "s3Key": "amplify-builds/WebcsFunction-36553657507273397842-build.zip"
       },
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/function/WebcsFunction-cloudformation-template.json",
@@ -431,7 +460,7 @@
         "Name": "WebcsFunction-dev",
         "LambdaExecutionRole": "proyectoLambdaRolefd44da91-dev"
       },
-      "lastPushDirHash": "SjL7M5ea1DY5odee9L5LelSQ/pg="
+      "lastPushDirHash": "Be423/WLbJTLUmft0S6ygsbvq0w="
     }
   },
   "api": {
@@ -448,7 +477,7 @@
           ]
         }
       ],
-      "lastPushTimeStamp": "2022-05-25T04:08:30.912Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.611Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/api/WebcsAPI-cloudformation-template.json",
         "logicalId": "apiWebcsAPI"
@@ -470,7 +499,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
         "logicalId": "hostingamplifyhosting"
       },
-      "lastPushTimeStamp": "2022-05-25T04:08:30.925Z",
+      "lastPushTimeStamp": "2022-06-06T06:09:55.622Z",
       "output": {},
       "lastPushDirHash": "CFaQ6IsWDVAGrSoeN+JLLz9wlCI="
     }

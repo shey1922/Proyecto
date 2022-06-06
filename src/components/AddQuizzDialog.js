@@ -62,9 +62,11 @@ export default function AddQuizzDialog({ open, setOpen, module, setModule }) {
           {showQuestionPaper && (
             <AddQuestionPaper setShow={setShowQuestionPaper} />
           )}
-          <Button variant="contained" fullWidth onClick={handleAddQuestion}>
-            Agregar Pregunta
-          </Button>
+          {!showQuestionPaper && (
+            <Button variant="contained" fullWidth onClick={handleAddQuestion}>
+              Agregar Pregunta
+            </Button>
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCancel}>Cancelar</Button>

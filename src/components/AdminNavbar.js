@@ -1,8 +1,22 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../context";
+import { Auth } from "aws-amplify";
 
 export default function AdminNavbar() {
+  const { setLoggedIn, setUser, user } = useContext(AuthContext);
+
+  const handleLogOut = async () => {
+    try {
+      await Auth.signOut();
+      setLoggedIn(false);
+      setUser(null);
+    } catch (err) {
+      console.error();
+    }
+  };
+
   return (
     <AppBar position="static">
       <Toolbar
@@ -28,8 +42,10 @@ export default function AdminNavbar() {
           />
           <Typography variant="h4">WebCS</Typography>
         </Box>
-        <Typography variant="h5">¡Bienvenido Nombres Apellidos!</Typography>
-        <Button color="inherit" size="large">
+        <Typography variant="h5">
+          ¡Bienvenido {user.firstName + " " + user.lastName}!
+        </Typography>
+        <Button color="inherit" size="large" onClick={handleLogOut}>
           Salir
         </Button>
       </Toolbar>

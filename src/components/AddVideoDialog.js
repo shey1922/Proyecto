@@ -11,7 +11,6 @@ import React, { useContext, useState } from "react";
 import { CourseContext } from "../context";
 
 export default function AddVideoDialog({ open, setOpen, module, setModule }) {
-  // const { course, setCourse } = useContext(CourseContext);
   const [video, setVideo] = useState({
     title: "",
     url: "",

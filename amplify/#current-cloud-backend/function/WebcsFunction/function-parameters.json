@@ -67,6 +67,12 @@
         "read",
         "update",
         "delete"
+      ],
+      "UserModuleTable": [
+        "create",
+        "read",
+        "update",
+        "delete"
       ]
     }
   }

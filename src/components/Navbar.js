@@ -1,10 +1,23 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Auth } from "aws-amplify";
+import { AuthContext } from "../context";
 
 export default function Navbar() {
+  const { setLoggedIn, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    try {
+      await Auth.signOut();
+      setLoggedIn(false);
+      setUser(null);
+    } catch (err) {
+      console.error();
+    }
+  };
 
   return (
     <AppBar position="static">
@@ -42,7 +55,9 @@ export default function Navbar() {
             Mi Aprendizaje
           </Button>
           <Button color="inherit">Foro</Button>
-          <Button color="inherit">Salir</Button>
+          <Button color="inherit" onClick={handleLogOut}>
+            Salir
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>

@@ -6,11 +6,46 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import { API, Auth } from "aws-amplify";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context";
 
 export default function Login() {
+  const { setLoggedIn, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const [formValues, setFormValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = ({ target }) => {
+    setFormValues({
+      ...formValues,
+      [target.name]: target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { username } = await Auth.signIn(
+        formValues.email,
+        formValues.password
+      );
+      const currentUser = await API.get("WebcsAPI", `/users/${username}`, {});
+      setUser(currentUser);
+      setLoggedIn(true);
+      navigate("/", { replace: true });
+    } catch (err) {
+      setFormValues({
+        email: "",
+        password: "",
+      });
+    }
+  };
 
   return (
     <Stack
@@ -28,30 +63,39 @@ export default function Login() {
         }}
       >
         <Box
-          padding="4rem"
+          margin="4rem"
           component="form"
           display="flex"
           flexDirection="column"
           alignItems="center"
           gap={2}
+          onSubmit={handleSubmit}
         >
           <Typography variant="h4">Iniciar Sesión</Typography>
           <TextField
-            id="email"
+            name="email"
             variant="standard"
             label="Email"
             type="email"
             size="small"
+            value={formValues.email}
+            onChange={handleInputChange}
           />
           <TextField
-            id="password"
+            name="password"
             type="password"
             variant="standard"
             label="Contraseña"
             size="small"
+            value={formValues.password}
+            onChange={handleInputChange}
           />
           <Typography variant="subtitle1">¿Olvidaste tu contraseña?</Typography>
-          <Button variant="contained" sx={{ borderRadius: "15px" }}>
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{ borderRadius: "15px" }}
+          >
             Iniciar Sesión
           </Button>
         </Box>

@@ -83,6 +83,10 @@
     "UserTestTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "UserModuleTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
@@ -200,6 +204,15 @@
         {
           "category": "storage",
           "resourceName": "UserTestTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "UserModuleTable",
           "attributes": [
             "Name",
             "Arn",

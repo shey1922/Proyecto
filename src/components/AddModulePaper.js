@@ -1,20 +1,28 @@
 import React, { useContext, useState } from "react";
-import { Button, List, Paper, Stack, TextField } from "@mui/material";
+import { Button, Grid, List, Paper, Stack, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import AddResourceItem from "./AddResourceItem";
 import { CourseContext } from "../context";
 import AddQuizzDialog from "./AddQuizzDialog";
 import AddVideoDialog from "./AddVideoDialog";
+import { Box } from "@mui/system";
 
-export default function ModulePaper({ name, description, resources }) {
+export default function AddModulePaper({
+  name = "",
+  description = "",
+  resources = [],
+  saved = false,
+  setShow,
+}) {
   const {
+    course,
+    setCourse,
     openVideoDialog,
     setOpenVideoDialog,
     openQuizzDialog,
     setOpenQuizzDialog,
   } = useContext(CourseContext);
 
-  const [saved, setSaved] = useState(false);
   const [module, setModule] = useState({
     name,
     description,
@@ -22,8 +30,8 @@ export default function ModulePaper({ name, description, resources }) {
   });
 
   const handleSave = () => {
-    setSaved(true);
-    setModule({ ...module });
+    setCourse({ ...course, modules: [...course.modules, module] });
+    setShow(false);
   };
 
   return (
@@ -63,9 +71,9 @@ export default function ModulePaper({ name, description, resources }) {
           />
         ))}
       </List>
-      <Stack direction="row" spacing={2} justifyContent="flex-end">
-        {saved ? (
-          <>
+      {!saved && (
+        <Stack direction="row" justifyContent="space-between">
+          <Stack direction="row" spacing={2}>
             <Button
               variant="contained"
               color="secondary"
@@ -82,18 +90,17 @@ export default function ModulePaper({ name, description, resources }) {
             >
               Quizz
             </Button>
-          </>
-        ) : (
-          <>
+          </Stack>
+          <Stack direction="row" spacing={2}>
             <Button variant="outlined" color="error">
               Cancelar
             </Button>
             <Button variant="outlined" onClick={handleSave}>
               Guardar
             </Button>
-          </>
-        )}
-      </Stack>
+          </Stack>
+        </Stack>
+      )}
       <AddVideoDialog
         module={module}
         setModule={setModule}

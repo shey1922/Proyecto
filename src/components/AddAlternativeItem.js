@@ -5,7 +5,6 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import CheckIcon from "@mui/icons-material/Check";
 import React from "react";
 
 export default function AddAlternativeItem({ text, correct, handleClick }) {

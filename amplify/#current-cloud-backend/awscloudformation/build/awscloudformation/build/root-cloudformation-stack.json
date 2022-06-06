@@ -383,6 +383,20 @@
         }
       }
     },
+    "storageUserModuleTable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserModuleTable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "UserModuleTable",
+          "partitionKeyName": "moduleId",
+          "partitionKeyType": "S",
+          "sortKeyName": "userId",
+          "sortKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
     "functionproyectoAuthPostConfirmation": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
@@ -420,7 +434,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/function/WebcsFunction-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/WebcsFunction-4d594348663673636956-build.zip",
+          "s3Key": "amplify-builds/WebcsFunction-36553657507273397842-build.zip",
           "storageUserTableName": {
             "Fn::GetAtt": [
               "storageUserTable",
@@ -616,6 +630,24 @@
           "storageUserTestTableStreamArn": {
             "Fn::GetAtt": [
               "storageUserTestTable",
+              "Outputs.StreamArn"
+            ]
+          },
+          "storageUserModuleTableName": {
+            "Fn::GetAtt": [
+              "storageUserModuleTable",
+              "Outputs.Name"
+            ]
+          },
+          "storageUserModuleTableArn": {
+            "Fn::GetAtt": [
+              "storageUserModuleTable",
+              "Outputs.Arn"
+            ]
+          },
+          "storageUserModuleTableStreamArn": {
+            "Fn::GetAtt": [
+              "storageUserModuleTable",
               "Outputs.StreamArn"
             ]
           },
