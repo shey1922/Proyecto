@@ -1,0 +1,14 @@
+{
+  "resourceName": "UserModuleTable",
+  "tableName": "UserModuleTable",
+  "partitionKey": {
+    "fieldName": "moduleId",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "userId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

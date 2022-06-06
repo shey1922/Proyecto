@@ -1,0 +1,33 @@
+{
+  "resourceName": "VideoTable",
+  "tableName": "VideoTable",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "VideoModuleGSI",
+      "partitionKey": {
+        "fieldName": "moduleId",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      }
+    },
+    {
+      "name": "VideoCourseIndex",
+      "partitionKey": {
+        "fieldName": "courseId",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}

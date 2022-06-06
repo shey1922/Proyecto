@@ -1,0 +1,14 @@
+{
+  "resourceName": "UserTestTable",
+  "tableName": "UserTestTable",
+  "partitionKey": {
+    "fieldName": "testId",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "userId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

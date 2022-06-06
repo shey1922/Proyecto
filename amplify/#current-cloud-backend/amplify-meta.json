@@ -1,0 +1,507 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-proyecto-dev-141320-authRole",
+      "UnauthRoleArn": "arn:aws:iam::776710310144:role/amplify-proyecto-dev-141320-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::776710310144:role/amplify-proyecto-dev-141320-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+      "UnauthRoleName": "amplify-proyecto-dev-141320-unauthRole",
+      "StackName": "amplify-proyecto-dev-141320",
+      "StackId": "arn:aws:cloudformation:us-east-1:776710310144:stack/amplify-proyecto-dev-141320/72fce010-c339-11ec-969c-129d75033097",
+      "AmplifyAppId": "d37o71vgus8gm0",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    }
+  },
+  "auth": {
+    "proyectoAuth": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "proyectoAuthPostConfirmation",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL",
+          "FAMILY_NAME",
+          "GIVEN_NAME"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/auth/proyectoAuth-cloudformation-template.json",
+        "logicalId": "authproyectoAuth"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.438Z",
+      "output": {
+        "UserPoolId": "us-east-1_gFRc5PvLm",
+        "AppClientIDWeb": "5mg1tl5ctvs299q6i4kme19qik",
+        "AppClientID": "38jaq2rc5up39dv6d6pm0hra0l",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:776710310144:userpool/us-east-1_gFRc5PvLm",
+        "UserPoolName": "proyecto87082c2d_userpool_87082c2d"
+      },
+      "lastPushDirHash": "eIu2aYIFqF1xFuDSgm5ynydIbX4="
+    }
+  },
+  "storage": {
+    "UserTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserTable-cloudformation-template.json",
+        "logicalId": "storageUserTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.446Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/UserTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/UserTable-dev/stream/2022-05-16T18:34:54.983",
+        "PartitionKeyType": "S",
+        "Name": "UserTable-dev"
+      },
+      "lastPushDirHash": "tNBX3DWgzAqdvdxyJKbdVqg9U4I="
+    },
+    "CourseTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/CourseTable-cloudformation-template.json",
+        "logicalId": "storageCourseTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.459Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/CourseTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/CourseTable-dev/stream/2022-05-16T18:34:55.089",
+        "PartitionKeyType": "S",
+        "Name": "CourseTable-dev"
+      },
+      "lastPushDirHash": "l9foiU59WCD30D0Jot2ySnXX21Q="
+    },
+    "VideoTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/VideoTable-cloudformation-template.json",
+        "logicalId": "storageVideoTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.471Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/VideoTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/VideoTable-dev/stream/2022-05-16T18:34:56.229",
+        "PartitionKeyType": "S",
+        "Name": "VideoTable-dev"
+      },
+      "lastPushDirHash": "IhPv6LYlCeEj0VMyRMlWtY/znZA="
+    },
+    "TestTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/TestTable-cloudformation-template.json",
+        "logicalId": "storageTestTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.484Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/TestTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/TestTable-dev/stream/2022-05-16T18:34:55.862",
+        "PartitionKeyType": "S",
+        "Name": "TestTable-dev"
+      },
+      "lastPushDirHash": "xuGzmSVJHhnO2TL84HdxWPl4c8M="
+    },
+    "QuestionTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/QuestionTable-cloudformation-template.json",
+        "logicalId": "storageQuestionTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.495Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/QuestionTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/QuestionTable-dev/stream/2022-05-16T18:34:56.308",
+        "PartitionKeyType": "S",
+        "Name": "QuestionTable-dev"
+      },
+      "lastPushDirHash": "Pp027EtdAdP2TJ5k/VMpSHtAglI="
+    },
+    "AnswerTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/AnswerTable-cloudformation-template.json",
+        "logicalId": "storageAnswerTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.507Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/AnswerTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/AnswerTable-dev/stream/2022-05-16T18:34:55.379",
+        "PartitionKeyType": "S",
+        "Name": "AnswerTable-dev"
+      },
+      "lastPushDirHash": "SkUmFx/Vai7G5/3GkuroTUUxe48="
+    },
+    "ForumTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/ForumTable-cloudformation-template.json",
+        "logicalId": "storageForumTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.519Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/ForumTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/ForumTable-dev/stream/2022-05-16T18:34:54.582",
+        "PartitionKeyType": "S",
+        "Name": "ForumTable-dev"
+      },
+      "lastPushDirHash": "Dyg1oxyppx7UfldBPt/VIMLbhgQ="
+    },
+    "CommentTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/CommentTable-cloudformation-template.json",
+        "logicalId": "storageCommentTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.531Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/CommentTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/CommentTable-dev/stream/2022-05-16T18:34:54.136",
+        "PartitionKeyType": "S",
+        "Name": "CommentTable-dev"
+      },
+      "lastPushDirHash": "1QtUKKXP2jIstTrbPl4m6KG5Pok="
+    },
+    "ModuleTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/ModuleTable-cloudformation-template.json",
+        "logicalId": "storageModuleTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.543Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/ModuleTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/ModuleTable-dev/stream/2022-05-16T20:01:41.140",
+        "PartitionKeyType": "S",
+        "Name": "ModuleTable-dev"
+      },
+      "lastPushDirHash": "DLDnYbfVvmSwOYQtLSfkMHxzdr8="
+    },
+    "UserCourseTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserCourseTable-cloudformation-template.json",
+        "logicalId": "storageUserCourseTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.555Z",
+      "output": {
+        "PartitionKeyName": "userId",
+        "SortKeyName": "courseId",
+        "SortKeyType": "S",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/UserCourseTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/UserCourseTable-dev/stream/2022-05-16T22:56:12.270",
+        "PartitionKeyType": "S",
+        "Name": "UserCourseTable-dev"
+      },
+      "lastPushDirHash": "1SKuCmcqeaDLyJ4VUgd+0UjC8ps="
+    },
+    "UserTestTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserTestTable-cloudformation-template.json",
+        "logicalId": "storageUserTestTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.566Z",
+      "output": {
+        "PartitionKeyName": "testId",
+        "SortKeyName": "userId",
+        "SortKeyType": "S",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/UserTestTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/UserTestTable-dev/stream/2022-05-25T03:31:15.628",
+        "PartitionKeyType": "S",
+        "Name": "UserTestTable-dev"
+      },
+      "lastPushDirHash": "369QOKo1dDmUaCCYDJDKZ6QGeEU="
+    },
+    "UserModuleTable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/storage/UserModuleTable-cloudformation-template.json",
+        "logicalId": "storageUserModuleTable"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:56.394Z",
+      "output": {
+        "PartitionKeyName": "moduleId",
+        "SortKeyName": "userId",
+        "SortKeyType": "S",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:776710310144:table/UserModuleTable-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:776710310144:table/UserModuleTable-dev/stream/2022-06-06T06:07:05.563",
+        "PartitionKeyType": "S",
+        "Name": "UserModuleTable-dev"
+      },
+      "lastPushDirHash": "K76DQL7sQbh82aT1YL95/39UWC8="
+    }
+  },
+  "function": {
+    "proyectoAuthPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2022-05-16T20:25:12.017Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2022-05-16T20:25:12.283Z",
+      "distZipFilename": "proyectoAuthPostConfirmation-4d347738304e6a4f4d4d-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+        "s3Key": "amplify-builds/proyectoAuthPostConfirmation-4d347738304e6a4f4d4d-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/function/proyectoAuthPostConfirmation-cloudformation-template.json",
+        "logicalId": "functionproyectoAuthPostConfirmation"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.589Z",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:776710310144:function:proyectoAuthPostConfirmation-dev",
+        "Name": "proyectoAuthPostConfirmation-dev",
+        "LambdaExecutionRole": "proyectoAuthPostConfirmation-dev"
+      },
+      "lastPushDirHash": "6HmqgwjYzlhRJxFLV8K93XIlxvM=",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "UserTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ]
+    },
+    "WebcsFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "UserTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "CourseTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "VideoTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "TestTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "QuestionTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "AnswerTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "ForumTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "CommentTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "ModuleTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "UserCourseTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "UserTestTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "UserModuleTable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2022-06-06T06:09:56.394Z",
+      "lastBuildTimeStamp": "2022-06-06T06:06:39.828Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2022-06-06T06:06:43.430Z",
+      "distZipFilename": "WebcsFunction-36553657507273397842-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
+        "s3Key": "amplify-builds/WebcsFunction-36553657507273397842-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/function/WebcsFunction-cloudformation-template.json",
+        "logicalId": "functionWebcsFunction"
+      },
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:776710310144:function:WebcsFunction-dev",
+        "Name": "WebcsFunction-dev",
+        "LambdaExecutionRole": "proyectoLambdaRolefd44da91-dev"
+      },
+      "lastPushDirHash": "Be423/WLbJTLUmft0S6ygsbvq0w="
+    }
+  },
+  "api": {
+    "WebcsAPI": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "WebcsFunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2022-06-06T06:09:55.611Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/api/WebcsAPI-cloudformation-template.json",
+        "logicalId": "apiWebcsAPI"
+      },
+      "output": {
+        "ApiName": "WebcsAPI",
+        "RootUrl": "https://zwvf64103d.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "zwvf64103d"
+      },
+      "lastPushDirHash": "fwba30QZFEfziC3mWSzb3hmKVGs="
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-proyecto-dev-141320-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "logicalId": "hostingamplifyhosting"
+      },
+      "lastPushTimeStamp": "2022-06-06T06:09:55.622Z",
+      "output": {},
+      "lastPushDirHash": "CFaQ6IsWDVAGrSoeN+JLLz9wlCI="
+    }
+  }
+}
