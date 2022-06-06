@@ -1,5 +1,0 @@
-{
-  "tableName": "ModuleTable",
-  "partitionKeyName": "id",
-  "partitionKeyType": "S"
-}

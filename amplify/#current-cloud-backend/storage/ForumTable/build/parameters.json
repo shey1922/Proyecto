@@ -1,5 +1,0 @@
-{
-  "tableName": "ForumTable",
-  "partitionKeyName": "id",
-  "partitionKeyType": "S"
-}
