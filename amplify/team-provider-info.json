@@ -23,12 +23,47 @@
         },
         "WebcsFunction": {
           "deploymentBucketName": "amplify-proyecto-dev-141320-deployment",
-          "s3Key": "amplify-builds/WebcsFunction-36553657507273397842-build.zip"
+          "s3Key": "amplify-builds/WebcsFunction-6a356636793154306c4a-build.zip"
         }
       },
       "hosting": {
         "amplifyhosting": {
           "appId": "d37o71vgus8gm0",
+          "type": "manual"
+        }
+      }
+    }
+  },
+  "test": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-proyecto-test-143245-authRole",
+      "UnauthRoleArn": "arn:aws:iam::935562956811:role/amplify-proyecto-test-143245-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::935562956811:role/amplify-proyecto-test-143245-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-proyecto-test-143245-deployment",
+      "UnauthRoleName": "amplify-proyecto-test-143245-unauthRole",
+      "StackName": "amplify-proyecto-test-143245",
+      "StackId": "arn:aws:cloudformation:us-east-1:935562956811:stack/amplify-proyecto-test-143245/c86af720-e761-11ec-8b21-0aea1aa9c9bb",
+      "AmplifyAppId": "dkycth8cacln9",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-proyecto-test-143245-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "proyectoAuth": {}
+      },
+      "function": {
+        "proyectoAuthPostConfirmation": {
+          "deploymentBucketName": "amplify-proyecto-test-143245-deployment",
+          "s3Key": "amplify-builds/proyectoAuthPostConfirmation-7a34314d353063736d4e-build.zip"
+        },
+        "WebcsFunction": {
+          "deploymentBucketName": "amplify-proyecto-test-143245-deployment",
+          "s3Key": "amplify-builds/WebcsFunction-6a356636793154306c4a-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dkycth8cacln9",
           "type": "manual"
         }
       }

@@ -22,7 +22,7 @@ export default function CourseForm() {
     setShowModulePaper(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await API.post("WebcsAPI", "/courses", {
