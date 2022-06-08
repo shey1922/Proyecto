@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Button, Grid, List, Paper, Stack, TextField } from "@mui/material";
+import { Button, List, Paper, Stack, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import AddResourceItem from "./AddResourceItem";
 import { CourseContext } from "../context";
 import AddQuizzDialog from "./AddQuizzDialog";
 import AddVideoDialog from "./AddVideoDialog";
-import { Box } from "@mui/system";
 
 export default function AddModulePaper({
   name = "",

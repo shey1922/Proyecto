@@ -13,22 +13,19 @@ function App() {
   useEffect(() => {
     const verifySession = async () => {
       try {
-        console.log("A");
         const { username } = await Auth.currentAuthenticatedUser();
         const currentUser = await API.get("WebcsAPI", `/users/${username}`, {});
         setLoggedIn(true);
         setUser(currentUser);
 
         currentUser.isAdmin
-          ? navigate("/admin/cursos", { replace: true })
+          ? navigate("/admin-dashboard/cursos", { replace: true })
           : navigate("/", { replace: true });
       } catch (err) {
         console.error(err);
       }
     };
     verifySession();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

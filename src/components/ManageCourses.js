@@ -25,20 +25,11 @@ export default function ManageCourses() {
           Agregar
         </Button>
       </Box>
-      <Grid container spacing={2}>
-        <Grid item xs={3}>
-          <AdminCourseCard />
-        </Grid>
-        <Grid item xs={3}>
-          <AdminCourseCard />
-        </Grid>
-        <Grid item xs={3}>
-          <AdminCourseCard />
-        </Grid>
-        <Grid item xs={3}>
-          <AdminCourseCard />
-        </Grid>
-      </Grid>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      ></Grid>
     </>
   );
 }

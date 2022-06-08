@@ -1,17 +1,21 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AddModulePaper from "./AddModulePaper";
-import { CourseContext } from "../context";
+import { AuthContext, CourseContext } from "../context";
+import { API } from "aws-amplify";
 
 export default function CourseForm() {
+  const { user } = useContext(AuthContext);
+
   const [openVideoDialog, setOpenVideoDialog] = useState(false);
   const [openQuizzDialog, setOpenQuizzDialog] = useState(false);
   const [showModulePaper, setShowModulePaper] = useState(false);
 
   const [course, setCourse] = useState({
-    name: "",
+    topic: "",
     description: "",
     modules: [],
+    createdBy: user.id,
   });
 
   const handleClick = () => {
@@ -20,10 +24,19 @@ export default function CourseForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    try {
+      const res = await API.post("WebcsAPI", "/courses", {
+        body: course,
+      });
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
     setCourse({
-      name: "",
+      topic: "",
       description: "",
       modules: [],
+      createdBy: user.id,
     });
   };
 
@@ -47,11 +60,11 @@ export default function CourseForm() {
             </Button>
           </Box>
           <TextField
-            label="Nombre del curso"
+            label="Tema"
             variant="outlined"
             fullWidth
-            value={course.name}
-            onChange={(e) => setCourse({ ...course, name: e.target.value })}
+            value={course.topic}
+            onChange={(e) => setCourse({ ...course, topic: e.target.value })}
             sx={{ display: "block", mb: 2 }}
           />
           <TextField
