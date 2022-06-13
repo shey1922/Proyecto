@@ -13,7 +13,7 @@ export default function AddQuestionPaper({ setShow }) {
   });
 
   const [alternative, setAlternative] = useState({
-    text: "",
+    content: "",
     correct: false,
   });
 
@@ -32,7 +32,7 @@ export default function AddQuestionPaper({ setShow }) {
       alternatives: [...question.alternatives, alternative],
     });
     setAlternative({
-      text: "",
+      content: "",
       correct: false,
     });
   };
@@ -76,9 +76,9 @@ export default function AddQuestionPaper({ setShow }) {
         size="small"
         variant="outlined"
         placeholder="Alternativa..."
-        value={alternative.text}
+        value={alternative.content}
         onChange={(e) =>
-          setAlternative({ ...alternative, text: e.target.value })
+          setAlternative({ ...alternative, content: e.target.value })
         }
         sx={{ mb: 3 }}
       />

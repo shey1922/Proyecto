@@ -7,14 +7,14 @@ import {
 } from "@mui/material";
 import React from "react";
 
-export default function AddAlternativeItem({ text, correct, handleClick }) {
+export default function AddAlternativeItem({ content, correct, handleClick }) {
   return (
     <ListItem disablePadding>
       <ListItemButton onClick={handleClick}>
         <ListItemIcon>
           <Checkbox edge="start" checked={correct} disableRipple />
         </ListItemIcon>
-        <ListItemText>{text}</ListItemText>
+        <ListItemText>{content}</ListItemText>
       </ListItemButton>
     </ListItem>
   );

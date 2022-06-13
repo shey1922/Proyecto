@@ -3,7 +3,6 @@ import {
   Paper,
   Radio,
   RadioGroup,
-  Stack,
   TextField,
 } from "@mui/material";
 import React from "react";
@@ -24,7 +23,7 @@ export default function QuestionPaper({ statement, alternatives }) {
           <FormControlLabel
             key={index}
             control={<Radio />}
-            label={alternative.text}
+            label={alternative.content}
             checked={alternative.correct}
           />
         ))}

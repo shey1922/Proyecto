@@ -16,18 +16,6 @@
     "s3Key": {
       "Type": "String"
     },
-    "storageUserCourseTableName": {
-      "Type": "String",
-      "Default": "storageUserCourseTableName"
-    },
-    "storageUserCourseTableArn": {
-      "Type": "String",
-      "Default": "storageUserCourseTableArn"
-    },
-    "storageUserCourseTableStreamArn": {
-      "Type": "String",
-      "Default": "storageUserCourseTableStreamArn"
-    },
     "storageUserTableName": {
       "Type": "String",
       "Default": "storageUserTableName"
@@ -136,6 +124,18 @@
       "Type": "String",
       "Default": "storageModuleTableStreamArn"
     },
+    "storageUserCourseTableName": {
+      "Type": "String",
+      "Default": "storageUserCourseTableName"
+    },
+    "storageUserCourseTableArn": {
+      "Type": "String",
+      "Default": "storageUserCourseTableArn"
+    },
+    "storageUserCourseTableStreamArn": {
+      "Type": "String",
+      "Default": "storageUserCourseTableStreamArn"
+    },
     "storageUserTestTableName": {
       "Type": "String",
       "Default": "storageUserTestTableName"
@@ -159,6 +159,14 @@
     "storageUserModuleTableStreamArn": {
       "Type": "String",
       "Default": "storageUserModuleTableStreamArn"
+    },
+    "apiWebcsAPIApiName": {
+      "Type": "String",
+      "Default": "apiWebcsAPIApiName"
+    },
+    "apiWebcsAPIApiId": {
+      "Type": "String",
+      "Default": "apiWebcsAPIApiId"
     }
   },
   "Conditions": {
@@ -213,15 +221,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "STORAGE_USERCOURSETABLE_NAME": {
-              "Ref": "storageUserCourseTableName"
-            },
-            "STORAGE_USERCOURSETABLE_ARN": {
-              "Ref": "storageUserCourseTableArn"
-            },
-            "STORAGE_USERCOURSETABLE_STREAMARN": {
-              "Ref": "storageUserCourseTableStreamArn"
             },
             "STORAGE_USERTABLE_NAME": {
               "Ref": "storageUserTableName"
@@ -304,6 +303,15 @@
             "STORAGE_MODULETABLE_STREAMARN": {
               "Ref": "storageModuleTableStreamArn"
             },
+            "STORAGE_USERCOURSETABLE_NAME": {
+              "Ref": "storageUserCourseTableName"
+            },
+            "STORAGE_USERCOURSETABLE_ARN": {
+              "Ref": "storageUserCourseTableArn"
+            },
+            "STORAGE_USERCOURSETABLE_STREAMARN": {
+              "Ref": "storageUserCourseTableStreamArn"
+            },
             "STORAGE_USERTESTTABLE_NAME": {
               "Ref": "storageUserTestTableName"
             },
@@ -321,6 +329,12 @@
             },
             "STORAGE_USERMODULETABLE_STREAMARN": {
               "Ref": "storageUserModuleTableStreamArn"
+            },
+            "API_WEBCSAPI_APINAME": {
+              "Ref": "apiWebcsAPIApiName"
+            },
+            "API_WEBCSAPI_APIID": {
+              "Ref": "apiWebcsAPIApiId"
             }
           }
         },
